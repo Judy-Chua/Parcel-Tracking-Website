@@ -1,0 +1,249 @@
+<html>
+    <head>
+        <title>Home Page</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="order.js"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h3>
+                <span>Logo</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- &nbsp; means space -->
+                <span>
+                    <a href="info.html">ABOUT US</a> | 
+                    <a href="search.html">SEARCH PARCEL</a> | 
+                    <a href="order.html">ORDER NOW</a>
+                </span>
+            </h3>
+        </div>
+
+
+        <h1>Order Form</h1>
+        <div>
+            <span>First name: </span>
+            <input type="text" placeholder="John" id="inputFirst">
+        </div>
+        <div class="errorMsg">
+            <span id="errorFirst"><br/></span>
+        </div>
+        <br/>
+
+        <div>
+            <span>Last name: </span>
+            <input type="text" placeholder="Dela Cruz" id="inputLast">
+        </div>
+        <div class="errorMsg">
+            <span id="errorLast"></span>
+        </div>
+        <br/>
+
+        <div>
+            <span>Email Address: </span>
+            <input type="text" placeholder="johndelacruz@gmail.com" id="inputEmail">
+        </div>
+        <div class="errorMsg">
+            <span id="errorEmail"></span>
+        </div>
+        <br/>
+
+        <div>
+            <span>Phone Number: </span>
+            <input type="number" placeholder="09123456789" id="inputPhone">
+        </div>
+        <div class="errorMsg">
+            <span id="errorPhone"></span>
+        </div>
+        <br/>
+
+        <div>
+            <span>Street Address: </span>
+            <input type="text" placeholder="12 Hello Street" id="inputAddress">
+        </div>
+        <div class="errorMsg">
+            <span id="errorAddress"></span>
+        </div>
+        <br/>
+
+        <div>
+            <span>State/Province: </span>
+            <select id="inputState">
+                <option value=""> </option>
+                <option value="Abra">Abra</option>
+                <option value="Agusan-del-Norte">Agusan del Norte</option>
+                <option value="Agusan-del-Sur">Agusan del Sur</option>
+                <option value="Aklan">Aklan</option>
+                <option value="Albay">Albay</option>
+                <option value="Antique">Antique</option>
+                <option value="Apayao">Apayao</option>
+                <option value="Aurora">Aurora</option>
+                <option value="Basilan">Basilan</option>
+                <option value="Bataan">Bataan</option>
+                <option value="Batanes">Batanes</option>
+                <option value="Batangas">Batangas</option>
+                <option value="Benguet">Benguet</option>
+                <option value="Biliran">Biliran</option>
+                <option value="Bohol">Bohol</option>
+                <option value="Bukidnon">Bukidnon</option>
+                <option value="Bulacan">Bulacan</option>
+                <option value="Cagayan">Cagayan</option>
+                <option value="Camarines-Norte">Camarines Norte</option>
+                <option value="Camarines-Sur">Camarines Sur</option>
+                <option value="Camiguin">Camiguin</option>
+                <option value="Capiz">Capiz</option>
+                <option value="Catanduanes">Catanduanes</option>
+                <option value="Cavite">Cavite</option>
+                <option value="Cebu">Cebu</option>
+                <option value="Cotabato">Cotabato</option>
+                <option value="Davao-de-Oro">Davao de Oro</option>
+                <option value="Davao-del-Norte">Davao del Norte</option>
+                <option value="Davao-del-Sur">Davao del Sur</option>
+                <option value="Davao-Occidental">Davao Occidental</option>
+                <option value="Davao-Oriental">Davao Oriental</option>
+                <option value="Dinagat-Islands">Dinagat Islands</option>
+                <option value="Eastern-Samar">Eastern Samar</option>
+                <option value="Guimaras">Guimaras</option>
+                <option value="Ifugao">Ifugao</option>
+                <option value="Ilocos-Norte">Ilocos Norte</option>
+                <option value="Ilocos-Sur">Ilocos Sur</option>
+                <option value="Iloilo">Iloilo</option>
+                <option value="Isabela">Isabela</option>
+                <option value="Kalinga">Kalinga</option>
+                <option value="La-Union">La Union</option>
+                <option value="Laguna">Laguna</option>
+                <option value="Lanao-del-Norte">Lanao del Norte</option>
+                <option value="Lanao-del-Sur">Lanao del Sur</option>
+                <option value="Leyte">Leyte</option>
+                <option value="Maguindanao-del-Norte">Maguindanao del Norte</option>
+                <option value="Maguindanao-del-Sur">Maguindanao del Sur</option>
+                <option value="Marinduque">Marinduque</option>
+                <option value="Masbate">Masbate</option>
+                <option value="Metro-Manila">Metro Manila</option>
+                <option value="Misamis-Occidental">Misamis Occidental</option>
+                <option value="Misamis-Oriental">Misamis Oriental</option>
+                <option value="Mountain-Province">Mountain Province</option>
+                <option value="Negros-Occidental">Negros Occidental</option>
+                <option value="Negros-Oriental">Negros Oriental</option>
+                <option value="Northern-Samar">Northern Samar</option>
+                <option value="Nueva-Ecija">Nueva Ecija</option>
+                <option value="Nueva-Vizcaya">Nueva Vizcaya</option>
+                <option value="Occidental-Mindoro">Occidental Mindoro</option>
+                <option value="Oriental-Mindoro">Oriental Mindoro</option>
+                <option value="Palawan">Palawan</option>
+                <option value="Pampanga">Pampanga</option>
+                <option value="Pangasinan">Pangasinan</option>
+                <option value="Quezon">Quezon</option>
+                <option value="Quirino">Quirino</option>
+                <option value="Rizal">Rizal</option>
+                <option value="Romblon">Romblon</option>
+                <option value="Samar">Samar</option>
+                <option value="Sarangani">Sarangani</option>
+                <option value="Siquijor">Siquijor</option>
+                <option value="Sorsogon">Sorsogon</option>
+                <option value="South-Cotabato">South Cotabato</option>
+                <option value="Southern-Leyte">Southern Leyte</option>
+                <option value="Sultan-Kudarat">Sultan Kudarat</option>
+                <option value="Sulu">Sulu</option>
+                <option value="Surigao-del-Norte">Surigao del Norte</option>
+                <option value="Surigao-del-Sur">Surigao del Sur</option>
+                <option value="Tarlac">Tarlac</option>
+                <option value="Tawi-Tawi">Tawi-Tawi</option>
+                <option value="Zambales">Zambales</option>
+                <option value="Zamboanga-del-Norte">Zamboanga del Norte</option>
+                <option value="Zamboanga-del-Sur">Zamboanga del Sur</option>
+                <option value="Zamboanga-Sibugay">Zamboanga Sibugay</option>
+            </select>
+            <!--
+            Link: https://www.philatlas.com/provinces.html#:~:text=There%20are%20eighty-two%20(82)%20provinces%20in
+            -->
+
+            <div class="selectCity" style="display: none;">
+                <span>City: </span>
+                <select id="inputCity">
+                    <option value=""> </option>
+                </select>
+            </div>
+            <!--
+            NOTE: City depends on selected State/Province
+            Link: https://www.discoverthephilippines.com/cities-towns-philippines/#:~:text=List%20of%20top%20100+%20largest%20cities%20&%20towns
+            -->
+
+        </div>
+        <div class="errorMsg">
+            <span id="errorState"></span>
+            <span id="errorCity"></span>
+        </div>
+        <br/>
+        
+        <div>
+            <span>Date of Service Needed: </span>
+            <input type="date" id="inputDate" min="">
+            <!-- only allows dates 2 days after present day-->
+        </div>
+        <div class="errorMsg">
+            <span id="errorDate"></span>
+        </div>
+        <br/>
+        
+        <div class="selectService">
+            <span>Type of Service: </span>
+            <select id="inputService">
+                <option value=""> </option>
+                <option value="Cargo-Handling">Cargo Handling</option>
+                <option value="Pick-Up-and-Delivery">Pick Up and Delivery</option>
+                <option value="Truck-for-Hire">Truck for Hire</option>
+                <option value="Hauling">Hauling</option>
+                <option value="Lipat-Bahay">Lipat Bahay</option>
+                <option value="Other">Other</option>
+                <div class="otherService" style="display: none;">
+                    <span class="otherService">Service: </span>
+                    <input type="text" placeholder="Please specify your desired service" id="inputOtherService" class="otherService">
+                </div>
+            </select>
+        </div>
+        <div class="errorMsg">
+            <span id="errorService"></span>
+        </div>
+        <br/>
+
+        <div class="selectPayment">
+            <span>Mode of Payment: </span>
+            <select id="inputPayment">
+                <option value=""> </option>
+                <option value="Cash-on-Delivery">Cash on Delivery</option>
+                <option value="GCash">GCash</option>
+            </select>
+        </div>
+        <div class="errorMsg">
+            <span id="errorPayment"></span>
+        </div>
+        <br/>
+
+
+        <div>
+            <br/>
+            <input type="submit" value="Submit Order" id="submitOrder">
+            <br/><br/>
+        </div>
+
+        <div>
+            <h2>More Information</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+            <br/>
+        </div>
+
+        <div class="footer">
+            <h2>Company Footer</h2>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+                officia deserunt mollit anim id est laborum</p>
+            </p>
+
+        </div>
+
+    </body>
+</html>
