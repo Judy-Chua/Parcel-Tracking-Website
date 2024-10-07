@@ -22,7 +22,7 @@
 
         <h1>Order Form</h1>
         <div>
-            <span>First name: </span>
+            <span>First name*: </span>
             <input type="text" placeholder="John" id="inputFirst">
         </div>
         <div class="errorMsg">
@@ -31,7 +31,7 @@
         <br/>
 
         <div>
-            <span>Last name: </span>
+            <span>Last name*: </span>
             <input type="text" placeholder="Dela Cruz" id="inputLast">
         </div>
         <div class="errorMsg">
@@ -40,7 +40,7 @@
         <br/>
 
         <div>
-            <span>Email Address: </span>
+            <span>Email Address*: </span>
             <input type="text" placeholder="johndelacruz@gmail.com" id="inputEmail">
         </div>
         <div class="errorMsg">
@@ -49,7 +49,7 @@
         <br/>
 
         <div>
-            <span>Phone Number: </span>
+            <span>Phone Number*: </span>
             <input type="number" placeholder="09123456789" id="inputPhone">
         </div>
         <div class="errorMsg">
@@ -58,7 +58,7 @@
         <br/>
 
         <div>
-            <span>Street Address: </span>
+            <span>Street Address*: </span>
             <input type="text" placeholder="12 Hello Street" id="inputAddress">
         </div>
         <div class="errorMsg">
@@ -67,7 +67,7 @@
         <br/>
 
         <div>
-            <span>State/Province: </span>
+            <span>State/Province*: </span>
             <select id="inputState">
                 <option value=""> </option>
                 <option value="Abra">Abra</option>
@@ -159,7 +159,7 @@
             -->
 
             <div class="selectCity" style="display: none;">
-                <span>City: </span>
+                <span>City*: </span>
                 <select id="inputCity">
                     <option value=""> </option>
                 </select>
@@ -171,13 +171,12 @@
 
         </div>
         <div class="errorMsg">
-            <span id="errorState"></span>
-            <span id="errorCity"></span>
+            <span id="errorStateCity"></span>
         </div>
         <br/>
         
         <div>
-            <span>Date of Service Needed: </span>
+            <span>Date of Service Needed*: </span>
             <input type="date" id="inputDate" min="">
             <!-- only allows dates 2 days after present day-->
         </div>
@@ -187,7 +186,7 @@
         <br/>
         
         <div class="selectService">
-            <span>Type of Service: </span>
+            <span>Type of Service*: </span>
             <select id="inputService">
                 <option value=""> </option>
                 <option value="Cargo-Handling">Cargo Handling</option>
@@ -208,7 +207,7 @@
         <br/>
 
         <div class="selectPayment">
-            <span>Mode of Payment: </span>
+            <span>Mode of Payment*: </span>
             <select id="inputPayment">
                 <option value=""> </option>
                 <option value="Cash-on-Delivery">Cash on Delivery</option>
