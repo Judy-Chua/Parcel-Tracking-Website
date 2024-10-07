@@ -1,21 +1,38 @@
-
 //$('#elementId');
 //$('.className');
 
 $(document).ready(function() {
-    const randomNumber = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000; //random
-    var otherService = false;
-    removeErrorMsg();
-    setDate();
+    const randomNumber = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000; //random number for control id
+    var otherService = false; //checks if user picked "other" from Type of Service
+    removeErrorMsg(); //
+    setDateLimit();
     $('.otherService').hide();
 
+    //change color if user inputs something (red if empty)
+    updateColor('#inputFirst', 1); 
+    updateColor('#inputLast', 1);
+    updateColor('#inputEmail', 1);
+    updateColor('#inputPhone', 1);
+    updateColor('#inputAddress', 1);
+    updateColor('#inputDate', 1);
+    updateColor('#inputOtherService', 1);
+
+    //change color if user chooses something (red if empty)
     $('#inputState').change(function() {
-        updateCity();
+        updateCity(); //call the city changer based on state chosen
+        updateColor('#inputState', 2);
     });
 
+    //change color if user chooses something (red if empty)
+    $('#inputCity').change(function() {
+        updateColor('#inputCity', 2);
+    });
+
+    //change color if user chooses something (red if empty)
     $('#inputService').change(function() {
+        updateColor('#inputService', 2);
         if ($('#inputService').val() == "Other") {
-            $('.otherService').show();
+            $('.otherService').show(); // add the option for text input for their desired service
             otherService = true;
         } else {
             $('.otherService').hide();
@@ -23,25 +40,24 @@ $(document).ready(function() {
         }
     });
 
-    $('#submitOrder').click(function() {
+    //change color if user chooses something (red if empty)
+    $('#inputPayment').change(function() {
+        updateColor('#inputPayment', 2);
+    });
+
+    //validates the order form when submit button is clicked
+    $('#submitOrder').click(function() { 
         if (validateInput(otherService)) {
+            //go to success.html
             window.location.href = "success.html?randomNumber=" + randomNumber;
         }
     });
 
 });
 
-function setDate() {
-    const today = new Date();
-    today.setDate(today.getDate() + 2); // Add 2 days
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-    const minDate = `${yyyy}-${mm}-${dd}`;
-    
-    $('#inputDate').attr('min', minDate);
-}
-
+/*  validates all the required inputs by the user
+    returns true if ALL is VALID; otherwise, false
+*/
 function validateInput(otherService) {
     const first = $('#inputFirst').val();
     const last = $('#inputLast').val();
@@ -55,7 +71,16 @@ function validateInput(otherService) {
     const other = $('#inputOtherService').val();
     const payment = $('#inputPayment').val();
     var noError = true;
+    var noState = false;
     removeErrorMsg();
+
+    const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+      };
 
     if (checkEmpty(first, "#inputFirst")) { //first name
         $('#errorFirst').html("Please input your first name.");
@@ -70,6 +95,11 @@ function validateInput(otherService) {
     if (checkEmpty(email, "#inputEmail")) { //email address
         $('#errorEmail').html("Please input email address.");
         noError = false;
+    } else if (!validateEmail(email)) {
+        $("#inputEmail").css('background-color', 'red');
+        $("#inputEmail").css('color', 'white');
+        $('#errorEmail').html("Please input VALID email address. [Ex: john@gmail.com]");
+        noError = false;
     }
 
     if (checkEmpty(phone, "#inputPhone")) { //phone number
@@ -83,17 +113,22 @@ function validateInput(otherService) {
     }
 
     if (checkEmpty(state, "#inputState")) { //state/province
-        $('#errorState').html("Please select one state.");
+        $('#errorStateCity').html("Please select one state.");
         noError = false;
+        noState = true;
     }
 
-    if (checkEmpty(city, "#inputCity")) { //city
-        $('#errorCity').html("Please select one city.");
-        noError = false;
+    if (!noState) { //city
+        if (checkEmpty(city, "#inputCity")) {
+            $('#errorStateCity').html("Please select one city.");
+            noError = false;
+        }
     }
 
     if (checkEmpty(date, "#inputDate")) { //date
         $('#errorDate').html("Please select a date.");
+        noError = false;
+    } else if (checkDate()) {
         noError = false;
     }
 
@@ -113,19 +148,68 @@ function validateInput(otherService) {
     return noError;
 }
 
+/*  starter pack of the website
+    sets the date option limited to only 2 days after the current time
+*/
+function setDateLimit() {
+    const today = new Date();
+    today.setDate(today.getDate() + 2); // Add 2 days
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    const minDate = `${yyyy}-${mm}-${dd}`;
+    
+    $('#inputDate').attr('min', minDate);
+}
+
+/*  validates the date the user inputs manually
+    sets the CSS color based on input
+    sets error message with suggested date that can be input
+    returns true if INVALID date; otherwise, false
+*/
+function checkDate() {
+    const inputDate = new Date($('#inputDate').val());
+    const today = new Date();
+    today.setDate(today.getDate() + 2); // 2 days from now
+
+    //get month/day/year of valid date
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var dd = String(today.getDate()).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    var validDate = `${mm}/${dd}/${yyyy}`;
+    
+    if (inputDate < today) {
+        $('#inputDate').css('background-color', 'red');
+        $('#inputDate').css('color', 'white');
+        $('#errorDate').html("Please select a VALID date. (" + validDate + " onwards)");
+        return true;
+    } else {
+        $('#inputDate').css('background-color', 'white');
+        $('#inputDate').css('color', 'black');
+        $('#errorDate').html("<br/>");
+        return false;
+    }
+}
+
+/*  starter pack of the website
+    sets all error messages to newline
+*/
 function removeErrorMsg() {
     $('#errorFirst').html('<br/>');
     $('#errorLast').html('<br/>');
     $('#errorEmail').html('<br/>');
     $('#errorPhone').html('<br/>');
     $('#errorAddress').html('<br/>');
-    $('#errorState').html('<br/>');
-    $('#errorCity').html('<br/>');
+    $('#errorStateCity').html('<br/>');
     $('#errorDate').html('<br/>');
     $('#errorService').html('<br/>');
     $('#errorPayment').html('<br/>');
 }
 
+/*  checks if user input is empty or not
+    sets the CSS color based on input    
+    returns true if EMPTY; otherwise, false
+*/
 function checkEmpty(value, id) {
     if (!value) { //check if input is empty or not 
         $(id).css('background-color', 'red');
@@ -138,6 +222,38 @@ function checkEmpty(value, id) {
     return false;
 }
 
+/*  dynamically checks if the user inputs or chooses something on the order form
+    sets the color red if left blank; otherwise, white
+    num can only be 1 or 2
+        1 means text or number input
+        2 means choice 
+*/
+function updateColor(id, num) {
+    if (num == 1) {
+        $(id).on('input', function() {
+            if ($(id).val() != '') { 
+                $(id).css('background-color', 'white');
+                $(id).css('color', 'black');
+            } else {
+                $(id).css('background-color', 'red');
+                $(id).css('color', 'white');
+            }
+        });
+    } else if (num == 2) {
+        if ($(id).val() != "") { 
+            $(id).css('background-color', 'white');
+            $(id).css('color', 'black');
+        } else {
+            $(id).css('background-color', 'red');
+            $(id).css('color', 'white');
+        }
+    }
+    
+}
+
+/*  checks what state is inputted by the user
+    only shows choices the user can pick based on state
+*/
 function updateCity() {
     const state = $('#inputState');
     const city = $('#inputCity');
