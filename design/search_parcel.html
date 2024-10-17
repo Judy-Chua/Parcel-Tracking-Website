@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Search | ESMC</title>
+    <link rel="stylesheet" href="search_parcel_big.css">
+  </head>
+  <body>
+    <div id="navbar" class="flex-parent flex-justified">
+        <img id="esmc-logo" src="images/ESMC_logo.svg">
+        <div class="flex-parent flex-justified" id="menu">
+            <div class="topbar-menu">
+                <p class="topbar-links">HOME</p>
+            </div>
+            <div class="topbar-menu">
+                <p class="topbar-links">BRANCHES</p>
+            </div>
+            <div class="topbar-menu" id="search-page">
+                <p class="topbar-links"><a id="search-page-link" href="./search_parcel.html">SEARCH PARCEL</a></p>
+            </div>
+        </div>
+        <a class="contact-us-link" href="./contact_us.html">
+            <p class="contact-us-text">CONTACT US</p>
+        </a>
+    </div>
+    <h1>TRACK PARCEL</h1>
+    <div id="search-bar">
+        <!-- search functionality here -->
+        <form action="#">
+            <input id="placeholder" type="text" placeholder="Enter Tracking Number" name="search" />
+            <button>Track Parcel</button>
+        </form>
+    </div>
+    <div class="flex-parent" id="msg">
+        <p>Having trouble tracking your parcel? Contact us&nbsp;</p>
+        <p id="contact-link"><a id="contact-here" href="./contact_us.html">here</a></p>
+        <p>.</p>
+    </div>
+    <footer>
+        <p id="copyright">COPYRIGHT &copy; 2024 ALL RIGHTS RESERVED</p>
+    </footer>
+    <!-- pop up pag no results -->
+    <div id="popup">
+        <img id="question-mark" src="images/question_mark.svg" />
+        <h2>The tracking ID is invalid or might have expired.</h2>
+        <p id="popup-msg">Having trouble tracking your parcel? Contact us.</p>
+        <a class="contact-us-link" id="contact-us-popup" href="./contact_us.html">
+            <p class="contact-us-text">CONTACT US</p>
+        </a>
+    </div>
+  </body>
+</html>
