@@ -1,6 +1,7 @@
 <h2>Track Your Parcel Now</h2>
-<form action="/track" method="POST">
+<form>
   <label for="trackingNumber">Enter your Tracking Number:</label>
-  <input type="text" id="trackingNumber" name="trackingNumber" required>
-  <button type="submit">Search</button>
+  <input type="text" id="trackingNumber" name="trackingNumber" placeholder="#1A2B3C4D" required>
+  <button type="submit"  id="submitTracker">Search</button>
+  <span id="errorTracker"><br/></span><br/>
 </form>
