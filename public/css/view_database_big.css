@@ -1,0 +1,111 @@
+body {
+    background-color: #fc0404;
+    margin-top: -16px;
+    margin-inline: 0%;
+    margin-bottom: 0%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+#navbar {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    height: 115px;
+    vertical-align: middle;
+    z-index: 1;
+}
+.flex-parent {
+    display: flex;
+}
+#esmc-logo {
+    margin-left: 20px;
+}
+#profile {
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+#profile-icon {
+    width: 50px;
+}
+#profile-dropdown {
+    margin-left: 5px;
+    width: 20px;
+}
+#popup {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background-color: #fffaeb;
+    height: 50vh;
+    width: 500px;
+    border-radius: 20px;
+    text-align: center;
+    padding-bottom: 20vh;
+}
+h1 {
+    font-family: 'Arial Narrow';
+    font-weight: bold;
+    font-size: 40px;
+    color: #fc0404;
+}
+table {
+    font-family: 'Arial';
+    font-size: 20px;
+    text-align: left;
+    text-wrap: nowrap;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+td {
+    padding-left: 5vw;
+    padding-top: 10px;
+}
+#popup-btns {
+    position: absolute;
+    right: 3vw;
+    bottom: 3vh;
+    justify-content: right;
+}
+#close-btn {
+    margin-right: 15px;
+    background-color: #fc0404;
+    border-radius: 5px;
+    width: 81px;
+    height: 50px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    text-wrap: nowrap;
+    font-family: 'Arial';
+    color: #ffffff;
+    font-size: 16px;
+    text-shadow: 0.025px 0.025px 0.005px;
+}
+#edit-btn {
+    background-color: #fffaeb;
+    border-radius: 5px;
+    width: 123px;
+    height: 50px;
+    box-shadow: 1px 1px 5px;
+    text-wrap: nowrap;
+    font-family: 'Arial';
+    color: #000000;
+    font-size: 16px;
+    text-shadow: 0.025px 0.025px 0.005px;
+}
+footer {
+    position: fixed;
+    bottom: 0px;
+    background-color: #58020e;
+    text-align: center;
+    margin-top: 50px;
+    width: 100%;
+    padding: 5px;
+}
+#copyright {
+    color: #FFFFFF;
+    font-family: 'Arial';
+    font-size: 16px;
+    font-weight: 600;
+}
