@@ -1,0 +1,179 @@
+body {
+    background-color: #fc0404;
+    margin-top: -16px;
+    margin-inline: 0%;
+    margin-bottom: 0%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+#navbar {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    height: 115px;
+    vertical-align: middle;
+    z-index: 1;
+}
+.flex-parent {
+    display: flex;
+}
+.flex-justified {
+    justify-content: space-around;
+}
+#esmc-logo {
+    margin-left: 20px;
+}
+#menu {
+    background-color: #cdcdcd;
+    width: 563px;
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 37.5px;
+}
+p {
+    margin-left: 1px;
+}
+.topbar-links {
+    font-family: 'Arial';
+    color: #000000;
+    text-shadow: 0.25px 0.25px 0.5px;
+    margin-top: 11px;
+    font-size: 16px;
+}
+.topbar-menu {
+    padding-inline: 10px;
+}
+#search-page-link {
+    text-decoration: none;
+    color: #000000;
+}
+#search-page-link:visited {
+    color: #000000;
+}
+#contact-us-div {
+    background-color: #0d0d0d;
+    width: 127px;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 32.5px;
+    text-align: center;
+    box-shadow: 1px 1px 5px;
+}
+#contact-us-link {
+    text-decoration: none;
+}
+#contact-us-link:visited {
+    color: #ffffff;
+}
+#contact-us-text {
+    color: #ffffff;
+    padding-top: 16px;
+    font-family: 'Arial';
+    text-shadow: 0.25px 0.25px 0.5px;
+    font-size: 16px;
+}
+h1 {
+    font-family: 'Arial Narrow';
+    font-weight: bold;
+    font-size: 40px;
+    color: #fffaeb;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+h2 {
+    font-family: 'Arial';
+    font-size: 20px;
+    color: #fffaeb;
+    margin-left: 50px;
+    font-weight: normal;
+}
+.round-rec {
+    border-style: solid; 
+    border-radius: 35px;
+    border-width: 5px;
+    border-color: #fffaeb;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 1px 1px 5px;
+}
+h4 {
+    font-family: 'Arial';
+    font-size: 20px;
+    color: #fffaeb;
+    margin-top: 0;
+}
+h6 {
+    font-family: 'Arial';
+    font-weight: normal;
+    color: #fffaeb;
+    margin: 0;
+    margin-left: 10px;
+    margin-top: 1.5px;
+    font-size: 15px;
+}
+.contact {
+    justify-content: center;
+}
+.phone {
+    width: 24px;
+}
+.container {
+    margin-top: 70px;
+    text-align: center;
+    color: white;
+}
+#ellipse {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+}
+#fb-msg {
+    position: absolute;
+    bottom: 200px;
+    left: 16px;
+}
+h5 {
+    font-family: 'Arial';
+    font-size: 20px;
+    color: #371010;
+    text-wrap: nowrap;
+}
+#fb-text {
+    color: #ae161e;
+}
+a {
+    text-decoration: none;
+}
+#facebook {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+}
+.img-icon {
+    width: 70px;
+}
+#fb-name {
+    font-family: 'Arial Narrow';
+    font-weight: bold;
+    margin-top: 40px;
+    margin-left: 20px;
+    font-size: 50px;
+    text-wrap: nowrap;
+}
+footer {
+    background-color: #58020e;
+    text-align: center;
+    margin-top: 500px;
+    width: 100%;
+    padding: 5px;
+}
+#copyright {
+    color: #FFFFFF;
+    font-family: 'Arial';
+    font-size: 16px;
+    font-weight: 600;
+}
