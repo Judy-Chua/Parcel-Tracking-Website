@@ -7,13 +7,17 @@ $(document).ready(function() {
 
     //change color if user inputs something (red if empty)
     updateColor('#inputSender', 1); 
+    updateColor('#inputSenderNum', 1); 
+    checkNumber('#inputSenderNum', '#errorSenderNum');
     updateColor('#inputReceiver', 1);
+    updateColor('#inputReceiverNum', 1); 
+    checkNumber('#inputReceiverNum', '#errorReceiverNum');
     updateColor('#inputCharge', 1);
     checkNumber('#inputCharge', '#errorCharge');
     updateColor('#inputID', 1);
-    checkNumber('#inputID', '#errorID');
     updateColor('#inputDate', 1);
     updateColor('#inputBranch', 1);
+    updateColor('#inputDestBranch', 1);
     
     //change color if user chooses something (red if empty)
     $('#inputStatus').change(function() {
@@ -45,6 +49,7 @@ $(document).ready(function() {
         if (validateInput()) {
             //remove all inputs, save to database, confirm that
             clear();
+            addToDatabase();
             $("#validate").html("Order will be saved to database.");
         }
     });
@@ -56,11 +61,14 @@ $(document).ready(function() {
 */
 function validateInput() {
     const sender = $('#inputSender').val();
+    const senderNum = $('#inputSenderNum').val();
     const receiver = $('#inputReceiver').val();
+    const receiverNum = $('#inputReceiverNum').val();
     const charge = $('#inputCharge').val();
     const ID = $('#inputID').val();
     const date = $('#inputDate').val();
     const branch = $('#inputBranch').val();
+    const destBranch = $('#inputDestBranch').val();
 
     var noError = true;
     removeErrorMsg();
@@ -70,8 +78,18 @@ function validateInput() {
         noError = false;
     }
 
+    if (checkEmpty(senderNum, "#inputSenderNum")) { //sender number
+        $('#errorSenderNum').html("Please input sender number.");
+        noError = false;
+    }
+
     if (checkEmpty(receiver, "#inputReceiver")) { //receiver
         $('#errorReceiver').html("Please input receiver name.");
+        noError = false;
+    }
+
+    if (checkEmpty(receiverNum, "#inputReceiverNum")) { //receiver number
+        $('#errorReceiverNum').html("Please input receiver number.");
         noError = false;
     }
 
@@ -107,6 +125,11 @@ function validateInput() {
 
     if (checkEmpty(branch, "#inputBranch")) { //current branch
         $('#errorBranch').html("Please input your current branch.");
+        noError = false;
+    }
+
+    if (checkEmpty(destBranch, "#inputDestBranch")) { //destination branch
+        $('#errorDestBranch').html("Please input your destination branch.");
         noError = false;
     }
 
@@ -235,4 +258,41 @@ function clear() {
     $('#inputBranch').val('');
     
     $('#moreItems').empty();
+}
+
+function addToDatabase() {
+    const sender = $('#inputSender').val();
+    const senderNum = $('#inputSenderNum').val();
+    const receiver = $('#inputReceiver').val();
+    const receiverNum = $('#inputReceiverNum').val();
+    const charge = $('#inputCharge').val();
+    const ID = $('#inputID').val();
+    const date = $('#inputDate').val();
+    const branch = $('#inputBranch').val();
+    const destBranch = $('#inputDestBranch').val();
+    const status = $('#inputStatus').val();
+
+    var orderData = {
+        orderId : ID,
+        senderName : sender,
+        receiverName : receiver,
+        senderNum : senderNum,
+        receiverNum : receiverNum,
+        itemDesc : [],
+        itemNum : [],
+        transDate : date,       //to be changed
+        originBranch : branch,
+        destBranch : destBranch,
+        total : charge,
+        status : status,
+        arrivalDate : date,       //estimated
+        updates : []
+    }
+    $.post('/add-order', orderData, function(message, status) {
+        console.log("response data: ", message, status);
+        if (message.success) {
+            window.location.href = "/admin/view-orders";
+            console.log("/tracker/" + id);
+        }
+    });
 }

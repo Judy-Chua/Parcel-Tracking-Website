@@ -8,7 +8,7 @@ const UpdateSchema = new mongoose.Schema({
         default: "PENDING",
     },
     statusDesc : String,
-    updateDate : String,        //format: dd-mm-yyyy
+    updateDate : String,        //format: mm-dd-yyyy
     updateTime : String,        //format: hh:mm:ss am/pm
 })
 

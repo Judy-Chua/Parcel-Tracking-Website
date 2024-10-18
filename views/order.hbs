@@ -9,11 +9,29 @@
 <br/>
 
 <div>
+    <span>Sender Number*: </span>
+    <input type="number" placeholder="09123456789" id="inputSenderNum">
+</div>
+<div class="errorMsg">
+    <span id="errorSenderNum"><br/></span>
+</div>
+<br/>
+
+<div>
     <span>Receiver*: </span>
     <input type="text" placeholder="Receiver" id="inputReceiver">
 </div>
 <div class="errorMsg">
     <span id="errorReceiver"></span>
+</div>
+<br/>
+
+<div>
+    <span>Receiver Number*: </span>
+    <input type="number" placeholder="09123456789" id="inputReceiverNum">
+</div>
+<div class="errorMsg">
+    <span id="errorReceiverNum"><br/></span>
 </div>
 <br/>
 
@@ -39,7 +57,7 @@
 
 <div>
     <span>Control ID*: </span>
-    <input type="number" placeholder="12345" id="inputID">
+    <input type="text" placeholder="A1A2A3A4" id="inputID">
 </div>
 <div class="errorMsg">
     <span id="errorID"></span>
@@ -71,6 +89,15 @@
 </div>
 <div class="errorMsg">
     <span id="errorBranch"></span>
+</div>
+<br/>
+
+<div>
+    <span>Destination Branch*: </span>
+    <input type="text" placeholder="Destination Branch" id="inputDestBranch">
+</div>
+<div class="errorMsg">
+    <span id="errorDestBranch"></span>
 </div>
 <br/>
 

@@ -22,7 +22,7 @@ const sampleUsers = [
 
 const sampleOrders = [
     /* 1 */
-    {   orderId : "#A1A2",
+    {   orderId : "A1A2",
         senderName : "John Dela Cruz",
         receiverName : "Juan Perez",
         senderNum : 12345,
@@ -34,23 +34,25 @@ const sampleOrders = [
         destBranch : "Hub 2",
         total : 1503.25,
 
-        arrivalDate : "20-10-2024",
+        status : "PROCESSING",
+        arrivalDate : "10-20-2024",
         updatedBy : "Hub 1",
         updates : [30001, 30002] },
 
     /* 2 */
-    {   orderId : "#B1B2",
+    {   orderId : "B1B2",
         senderName : "Juan Dela Cruz",
         receiverName : "Juanita",
         senderNum : 1256,
         receiverNum : 3478,
         itemDesc : ["Item12"],
         itemNum : [9],
-        transDate : "17-10-2024",
+        transDate : "10-17-2024",
         originBranch : "Hub 3",
         destBranch : "Hub 4",
         total : 1900,
 
+        status : "PENDING",
         arrivalDate : "27-10-2024",
         updatedBy : "Hub 4",
         updates : [30003] },
@@ -61,21 +63,21 @@ const sampleUpdates = [
     {   updateId : 30001,
         status : "PENDING",
         statusDesc : "Waiting for further instructions",
-        updateDate : "18-10-2024",
+        updateDate : "10-18-2024",
         updateTime : "07:18:39 AM" },
 
     /* 2 */
     {   updateId : 30002,
         status : "PROCESSING",
         statusDesc : "The items are currently viewed and checked",
-        updateDate : "18-10-2024",
+        updateDate : "10-18-2024",
         updateTime : "12:18:39 PM" },
 
     /* 3 */
     {   updateId : 30003,
         status : "PENDING",
         statusDesc : "Waiting for further instructions",
-        updateDate : "17-10-2024",
+        updateDate : "10-17-2024",
         updateTime : "09:30:00 PM" },
 ];
 

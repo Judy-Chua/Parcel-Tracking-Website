@@ -10,12 +10,17 @@ const OrderSchema = new mongoose.Schema({
     itemDesc : [],
     itemNum : [],
     transDate : String,         //date of transport
-            //format: dd-mm-yyyy
+            //format: mm-dd-yyyy
     originBranch : String,
     destBranch : String,         //destination branch
     total : Number,
 
     //to be updated / automatic assignment
+    status : {                  //based on latest update
+        type: String,
+        enum: ["PENDING", "PROCESSING", "TRANSPORTING", "DROPPING-OFF", "FINISHED"],
+        default: "PENDING",
+    },
     arrivalDate : String,       //estimated
     updatedBy : String,         //hub name
     updates : []                //add updateIds here
