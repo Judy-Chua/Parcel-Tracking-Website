@@ -15,12 +15,13 @@ body {
 #left-box {
 	text-align: center;
 	background-color: #fc0404;
-	width: 45vw;
+	width: 40vw;
 	height: 75vh;
 	border-radius: 15px;
 	margin-top: 13vh;
 	margin-left: auto;
 	margin-right: 0;
+	box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.5);
 }
 #logo {
 	width: 50%;
@@ -40,25 +41,29 @@ p {
 #right-box {
 	text-align: center;
 	background-color: #fffaeb;
-	width: 45vw;
+	width: 40vw;
 	height: 75vh;
 	border-radius: 15px;
 	margin-top: 13vh;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 0px;
+	box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.5);
+}
+#container {
+	padding-top: 10px;
 }
 h1 {
 	font-family: 'Arial Narrow';
 	font-weight: bold;
+	margin-top: 10vh;
 	margin-bottom: 5vh;
-	font-size: 60px;
+	font-size: 48px;
 }
 input {
 	background: transparent;
     border: none;
     border-bottom: 1px solid #000000;
 	height: 31px;
-	width: 316px;
+	width: 31vw;
 }
 input::placeholder {
 	font-size: 24px;
@@ -86,6 +91,7 @@ h6 {
 	text-decoration: underline;
 	font-size: 14px;
 	margin-top: 15px;
+	margin-bottom: 0;
 }
 #popup {
     position: fixed;
