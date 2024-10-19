@@ -16,10 +16,10 @@ const OrderSchema = new mongoose.Schema({
     total : Number,
 
     //to be updated / automatic assignment
-    status : {                  //based on latest update
+    status : {                  //dynamic based on latest update
         type: String,
-        enum: ["PENDING", "PROCESSING", "TRANSPORTING", "DROPPING-OFF", "FINISHED"],
-        default: "PENDING",
+        enum: ["PROCESSING", "IN TRANSIT", "READY FOR PICKUP", "DELIVERED"],
+        default: "PROCESSING",
     },
     arrivalDate : String,       //estimated
     updatedBy : String,         //hub name
