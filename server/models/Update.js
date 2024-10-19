@@ -4,8 +4,8 @@ const UpdateSchema = new mongoose.Schema({
     updateId : Number,
     status : {
         type: String,
-        enum: ["PENDING", "PROCESSING", "DELIVERING", "FINISHED"],
-        default: "PENDING",
+        enum: ["PROCESSING", "IN TRANSIT", "READY FOR PICKUP", "DELIVERED"],
+        default: "PROCESSING",
     },
     statusDesc : String,
     updateDate : String,        //format: mm-dd-yyyy

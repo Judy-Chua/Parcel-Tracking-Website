@@ -47,7 +47,7 @@ app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'hbs');
 
 app.use('/', require('./server/routes/main.js'));
-app.use('/tracker', require('./server/routes/tracking.js'));
+app.use('/search_parcel', require('./server/routes/tracking.js'));
 app.use('/admin', require('./server/routes/admin.js'));
 
 app.listen(PORT, () => {

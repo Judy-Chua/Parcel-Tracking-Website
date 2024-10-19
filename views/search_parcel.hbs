@@ -1,9 +1,9 @@
 <h1>TRACK PARCEL</h1>
 <div id="search-bar">
     <!-- search functionality here -->
-    <form action="#">
-        <input id="placeholder" type="text" placeholder="Enter Tracking Number" name="search" />
-        <button>Track Parcel</button>
+    <form>
+        <input id="trackingNumber" type="text" placeholder="Enter Tracking Number" name="search" />
+        <button id="submitTracker">Track Parcel</button>
     </form>
 </div>
 <div class="flex-parent" id="msg">
@@ -12,7 +12,7 @@
     <p>.</p>
 </div>
 
-<div id="popup">
+<div id="popup" style="display:none;">
   <img id="question-mark" src="/img/question_mark.svg" />
   <h2>The tracking ID is invalid or might have expired.</h2>
   <p id="popup-msg">Having trouble tracking your parcel? Contact us.</p>

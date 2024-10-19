@@ -34,10 +34,10 @@ const sampleOrders = [
         destBranch : "Hub 2",
         total : 1503.25,
 
-        status : "PROCESSING",
+        status : "IN TRANSIT",
         arrivalDate : "10-20-2024",
         updatedBy : "Hub 1",
-        updates : [30001, 30002] },
+        updates : [30002, 30003] },
 
     /* 2 */
     {   orderId : "B1B2",
@@ -52,33 +52,34 @@ const sampleOrders = [
         destBranch : "Hub 4",
         total : 1900,
 
-        status : "PENDING",
+        status : "PROCESSING",
         arrivalDate : "27-10-2024",
         updatedBy : "Hub 4",
-        updates : [30003] },
+        updates : [30001] },
 ];
 
 const sampleUpdates = [
     /* 1 */
     {   updateId : 30001,
-        status : "PENDING",
+        status : "PROCESSING",
         statusDesc : "Waiting for further instructions",
-        updateDate : "10-18-2024",
-        updateTime : "07:18:39 AM" },
+        updateDate : "10-17-2024",
+        updateTime : "09:30:00 PM" },
+
 
     /* 2 */
     {   updateId : 30002,
         status : "PROCESSING",
-        statusDesc : "The items are currently viewed and checked",
+        statusDesc : "Waiting for further instructions",
         updateDate : "10-18-2024",
-        updateTime : "12:18:39 PM" },
+        updateTime : "07:18:39 AM" },    
 
     /* 3 */
     {   updateId : 30003,
-        status : "PENDING",
-        statusDesc : "Waiting for further instructions",
-        updateDate : "10-17-2024",
-        updateTime : "09:30:00 PM" },
+        status : "IN TRANSIT",
+        statusDesc : "The items are currently viewed and checked",
+        updateDate : "10-18-2024",
+        updateTime : "12:18:39 PM" },
 ];
 
 module.exports = { sampleUsers, sampleOrders, sampleUpdates };
