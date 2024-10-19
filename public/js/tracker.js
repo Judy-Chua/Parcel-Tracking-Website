@@ -2,8 +2,6 @@
 //$('.className');
 
 $(document).ready(function() {
-    updateColor('#trackingNumber', 1);
-
     $('#submitTracker').click(function(e) {
         e.preventDefault();
         checkTrackerID();
@@ -20,21 +18,16 @@ function checkTrackerID() {
         id: id
     }
 
-    if (checkEmpty(id, '#trackingNumber')) {
-        $('#errorTracker').html("Please input a tracker ID.");
-        return;
-    } 
-
-    $.post('/tracker', idData, function(message, status) {
+    $.post('/search_parcel', idData, function(message, status) {
         console.log("response data: ", message, status);
         if (message.exists) {
             $('#trackingNumber').val("");
-            window.location.href = "/tracker/" + id;
-            console.log("/tracker/" + id);
-        } else {
-            $('#errorTracker').html("The tracking ID is invalid or might have expired.");
-            $('#errorTracker').css('background-color', 'red');
-            $('#errorTracker').css('color', 'white');
+            window.location.href = "/search_parcel/track=" + id;
+        } else {    
+            $('#popup').show();        
+            setTimeout(function() {
+                $('#popup').hide();
+            }, 3000);
         }
     });
 }
