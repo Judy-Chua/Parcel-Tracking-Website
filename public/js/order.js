@@ -13,16 +13,9 @@ $(document).ready(function() {
     updateColor('#inputReceiverNum', 1); 
     checkNumber('#inputReceiverNum', '#errorReceiverNum');
     updateColor('#inputCharge', 1);
-    checkNumber('#inputCharge', '#errorCharge');
-    updateColor('#inputID', 1);
     updateColor('#inputDate', 1);
     updateColor('#inputBranch', 1);
     updateColor('#inputDestBranch', 1);
-    
-    //change color if user chooses something (red if empty)
-    $('#inputStatus').change(function() {
-        updateColor('#inputStatus', 2);
-    });
 
     //add button for item description in case more than one item
     $('#addItem').click(function() {
@@ -48,8 +41,8 @@ $(document).ready(function() {
     $('#submitOrder').click(function() { 
         if (validateInput()) {
             //remove all inputs, save to database, confirm that
-            clear();
             addToDatabase();
+            clear();
             $("#validate").html("Order will be saved to database.");
         }
     });
@@ -65,7 +58,6 @@ function validateInput() {
     const receiver = $('#inputReceiver').val();
     const receiverNum = $('#inputReceiverNum').val();
     const charge = $('#inputCharge').val();
-    const ID = $('#inputID').val();
     const date = $('#inputDate').val();
     const branch = $('#inputBranch').val();
     const destBranch = $('#inputDestBranch').val();
@@ -108,11 +100,6 @@ function validateInput() {
 
     if (checkEmpty(charge, "#inputCharge")) { //charge
         $('#errorCharge').html("Please input charge."); //add functionality for negative
-        noError = false;
-    }
-
-    if (checkEmpty(ID, "#inputID")) { //control ID
-        $('#errorID').html("Please input control ID.");
         noError = false;
     }
 
@@ -184,12 +171,14 @@ function checkDate() {
 */
 function removeErrorMsg() {
     $('#errorSender').html('<br/>');
+    $('#errorSenderNum').html('<br/>');
     $('#errorReceiver').html('<br/>');
+    $('#errorReceiverNum').html('<br/>');
     $('#errorItem').html('<br/>');
     $('#errorCharge').html('<br/>');
-    $('#errorID').html('<br/>');
     $('#errorDate').html('<br/>');
     $('#errorBranch').html('<br/>');
+    $('#errorDestBranch').html('<br/>');
 }
 
 /*  checks if user input is empty or not
@@ -250,12 +239,14 @@ function checkNumber(id) {
 
 function clear() {
     $('#inputSender').val('');
+    $('#inputSenderNum').val('');
     $('#inputReceiver').val('');
+    $('#inputReceiverNum').val();
     $('#inputItem').val('');
     $('#inputCharge').val('');
-    $('#inputID').val('');
     $('#inputDate').val('');
     $('#inputBranch').val('');
+    $('#inputDestBranch').val('');
     
     $('#moreItems').empty();
 }
@@ -266,11 +257,19 @@ function addToDatabase() {
     const receiver = $('#inputReceiver').val();
     const receiverNum = $('#inputReceiverNum').val();
     const charge = $('#inputCharge').val();
-    const ID = $('#inputID').val();
     const date = $('#inputDate').val();
     const branch = $('#inputBranch').val();
     const destBranch = $('#inputDestBranch').val();
-    const status = $('#inputStatus').val();
+
+    var allItems = [];
+    $('.inputItem').each(function() {
+        allItems.push($(this).val());
+    });
+
+    var [year, month, day] = date.split("-"); //date is yyyy-mm-dd
+    var newDate = "" + month + "-" + day + "-" + year + "";
+
+    var ID = generateTrackerID();
 
     var orderData = {
         orderId : ID,
@@ -278,21 +277,37 @@ function addToDatabase() {
         receiverName : receiver,
         senderNum : senderNum,
         receiverNum : receiverNum,
-        itemDesc : [],
-        itemNum : [],
-        transDate : date,       //to be changed
+        itemDesc : allItems,
+        itemNum : [],               //will change
+        transDate : newDate,
         originBranch : branch,
         destBranch : destBranch,
         total : charge,
-        status : status,
-        arrivalDate : date,       //estimated
+        status : "PROCESSING",
+        arrivalDate : "---",
         updates : []
-    }
-    $.post('/add-order', orderData, function(message, status) {
+    };
+
+    $.post('/admin/add-order', orderData, function(message, status) {
         console.log("response data: ", message, status);
         if (message.success) {
-            window.location.href = "/admin/view-orders";
-            console.log("/tracker/" + id);
+            setTimeout(function() {
+                window.location.href = "/admin/view-orders";
+            }, 3000);
+        } else {
+            console.log("not success");
         }
     });
+}
+
+function generateTrackerID() {
+    const randomize = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var trackID = '';
+    
+    for (var i = 0; i < 8; i++) {   // 8 characters
+                        //find index, round down, random is numbers between 0 to 1
+        trackID += randomize.charAt(Math.floor(Math.random() * randomize.length));
+    }
+
+    return trackID;
 }
