@@ -1,0 +1,19 @@
+<h1>About Your Parcel</h1>
+
+<h2>You are currently tracking:</h2> <br/>
+<h2>{{id}}</h2> <br/> <br/>
+<p>Estimated Date of Arrival: {{estDate}}</p><br/>
+
+<div>
+    {{#each update}}
+    <div>
+        <h2>{{title}}</h2>
+        <p>{{date}} {{time}}</p>
+        <p>{{description}}</p>
+    </div>
+    <br/>
+    {{/each}}
+</div>
+<a id="button-link" href="/tracker">
+        <p id="button-text">Back to Search</p>
+</a>
