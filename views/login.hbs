@@ -1,7 +1,48 @@
-<h1>Actual Page coming soon</h1>
+<div class="flex-parent">
+    <div id="left-bg">
+        <div id="left-box">
+            <img id="logo" src="./images/ESMC_logo_big.svg" />
+            <p>COPYRIGHT &copy; 2024 ALL RIGHTS RESERVED</p>
+        </div>
+    </div>
+    <div id="right-bg">
+        <div id="right-box">
+            <div id="container">
+                <h1>Welcome Back!</h1>
+                <form>
+                    <div class="flex-parent" id="inputs">
+                        <div>
+                            <input type="text" placeholder="EmployeeID" name="user" required>
+                            <br>
+                            <input id="password" type="password" placeholder="********" name="password" required>
+                        </div>
+                        <div id="eye-div"><i class="fas fa-eye"></i></div>
+                    </div>
+                    <button type="submit">LOGIN</button>
+                </form>
+                <h6>Forgot Password?</h6>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- forgot password -->
 <div id="popup">
-    <img id="question-mark" src="/img/question_mark.svg" />
+    <img id="question-mark" src="images/question_mark.svg" />
     <h2>Please contact your hub manager for proper credentials</h2>
-    <p id="popup-msg"><a id="login-link" href="/login">Back to Login</a></p>
+    <p id="popup-msg"><a id="login-link" href="./login.html">Back to Login</a></p>
 </div>
+<script>
+    const passwordField = document.getElementById("password");
+    const eyeSymbol = document.querySelector("#eye-div i");
+    eyeSymbol.addEventListener("click", function () {
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeSymbol.classList.remove("fa-eye-slash");
+        eyeSymbol.classList.add("fa-eye");
+    } else {
+        passwordField.type = "password";
+        eyeSymbol.classList.remove("fa-eye");
+        eyeSymbol.classList.add("fa-eye-slash");
+    }
+    });
+</script>
