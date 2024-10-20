@@ -19,7 +19,48 @@ router.get('/login', async (req, res) =>{
 
 /* SUMMARY OF ORDERS */
 router.get('/view-orders', async (req, res) =>{
-    res.render('view_database', {layout: "admin.hbs", title: "Search | ESMC", css:"view_database_big"});
+    try {
+        const orders = await Order.find();
+        res.render('view_database', { layout: "admin.hbs", title: "Search | ESMC", css: "view_database_big", orders: orders });
+    }
+    catch (error)
+    { 
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+})
+
+router.get('/view_order=:id/more-details', async (req, res) => {
+    try {
+        const id = req.params.id
+        const orderDetails = await Order.findOne({ orderId: id });
+        res.render('view_details', { layout: "admin.hbs", title: "Search | ESMC", css: "view_database_big", orderDetails: orderDetails });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+})
+
+router.get('/edit-order=:id', async (req, res) => {
+    try {
+        const id = req.params.id
+        const orderDetails = await Order.findOne({ orderId: id });
+        res.render('edit_order', { layout: "admin.hbs", title: "Search | ESMC", css: "view_database_big", orderDetails: orderDetails });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+})
+
+router.post('/edit-order=:id', async (req, res) => {
+    const editedOrder = Order.findOneAndUpdate(
+        { orderId: req.params.id },
+        { status: req.body.newStatus, arrivalDate: req.body.newEDA, originBranch: req.body.newOrigin },
+        { new: true }
+    );
+    console.log(editedOrder)
 })
 
 /* === */

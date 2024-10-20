@@ -1,5 +1,4 @@
-<h1 style="color: #ffffff">Database table to be added</h1>
-<!-- pop up pag view results -->
+<!-- pop up pag view results
 <div id="popup">
     <h1>TRANSACTION #1A2B3C4D</h1>
     <table>
@@ -37,3 +36,25 @@
         <button id="edit-btn">EDIT DETAILS</button>
     </div>
 </div>
+-->
+
+<table id="popup">
+    <tr>
+        <th>ControlID</th>
+        <th>Sender</th>
+        <th>Receiver</th>
+        <th>Item Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    {{#each orders}}
+        <tr>
+            <td>{{this.orderId}}</td>
+            <td>{{this.senderName}}</td>
+            <td>{{this.receiverName}}</td>
+            <td>{{this.itemDesc}}</td>
+            <td>{{this.status}}</td>
+            <td><a id="details" href="view_order={{this.orderId}}/more-details">Details</a></td>
+        </tr>
+    {{/each}}
+</table>

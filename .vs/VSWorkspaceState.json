@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\design",
+    "\\public",
+    "\\public\\css",
+    "\\public\\js",
+    "\\server",
+    "\\server\\models",
+    "\\server\\routes",
+    "\\views",
+    "\\views\\layouts"
+  ],
+  "SelectedNode": "\\views\\view_details.hbs",
+  "PreviewInSolutionExplorer": false
+}
