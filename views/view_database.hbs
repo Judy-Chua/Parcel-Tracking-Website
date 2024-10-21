@@ -1,6 +1,8 @@
-<h1 style="color: #ffffff">Database table to be added</h1>
+<h1 style="color: #ffffff">tables coming soon</h1>
+<h3 style="color: #ffffff">edit items popup nakapatong</h3>
+<h3 style="color: #ffffff">above view items popup</h3>
 <!-- pop up pag view results -->
-<div id="popup">
+<div class="popup">
     <h1>TRANSACTION #1A2B3C4D</h1>
     <table>
         <tr>
@@ -32,8 +34,74 @@
             <td>Manila</td>
         </tr>
     </table>
-    <div id="popup-btns" class="flex-parent">
-        <button id="close-btn">CLOSE</button>
+    <div class="popup-btns" class="flex-parent">
+        <button class="close-btn">CLOSE</button>
         <button id="edit-btn">EDIT DETAILS</button>
     </div>
 </div>
+<!-- until here -->
+<!-- popup pag edit results -->
+<div class="popup">
+    <h1>TRANSACTION #1A2B3C4D</h1>
+    <table>
+        <tr>
+            <th>Sender:</th>
+            <td>Juan dela Cruz</td>
+        </tr>
+        <tr>
+            <th>Receiver:</th>
+            <td>Maria Santos</td>
+        </tr>
+        <tr>
+            <th>Item:</th>
+            <td>Bag</td>
+        </tr>
+        <tr>
+            <th>Charge:</th>
+            <td>800</td>
+        </tr>
+        <tr>
+            <th>
+                <label for="status">Status:</label>
+            </th>
+            <td>
+                <select name="status">
+                    <option value="processing">Processing</option>
+                    <option value="to-ship">To Ship</option>
+                    <option value="shipping">Shipping</option>
+                    <option value="received">Received</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="eda">EDA:</label>
+            </th>
+            <td>
+                <input type="date" name="eda">
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="origin-branch">Origin Branch:</label>
+            </th>
+            <td>
+                <select name="origin-branch">
+                    <option value="manila">Manila</option>
+                    <option value="romblon">Romblon</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div class="flex-parent">
+        <div id="updated-by">
+            <p><span><i>Updated By:</i></span> Quiapo Branch</p>
+            <p>Dec. 22, 2024</p>
+        </div>
+        <div class="popup-btns" class="flex-parent"> 
+            <button class="close-btn">CLOSE</button>
+            <button id="save-btn">SAVE</button>
+        </div>
+    </div>
+</div>
+<!-- until here -->
