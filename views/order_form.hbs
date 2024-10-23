@@ -1,0 +1,77 @@
+<h1>ORDER FORM</h1>
+    <div id="main-body">
+      <!-- ACTION HERE!!! -->
+      <form action="/action_page.php">
+        <div class="flex-parent">
+          <div class="flex-child">
+            <label for="sender-name">Sender's Name*</label><br>
+            <input type="text" name="sender-name" class="input-normal" placeholder="Sender's Name" required><br>
+            <label for="sender-number">Sender's Mobile Number*</label><br>
+            <div class="flex-parent test">
+              <p class="number-code">+63</p>
+              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" required><br>
+            </div>
+          </div>
+          <div class="flex-child">
+            <label for="sender-name">Receiver's Name*</label><br>
+            <input type="text" name="sender-name" class="input-normal" placeholder="Receiver's Name" required><br>
+            <label for="sender-number">Receiver's Mobile Number*</label><br>
+            <div class="flex-parent test">
+              <p class="number-code">+63</p>
+              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" required><br>
+            </div>
+          </div>
+        </div>
+          <h2>ITEMS</h2>
+        <div class="flex-parent">
+          <div class="flex-child">
+            <div class="flex-parent" id="items-div">
+              <div>
+                <h3>Qty.</h3>
+                <input type="number" min="0" class="qty-input" placeholder="Qty."><br>
+                <input type="number" min="0" class="qty-input" placeholder="Qty."><br>
+                <input type="number" min="0" class="qty-input" placeholder="Qty."><br>
+              </div>
+              <div>
+                <h3>Item Description</h3>
+                <input type="text" class="desc-input" placeholder="Item Description">
+                <br>
+                <input type="text" class="desc-input" placeholder="Item Description">
+                <br>
+                <input type="text" class="desc-input" placeholder="Item Description">
+                <br>
+              </div>
+              <div id="x-button-div">
+                <!-- add function here! -->
+                <img src="../img/x-circle-fill.svg" onclick="removeItem();" /><br>
+                <img src="../img/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
+                <img src="../img/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
+              </div>
+            </div>
+            <label for="charge" id="charge-label">Total Charge*</label><br>
+            <input type="number" name="charge" min="0" step=".01" id="charge-input" placeholder="Total Charge" />
+            <button id="add-btn">+ Add Items</button>
+          </div>
+          <div class="flex-child">
+            <label for="edt">Estimated Day of Transport</label><br>
+            <input type="date" name="edt" class="input-normal"><br>
+            <label for="origin-branch">Origin Branch*</label><br>
+            <select name="origin-branch">
+              <option value="select">&#40Select Branch&#41</option>
+              <option value="manila">Manila</option>
+              <option value="romblon">Romblon</option>
+            </select><br>
+            <label for="dest-branch">Destination Branch*</label><br>
+            <select name="dest-branch">
+              <option value="select">&#40Select Branch&#41</option>
+              <option value="manila">Manila</option>
+              <option value="romblon">Romblon</option>
+            </select>
+          </div>
+        </div>
+        <div id="btns">
+          <button id="cancel-btn">CANCEL</button>
+          <input id="submit-btn" type="submit" value="SUBMIT FORM">
+        </div>
+      </form> 
+    </div>

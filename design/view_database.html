@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Search | ESMC</title>
+    <title>View Items | ESMC</title>
     <link rel="stylesheet" href="view_database_big.css" />
   </head>
   <body>
@@ -12,37 +12,37 @@
             <img id="profile-dropdown" src="./images/profile_dropdown.svg" />
         </div>
     </div>
-    <!-- pop up pag view results -->
+    <!-- pop up pag view item -->
     <div class="popup">
         <h1>TRANSACTION #1A2B3C4D</h1>
-        <table>
-            <tr>
-                <th>Sender:</th>
-                <td class="td-edit">Juan dela Cruz</td>
+        <table class="popup-table">
+            <tr class="popup-tr">
+                <th class="popup-th">Sender:</th>
+                <td class="popup-td">Juan dela Cruz</td>
             </tr>
-            <tr>
-                <th>Receiver:</th>
-                <td class="td-edit">Maria Santos</td>
+            <tr class="popup-tr">
+                <th class="popup-th">Receiver:</th>
+                <td class="popup-td">Maria Santos</td>
             </tr>
-            <tr>
-                <th>Item:</th>
-                <td class="td-edit">Bag</td>
+            <tr class="popup-tr">
+                <th class="popup-th">Item:</th>
+                <td class="popup-td">Bag</td>
             </tr>
-            <tr>
-                <th>Charge:</th>
-                <td class="td-edit">800</td>
+            <tr class="popup-tr">
+                <th class="popup-th">Charge:</th>
+                <td class="popup-td">800</td>
             </tr>
-            <tr>
-                <th>Status:</th>
-                <td class="td-edit">Processing</td>
+            <tr class="popup-tr">
+                <th class="popup-th">Status:</th>
+                <td class="popup-td">Processing</td>
             </tr>
-            <tr>
-                <th>EDA:</th>
-                <td class="td-edit">December 25, 2024</td>
+            <tr class="popup-tr">
+                <th class="popup-th">EDA:</th>
+                <td class="popup-td">December 25, 2024</td>
             </tr>
-            <tr>
-                <th>Origin Branch:</th>
-                <td class="td-edit">Manila</td>
+            <tr class="popup-tr">
+                <th class="popup-th">Origin Branch:</th>
+                <td class="popup-td">Manila</td>
             </tr>
         </table>
         <div class="popup-btns" class="flex-parent">
@@ -51,33 +51,34 @@
         </div>
     </div>
     <!-- until here -->
-    <!-- popup pag edit results -->
+    <!-- popup pag edit item -->
     <div class="popup">
         <form>
             <h1>TRANSACTION #1A2B3C4D</h1>
-            <table>
-                <tr>
-                    <th>Sender:</th>
-                    <td class="td-edit">Juan dela Cruz</td>
+            <table class="popup-table">
+                <tr class="popup-tr">
+                    <th class="popup-th">Sender:</th>
+                    <td class="popup-td">Juan dela Cruz</td>
                 </tr>
-                <tr>
-                    <th>Receiver:</th>
-                    <td class="td-edit">Maria Santos</td>
+                <tr class="popup-tr">
+                    <th class="popup-th">Receiver:</th>
+                    <td class="popup-td">Maria Santos</td>
                 </tr>
-                <tr>
-                    <th>Item:</th>
-                    <td class="td-edit">Bag</td>
+                <tr class="popup-tr">
+                    <th class="popup-th">Item:</th>
+                    <td class="popup-td">Bag</td>
                 </tr>
-                <tr>
-                    <th>Charge:</th>
-                    <td class="td-edit">800</td>
+                <tr class="popup-tr">
+                    <th class="popup-th">Charge:</th>
+                    <td class="popup-td">800</td>
                 </tr>
-                <tr>
-                    <th>
+                <tr class="popup-tr">
+                    <th class="popup-th">
                         <label for="edit-status">Status:</label>
                     </th>
-                    <td class="td-edit">
+                    <td class="popup-td">
                         <select class="edit-select" name="edit-status">
+                        <option value="select">&#40Select Status&#41</option>
                         <option value="processing">Processing</option>
                         <option value="to-ship">To Ship</option>
                         <option value="shipping">Shipping</option>
@@ -85,20 +86,21 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <th>
+                <tr class="popup-tr">
+                    <th class="popup-th">
                         <label for="eda">EDA:</label>
                     </th>
-                    <td class="td-edit">
+                    <td class="popup-td">
                         <input type="date" name="eda">
                     </td>
                 </tr>
-                <tr>
-                    <th>
+                <tr class="popup-tr">
+                    <th class="popup-th">
                         <label for="origin-branch">Origin Branch:</label>
                     </th>
-                    <td class="td-edit">
+                    <td class="popup-td">
                         <select class="edit-select" name="origin-branch">
+                        <option value="select">&#40Select Branch&#41</option>
                         <option value="manila">Manila</option>
                         <option value="romblon">Romblon</option>
                         </select>
