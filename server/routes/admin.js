@@ -69,7 +69,7 @@ router.post('/edit-order', async (req, res) => {
 
 /* ADD ORDER */
 router.get('/create-order', async (req, res) =>{
-    res.render('order', {title: "Order Form"});
+    res.render('order_form', {layout: "admin.hbs", title: "Order Form", css:"order_form_big"});
 })
 
 router.post('/add-order', async (req, res) =>{

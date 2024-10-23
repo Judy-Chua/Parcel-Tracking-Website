@@ -109,9 +109,9 @@ h6 {
 }
 #popup {
     position: fixed;
-    top: 12em;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, -50%);
     background-color: #fffaeb;
     height: 394px;
     width: 531px;

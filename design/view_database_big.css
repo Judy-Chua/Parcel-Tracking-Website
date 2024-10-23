@@ -10,7 +10,7 @@ body {
     position: sticky;
     top: 0;
     background-color: #ffffff;
-    height: 115px;
+    height: 89px;
     vertical-align: middle;
     z-index: 1;
 }
@@ -32,7 +32,7 @@ body {
     margin-left: 5px;
     width: 20px;
 }
-#popup {
+.popup {
     position: fixed;
     top: 60%;
     left: 50%;
@@ -50,29 +50,52 @@ h1 {
     font-size: 40px;
     color: #fc0404;
 }
-table {
+.popup-table {
     font-family: 'Arial';
-    font-size: 20px;
+    font-size: 16px;
+    width: 80%;
     text-align: left;
     text-wrap: nowrap;
+    margin-left: 5vw;
+}
+.popup-tr {
+    border: 3px solid #fc0404;
+}
+.popup-th {
+    padding: 1vh;
+}
+.popup-td {
+    padding: 1vh;
+}
+#updated-by {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 2vw;
+    bottom: 3vh;
+    text-align: left;
 }
-td {
-    padding-left: 5vw;
-    padding-top: 10px;
+i {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    font-family: 'Arial';
 }
-#popup-btns {
+p {
+    font-size: 16px;
+    font-family: 'Arial';
+    margin-top: 1vh;
+    margin-bottom: 0px;
+}
+.popup-btns {
     position: absolute;
     right: 3vw;
     bottom: 3vh;
     justify-content: right;
 }
-#close-btn {
+.close-btn {
     margin-right: 15px;
     background-color: #fc0404;
     border-radius: 5px;
+    border: 1px solid #0d0d0d;
     width: 81px;
     height: 50px;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
@@ -85,7 +108,29 @@ td {
 #edit-btn {
     background-color: #fffaeb;
     border-radius: 5px;
+    border: 1px solid #0d0d0d;
     width: 123px;
+    height: 50px;
+    box-shadow: 1px 1px 5px;
+    text-wrap: nowrap;
+    font-family: 'Arial';
+    color: #000000;
+    font-size: 16px;
+    text-shadow: 0.025px 0.025px 0.005px;
+}
+.edit-select, input {
+    border: none;
+    border-bottom: 1px solid #000000;
+    background-color: #fffaeb;
+    width: 15vw;
+    font-family: 'Arial';
+    font-size: 16px;
+}
+#save-btn {
+    background-color: #fffaeb;
+    border-radius: 5px;
+    border: 1px solid #0d0d0d;
+    width: 81px;
     height: 50px;
     box-shadow: 1px 1px 5px;
     text-wrap: nowrap;
@@ -104,7 +149,7 @@ footer {
     padding: 5px;
 }
 #copyright {
-    color: #FFFFFF;
+    color: #ffffff;
     font-family: 'Arial';
     font-size: 16px;
     font-weight: 600;

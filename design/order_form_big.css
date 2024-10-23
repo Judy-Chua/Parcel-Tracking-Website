@@ -1,0 +1,218 @@
+body {
+    background-color: #fc0404;
+    margin-top: -16px;
+    margin-inline: 0%;
+    margin-bottom: 0%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 20vh;
+}
+#navbar {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    height: 89px;
+    vertical-align: middle;
+    z-index: 1;
+}
+.flex-parent {
+    display: flex;
+}
+#esmc-logo {
+    margin-left: 20px;
+}
+#profile {
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+#profile-icon {
+    width: 50px;
+}
+#profile-dropdown {
+    margin-left: 5px;
+    width: 20px;
+}
+h1 {
+    font-family: 'Arial Narrow';
+    font-weight: bold;
+    font-size: 48px;
+    color: #fffaeb;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#main-body {
+    margin-left: 7vw;
+}
+.flex-child {
+    width: 50%;
+}
+label {
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Arial';
+    font-weight: bold;
+}
+.input-normal {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    width: 40vw;
+    height: 30px;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+    padding-left: 1vw;
+}
+.number-code {
+    display: block;
+    background-color: #ffffff;
+    font-family: 'Arial';
+    height: 24px;
+    border-radius: 4px 0px 0px 4px;
+    border-right: 1px solid #000000;
+    width: 3vw;
+    margin-top: 1vh;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    padding-top: 6px;
+    text-align: center;
+}
+.phone-number {
+    height: 30px;
+    border-radius: 0px 4px 4px 0px;
+    border: none;
+    margin-top: 1vh;
+    padding: 0px;
+    padding-left: 1vw;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    width: 37vw;
+}
+h2 {
+    color: #ffffff;
+    font-size: 30px;
+    font-family: 'Arial';
+    margin-top: 10vh;
+    margin-bottom: 0px;
+}
+h3 {
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Arial';
+    display: block;
+    text-align: center;
+    margin-bottom: 0px;
+}
+.qty-input {
+    border: none;
+    border-radius: 4px 0px 0px 4px;
+    border-right: 1px solid #000000;
+    width: 3vw;
+    height: 24px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    padding-left: 1vw;
+}
+.desc-input {
+    border: none;
+    border-radius: 0px 4px 4px 0px;
+    width: 33vw;
+    height: 24px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    padding-left: 1vw;
+}
+button {
+    background-color: none;
+}
+#x-button-div {
+    margin-top: 7.25vh;
+    margin-left: 1vw;
+}
+.x-button {
+    margin-top: 3vh;
+}
+#items-div {
+    margin-bottom: 5vh;
+}
+#charge-input {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    width: 31vw;
+    height: 30px;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+    padding-left: 1vw;
+}
+#add-btn {
+    margin-left: 1vw;
+    background-color: #fc0404;
+    border-radius: 5px;
+    border: 1px solid #0d0d0d;
+    width: 100px;
+    height: 40px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    text-wrap: nowrap;
+    font-family: 'Arial';
+    color: #ffffff;
+    font-size: 16px;
+    text-shadow: 0.025px 0.025px 0.005px;
+}
+select {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    width: 41vw;
+    height: 30px;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+    padding-left: 1vw;
+}
+#btns {
+    display: flex;
+    justify-content: right;
+    margin-right: 6vw;
+}
+#cancel-btn {
+    background-color: #fc0404;
+    border-radius: 5px;
+    border: 1px solid #0d0d0d;
+    width: 100px;
+    height: 50px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    text-wrap: nowrap;
+    font-family: 'Arial';
+    color: #ffffff;
+    font-size: 16px;
+    text-shadow: 0.025px 0.025px 0.005px;
+}
+#submit-btn {
+    margin-left: 2vw;
+    background-color: #fc0404;
+    border-radius: 5px;
+    border: 1px solid #0d0d0d;
+    width: 140px;
+    height: 50px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    text-wrap: nowrap;
+    font-family: 'Arial';
+    color: #ffffff;
+    font-size: 16px;
+    text-shadow: 0.025px 0.025px 0.005px;
+}
+footer {
+    position: fixed;
+    bottom: 0px;
+    background-color: #58020e;
+    text-align: center;
+    margin-top: 50px;
+    width: 100%;
+    padding: 5px;
+}
+#copyright {
+    color: #ffffff;
+    font-family: 'Arial';
+    font-size: 16px;
+    font-weight: 600;
+}

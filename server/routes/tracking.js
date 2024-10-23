@@ -66,7 +66,7 @@ router.get('/track=:id/more-details', async (req, res) =>{
             allUpdates.push(addUpdate);
         }
         res.render('details', {title: "Parcel Details",
-                               css:"search_results_big", 
+                               css:"details", 
                                id: order.orderId, 
                                estDate: order.arrivalDate, 
                                update: allUpdates});

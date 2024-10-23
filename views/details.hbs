@@ -1,19 +1,41 @@
-<h1>About Your Parcel</h1>
+<div class="main-container">
+    <div class="progress-bar">
+        <div class="empty-progress">
+            <div class="progress">
 
-<h2>You are currently tracking:</h2> <br/>
-<h2>{{id}}</h2> <br/> <br/>
-<p>Estimated Date of Arrival: {{estDate}}</p><br/>
-
-<div>
-    {{#each update}}
-    <div>
-        <h2>{{title}}</h2>
-        <p>{{date}} {{time}}</p>
-        <p>{{description}}</p>
+            </div>
+        </div>
     </div>
-    <br/>
-    {{/each}}
+    <div class="sub-container">
+        <div class="update-container">
+        <ul>
+                {{#each update}}
+                <li>
+                    <p id="customBullet">•</p>
+                    <div class="textInfo">
+                        <h2>{{title}}</h2>
+                        <p>{{date}} {{time}}</p>
+                        <p>{{description}}</p>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="track-info">
+            <h2>You are currently tracking:</h2> <br/>
+            <h2>#{{id}}</h2> <br/> <br/>
+            <p>Estimated Date of Arrival: {{estDate}}</p><br/>
+        </div>
+    </div>
+
+    
 </div>
+
+
+
+
+
 <a id="button-link" href="/search_parcel">
         <p id="button-text">Back to Search</p>
 </a>
