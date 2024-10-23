@@ -19,7 +19,50 @@ router.get('/login', async (req, res) =>{
 
 /* SUMMARY OF ORDERS */
 router.get('/view-orders', async (req, res) =>{
-    res.render('view_database', {layout: "admin.hbs", title: "Search | ESMC", css:"view_database_big"});
+    try {
+        const orders = await Order.find();
+        res.render('view_database', { layout: "admin.hbs", title: "Search | ESMC", css: "view_database_big", orders: orders });
+    }
+    catch (error)
+    { 
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+})
+
+router.post('/view-order/more-details', async (req, res) => {
+    try {
+        const { id } = req.body
+        const orderDetails = await Order.findOne({ orderId: id });
+        res.json({ orderDetails: orderDetails });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+})
+
+router.post('/edit-order', async (req, res) => {
+    try {
+        const { id } = req.body;
+        const { newStatusEdit } = req.body;
+        const { newEDAEdit } = req.body;
+        const { newOriginEdit } = req.body;
+        const newDoc = await Order.findOneAndUpdate(
+            { orderId: id },
+            {
+                status: newStatusEdit,
+                arrivalDate: newEDAEdit,
+                originBranch: newOriginEdit
+            },
+            { new: true }
+        );
+        console.log(newDoc)
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
 })
 
 /* === */

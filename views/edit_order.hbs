@@ -1,0 +1,20 @@
+<p>Sender: {{orderDetails.senderName}}</p>
+<p>Receiver: {{orderDetails.receiverName}}</p>
+<p>Item: {{orderDetails.itemDesc}}</p>
+<p>Charge: {{orderDetails.total}}</p>
+<form action="edit-order={{orderDetails.orderId}}" method="POST">
+	<p>Status: 
+	<select id="newStatus" name="newStatus">
+		<option value="PROCESSING">PROCESSING</option>
+		<option value="IN TRANSIT">IN TRANSIT</option>
+		<option value="READY FOR PICKUP">READY FOR PICKUP</option>
+		<option value="DELIVERED">DELIVERED</option>
+	</select>
+	</p>
+	<p>EDA: <input type="date" id="newEDA" name="newEDA"></p>
+	<p>Origin Branch: <input type="text" id="newOrigin" name="newOrigin"></p>
+	<button type="submit">Edit</button>
+</form>
+
+<a href="/admin/view-orders">Back</a>
+<br>

@@ -1,0 +1,227 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\view_database.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\view_database.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\public\\js\\tracker.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\js\\tracker.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\routes\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server\\routes\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\view_details.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\view_details.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\design\\view_database_big.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:design\\view_database_big.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\layouts\\admin.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\layouts\\admin.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Source\\Repos\\Parcel-Tracking-Website\\views\\edit_order.hbs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\edit_order.hbs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\models\\Order.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server\\models\\Order.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\routes\\tracking.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server\\routes\\tracking.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\search_parcel.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\search_parcel.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\layouts\\login.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\layouts\\login.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\order.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\order.hbs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "view_database_big.css",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\design\\view_database_big.css",
+              "RelativeDocumentMoniker": "design\\view_database_big.css",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\design\\view_database_big.css",
+              "RelativeToolTip": "design\\view_database_big.css",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-23T13:57:20.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "tracker.js",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\public\\js\\tracker.js",
+              "RelativeDocumentMoniker": "public\\js\\tracker.js",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\public\\js\\tracker.js",
+              "RelativeToolTip": "public\\js\\tracker.js",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwBQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-23T13:35:18.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "search_parcel.hbs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\search_parcel.hbs",
+              "RelativeDocumentMoniker": "views\\search_parcel.hbs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\search_parcel.hbs",
+              "RelativeToolTip": "views\\search_parcel.hbs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-23T13:30:07.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "login.hbs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\layouts\\login.hbs",
+              "RelativeDocumentMoniker": "views\\layouts\\login.hbs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\layouts\\login.hbs",
+              "RelativeToolTip": "views\\layouts\\login.hbs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-23T13:28:58.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "admin.hbs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\layouts\\admin.hbs",
+              "RelativeDocumentMoniker": "views\\layouts\\admin.hbs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\layouts\\admin.hbs",
+              "RelativeToolTip": "views\\layouts\\admin.hbs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-23T13:28:52.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "tracking.js",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\routes\\tracking.js",
+              "RelativeDocumentMoniker": "server\\routes\\tracking.js",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\routes\\tracking.js",
+              "RelativeToolTip": "server\\routes\\tracking.js",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-20T23:09:32.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Order.js",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\models\\Order.js",
+              "RelativeDocumentMoniker": "server\\models\\Order.js",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\models\\Order.js",
+              "RelativeToolTip": "server\\models\\Order.js",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAkwBcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-20T23:00:15.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "edit_order.hbs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\edit_order.hbs",
+              "RelativeDocumentMoniker": "views\\edit_order.hbs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\edit_order.hbs",
+              "RelativeToolTip": "views\\edit_order.hbs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-20T22:57:55.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "view_database.hbs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\view_database.hbs",
+              "RelativeDocumentMoniker": "views\\view_database.hbs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\view_database.hbs",
+              "RelativeToolTip": "views\\view_database.hbs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAmwC4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-20T22:50:28.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "admin.js",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\routes\\admin.js",
+              "RelativeDocumentMoniker": "server\\routes\\admin.js",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\routes\\admin.js",
+              "RelativeToolTip": "server\\routes\\admin.js",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-20T22:51:55.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "view_details.hbs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\view_details.hbs",
+              "RelativeDocumentMoniker": "views\\view_details.hbs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\view_details.hbs",
+              "RelativeToolTip": "views\\view_details.hbs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-20T22:48:40.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "order.hbs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\order.hbs",
+              "RelativeDocumentMoniker": "views\\order.hbs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\order.hbs",
+              "RelativeToolTip": "views\\order.hbs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-20T22:52:48.089Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

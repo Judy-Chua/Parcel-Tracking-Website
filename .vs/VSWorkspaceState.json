@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\design",
+    "\\public",
+    "\\public\\css",
+    "\\public\\js",
+    "\\server",
+    "\\server\\models",
+    "\\server\\routes",
+    "\\views",
+    "\\views\\layouts"
+  ],
+  "SelectedNode": "\\design\\view_database_big.css",
+  "PreviewInSolutionExplorer": false
+}

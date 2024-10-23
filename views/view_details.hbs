@@ -1,0 +1,11 @@
+<p>Sender: {{orderDetails.senderName}}</p>
+<p>Receiver: {{orderDetails.receiverName}}</p>
+<p>Item: {{orderDetails.itemDesc}}</p>
+<p>Charge: {{orderDetails.total}}</p>
+<p>Status: {{orderDetails.status}}</p>
+<p>EDA: {{orderDetails.arrivalDate}}</p>
+<p>Origin Branch: {{orderDetails.originBranch}}</p>
+
+<a href="/admin/view-orders">Back</a>
+<br>
+<a href="/admin/edit-order={{orderDetails.orderId}}">Edit</a>
