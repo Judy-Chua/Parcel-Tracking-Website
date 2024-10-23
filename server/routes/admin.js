@@ -30,11 +30,11 @@ router.get('/view-orders', async (req, res) =>{
     }
 })
 
-router.get('/view_order=:id/more-details', async (req, res) => {
+router.post('/view-order/more-details', async (req, res) => {
     try {
-        const id = req.params.id
+        const { id } = req.body
         const orderDetails = await Order.findOne({ orderId: id });
-        res.render('view_details', { layout: "admin.hbs", title: "Search | ESMC", css: "view_database_big", orderDetails: orderDetails });
+        res.json({ orderDetails: orderDetails });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -42,25 +42,27 @@ router.get('/view_order=:id/more-details', async (req, res) => {
     }
 })
 
-router.get('/edit-order=:id', async (req, res) => {
+router.post('/edit-order', async (req, res) => {
     try {
-        const id = req.params.id
-        const orderDetails = await Order.findOne({ orderId: id });
-        res.render('edit_order', { layout: "admin.hbs", title: "Search | ESMC", css: "view_database_big", orderDetails: orderDetails });
+        const { id } = req.body;
+        const { newStatusEdit } = req.body;
+        const { newEDAEdit } = req.body;
+        const { newOriginEdit } = req.body;
+        const newDoc = await Order.findOneAndUpdate(
+            { orderId: id },
+            {
+                status: newStatusEdit,
+                arrivalDate: newEDAEdit,
+                originBranch: newOriginEdit
+            },
+            { new: true }
+        );
+        console.log(newDoc)
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
         res.status(500).send("Server Error");
     }
-})
-
-router.post('/edit-order=:id', async (req, res) => {
-    const editedOrder = Order.findOneAndUpdate(
-        { orderId: req.params.id },
-        { status: req.body.newStatus, arrivalDate: req.body.newEDA, originBranch: req.body.newOrigin },
-        { new: true }
-    );
-    console.log(editedOrder)
 })
 
 /* === */

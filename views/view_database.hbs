@@ -1,43 +1,4 @@
-<!-- pop up pag view results
-<div id="popup">
-    <h1>TRANSACTION #1A2B3C4D</h1>
-    <table>
-        <tr>
-            <th>Sender:</th>
-            <td>Juan dela Cruz</td>
-        </tr>
-        <tr>
-            <th>Receiver:</th>
-            <td>Maria Santos</td>
-        </tr>
-        <tr>
-            <th>Item:</th>
-            <td>Bag</td>
-        </tr>
-        <tr>
-            <th>Charge:</th>
-            <td>800</td>
-        </tr>
-        <tr>
-            <th>Status:</th>
-            <td>Processing</td>
-        </tr>
-        <tr>
-            <th>EDA:</th>
-            <td>December 25, 2024</td>
-        </tr>
-        <tr>
-            <th>Origin Branch:</th>
-            <td>Manila</td>
-        </tr>
-    </table>
-    <div id="popup-btns" class="flex-parent">
-        <button id="close-btn">CLOSE</button>
-        <button id="edit-btn">EDIT DETAILS</button>
-    </div>
-</div>
--->
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <table id="popup">
     <tr>
         <th>ControlID</th>
@@ -49,12 +10,124 @@
     </tr>
     {{#each orders}}
         <tr>
-            <td>{{this.orderId}}</td>
+            <td id="postId">{{this.orderId}}</td>
             <td>{{this.senderName}}</td>
             <td>{{this.receiverName}}</td>
             <td>{{this.itemDesc}}</td>
             <td>{{this.status}}</td>
-            <td><a id="details" href="view_order={{this.orderId}}/more-details">Details</a></td>
+            <td><button onclick="viewDetails('{{this.orderId}}')">Details</button></td>
         </tr>
     {{/each}}
 </table>
+
+<div id="popup" style="display:none;" name="detailsPopup" class="detailsPopup">
+    <p id="orderIdDetails"></p>
+    <p id="receiverDetails"></p>
+    <p id="senderDetails"></p>
+    <p id="chargeDetails"></p>
+    <p id="statusDetails"></p>
+    <p id="edaDetails"></p>
+    <p id="originDetails"></p>
+    <button onclick="editDetails()">Edit</button>
+    <button onclick="closeDetails()">Close</button>
+</div>
+
+<div id="popup" style="display:none;" name="editPopup" class="editPopup">
+    <p id="orderIdDetailsE"></p>
+    <p id="receiverDetailsE"></p>
+    <p id="senderDetailsE"></p>
+    <p id="chargeDetailsE"></p>
+    <form>
+        <p>Status: </p>
+        <select id="newStatus">
+            <option value="PROCESSING">PROCESSING</option>
+            <option value="IN TRANSIT">IN TRANSIT</option>
+            <option value="READY FOR PICKUP">READY FOR PICKUP</option>
+            <option value="DELIVERED">DELIVERED</option>
+        </select>
+        <p>EDA: </p>
+        <input type="date" id="newEDA">
+        <p>Origin Branch:</p>
+        <input type="text" id="newOrigin">
+        <br>
+    </form>
+    <button onclick="saveEdit()">Save</button>
+    <button onclick="closeEdit()">Close</button>
+</div>
+
+<script>
+    var currentId;
+
+    function viewDetails(id)
+    {
+        currentId = id;
+        //alert(currentId);
+        var popup = document.getElementsByClassName("detailsPopup");
+        if (popup)
+                popup[0].style.display = "block";
+
+        var idData = {
+            id: id
+        }
+
+        $.post('/admin/view-order/more-details', idData, function (message, status) {
+            console.log(typeof(message.orderDetails.orderId));
+            document.getElementById('orderIdDetails').innerHTML = message.orderDetails.orderId;
+            document.getElementById('receiverDetails').innerHTML = message.orderDetails.receiverName;
+            document.getElementById('senderDetails').innerHTML = message.orderDetails.senderName;
+            document.getElementById('chargeDetails').innerHTML = message.orderDetails.total;
+            document.getElementById('statusDetails').innerHTML = message.orderDetails.status;
+            document.getElementById('edaDetails').innerHTML = message.orderDetails.arrivalDate;
+            document.getElementById('originDetails').innerHTML = message.orderDetails.originBranch;
+        });
+    }
+
+    function closeDetails()
+    {
+        var popup = document.getElementsByClassName("detailsPopup");
+        if (popup)
+            popup[0].style.display = "none";
+    }
+
+    function editDetails()
+    {
+        closeDetails();
+        var editPopup = document.getElementsByClassName("editPopup");
+        if (editPopup)
+            editPopup[0].style.display = "block";
+
+        var idData = {
+            id: currentId
+        }
+
+        $.post('/admin/view-order/more-details', idData, function (message, status) {
+            document.getElementById('orderIdDetailsE').innerHTML = message.orderDetails.orderId;
+            document.getElementById('receiverDetailsE').innerHTML = message.orderDetails.receiverName;
+            document.getElementById('senderDetailsE').innerHTML = message.orderDetails.senderName;
+            document.getElementById('chargeDetailsE').innerHTML = message.orderDetails.total;
+        });
+    }
+
+    function closeEdit()
+    {
+        var editPopup = document.getElementsByClassName("editPopup");
+        if (editPopup)
+            editPopup[0].style.display = "none";
+    }
+
+    function saveEdit()
+    {
+        var newStatus = document.getElementById('newStatus').value;
+        var newEDA = document.getElementById('newEDA').value;
+        var newOrigin = document.getElementById('newOrigin').value;
+
+        var editData = {
+            id: currentId,
+            newStatusEdit: newStatus,
+            newEDAEdit: newEDA,
+            newOriginEdit: newOrigin
+        }
+
+        $.post('/admin/edit-order', editData, function (message, status) {});
+    }
+</script>
