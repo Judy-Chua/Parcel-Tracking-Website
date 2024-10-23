@@ -50,18 +50,22 @@ h1 {
     font-size: 40px;
     color: #fc0404;
 }
-table {
+.popup-table {
     font-family: 'Arial';
-    font-size: 18px;
+    font-size: 16px;
+    width: 80%;
     text-align: left;
     text-wrap: nowrap;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-left: 5vw;
 }
-td {
-    padding-left: 5vw;
-    padding-top: 10px;
+.popup-tr {
+    border: 3px solid #fc0404;
+}
+.popup-th {
+    padding: 1vh;
+}
+.popup-td {
+    padding: 1vh;
 }
 #updated-by {
     position: absolute;
@@ -91,6 +95,7 @@ p {
     margin-right: 15px;
     background-color: #fc0404;
     border-radius: 5px;
+    border: 1px solid #0d0d0d;
     width: 81px;
     height: 50px;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
@@ -103,6 +108,7 @@ p {
 #edit-btn {
     background-color: #fffaeb;
     border-radius: 5px;
+    border: 1px solid #0d0d0d;
     width: 123px;
     height: 50px;
     box-shadow: 1px 1px 5px;
@@ -112,17 +118,18 @@ p {
     font-size: 16px;
     text-shadow: 0.025px 0.025px 0.005px;
 }
-select, input {
+.edit-select, input {
     border: none;
     border-bottom: 1px solid #000000;
     background-color: #fffaeb;
-    width: 12vw;
+    width: 15vw;
     font-family: 'Arial';
-    font-size: 18px;
+    font-size: 16px;
 }
 #save-btn {
     background-color: #fffaeb;
     border-radius: 5px;
+    border: 1px solid #0d0d0d;
     width: 81px;
     height: 50px;
     box-shadow: 1px 1px 5px;
@@ -142,7 +149,7 @@ footer {
     padding: 5px;
 }
 #copyright {
-    color: #FFFFFF;
+    color: #ffffff;
     font-family: 'Arial';
     font-size: 16px;
     font-weight: 600;
