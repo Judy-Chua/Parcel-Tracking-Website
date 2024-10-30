@@ -1,3 +1,12 @@
+/* Big Shoulders Display */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Jost */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
     background-color: #fc0404;
     background-image: url(./images/truck.svg);
@@ -37,8 +46,8 @@ body {
     width: 20px;
 }
 h1 {
-    font-family: 'Arial Narrow';
-    font-weight: bold;
+    font-family: "Big Shoulders Display";
+    font-weight: bolder;
     font-size: 48px;
     color: #fffaeb;
     margin-left: 50px;
@@ -53,7 +62,7 @@ h1 {
 label {
     color: #ffffff;
     font-size: 16px;
-    font-family: 'Arial';
+    font-family: "Jost";
     font-weight: bold;
 }
 .input-normal {
@@ -66,10 +75,13 @@ label {
     margin-bottom: 3vh;
     padding-left: 1vw;
 }
+input::placeholder {
+    font-family: "Poppins";
+}
 .number-code {
     display: block;
     background-color: #ffffff;
-    font-family: 'Arial';
+    font-family: "Poppins";
     height: 24px;
     border-radius: 4px 0px 0px 4px;
     border-right: 1px solid #000000;
@@ -93,7 +105,7 @@ label {
 h2 {
     color: #ffffff;
     font-size: 30px;
-    font-family: 'Arial';
+    font-family: "Jost";
     margin-top: 10vh;
     margin-bottom: 0px;
 }
@@ -103,7 +115,7 @@ h2 {
 h3 {
     color: #ffffff;
     font-size: 16px;
-    font-family: 'Arial';
+    font-family: "Jost";
     display: block;
     text-align: center;
     margin-bottom: 0px;
@@ -160,14 +172,14 @@ button {
     background-color: transparent;
     border-radius: 5px;
     border: 1px solid #0d0d0d;
-    width: 100px;
+    width: 120px;
     height: 40px;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-wrap: nowrap;
-    font-family: 'Arial';
+    font-family: "Poppins";
     color: #ffffff;
     font-size: 16px;
-    text-shadow: 0.025px 0.025px 0.005px;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 #charge-discount-div {
     margin-top: 5vh;
@@ -215,6 +227,7 @@ button {
     padding-left: 1vw;
 }
 select {
+    font-family: "Poppins";
     background-color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -226,6 +239,7 @@ select {
     padding-left: 1vw;
 }
 input[type="date"] {
+    font-family: "Poppins";
     background-color: #ffffff;
     width: 39vw;
     padding-right: 1vw;
@@ -244,10 +258,10 @@ input[type="date"] {
     height: 50px;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-wrap: nowrap;
-    font-family: 'Arial';
+    font-family: "Poppins";
     color: #ffffff;
     font-size: 16px;
-    text-shadow: 0.025px 0.025px 0.005px;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 #submit-btn {
     margin-left: 2vw;
@@ -258,10 +272,10 @@ input[type="date"] {
     height: 50px;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-wrap: nowrap;
-    font-family: 'Arial';
+    font-family: "Poppins";
     color: #ffffff;
     font-size: 16px;
-    text-shadow: 0.025px 0.025px 0.005px;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 footer {
     position: fixed;
@@ -274,7 +288,7 @@ footer {
 }
 #copyright {
     color: #ffffff;
-    font-family: 'Arial';
+    font-family: "Inter";
     font-size: 16px;
     font-weight: 600;
 }

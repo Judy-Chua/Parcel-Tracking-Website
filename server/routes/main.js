@@ -2,9 +2,8 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 
-
 router.get('', async (req, res) =>{
-    res.render('index', {title: "Home Page", css:"search_parcel_big"});
+    res.render('index', {title: "Home Page", css:"about_us"});
 })
 
 router.get('/contact_us', async (req, res) =>{

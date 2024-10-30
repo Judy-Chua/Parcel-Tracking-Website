@@ -1,5 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+/* Jost */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Big Shoulders Display */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
     background-color: #FFFAEB;
@@ -167,7 +173,7 @@ p {
     margin-left: 1px;
 }
 .topbar-links {
-    font-family: 'Arial';
+    font-family: "Poppins";
     color: #000000;
     text-shadow: 0.25px 0.25px 0.5px;
     margin-top: 11px;
@@ -208,20 +214,20 @@ p {
 .contact-us-text {
     color: #000000;
     margin-top: 16px;
-    font-family: 'Arial';
+    font-family: "Poppins";
     text-shadow: 0.25px 0.25px 0.5px;
     font-size: 16px;
 }
 h1 {
-    font-family: 'Arial Narrow';
-    font-weight: bold;
+    font-family: "Big Shoulders Display";
+    font-weight: bolder;
     font-size: 48px;
     color: #fffaeb;
     margin-left: 50px;
     margin-top: 50px;
 }
 table {
-    font-family: 'Arial';
+    font-family: "Jost";
     font-size: 20px;
     border-collapse: collapse;
     background: #ffffff;
@@ -282,7 +288,7 @@ footer {
 }
 #copyright {
     color: #FFFFFF;
-    font-family: 'Arial';
+    font-family: "Inter";
     font-size: 16px;
     font-weight: 600;
 }

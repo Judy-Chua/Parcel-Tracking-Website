@@ -21,7 +21,7 @@
 </table>
 
 <div id="popup" style="display: none;" name="detailsPopup" class="detailsPopup">
-    <h1>TRANSACTION #1A2B3C4D</h1>
+    <h1>TRANSACTION #HELP HERE</h1>
     <table class="popup-table">
         <tr class="popup-tr">
             <th class="popup-th">Sender:</th>
@@ -52,9 +52,16 @@
             <td class="popup-td" id="originDetails"></td>
         </tr>
     </table>
-    <div class="popup-btns" class="flex-parent">
-        <button class="close-btn" onclick="editDetails()">CLOSE</button>
+    <div class="flex-parent">
+        <div id="updated-by">
+            <i>Updated By:</i>
+            <p>Manila Branch</p>
+            <p>Dec. 22, 2024</p>
+        </div>
+        <div class="popup-btns" class="flex-parent"> 
+            <button class="close-btn" onclick="editDetails()">CLOSE</button>
         <button id="edit-btn" onclick="closeDetails()">EDIT DETAILS</button>
+        </div>
     </div>
 </div>
 
