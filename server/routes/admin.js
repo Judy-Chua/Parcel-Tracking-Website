@@ -21,7 +21,7 @@ router.get('/login', async (req, res) =>{
 router.get('/view-orders', async (req, res) =>{
     try {
         const orders = await Order.find();
-        res.render('view_database', { layout: "admin.hbs", title: "Search | ESMC", css: "view_database_big", orders: orders });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
     }
     catch (error)
     { 

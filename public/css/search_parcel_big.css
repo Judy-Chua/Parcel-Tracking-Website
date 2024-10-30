@@ -1,5 +1,9 @@
 body {
     background-color: #fc0404;
+    background-image: url(/img/truck.svg);
+    background-repeat: no-repeat;
+    background-position: center 22.7vh;
+    background-size: auto 70vh;
     margin-top: -16px;
     margin-inline: 0%;
     margin-bottom: 0%;

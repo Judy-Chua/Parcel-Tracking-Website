@@ -55,6 +55,15 @@
                 <input type="text" class="desc-input" placeholder="Item Description">
                 <br>
               </div>
+              <div>
+                <h3>Cost</h3>
+                <input type="text" class="cost-input" placeholder="Cost">
+                <br>
+                <input type="text" class="cost-input" placeholder="Cost">
+                <br>
+                <input type="text" class="cost-input" placeholder="Cost">
+                <br>
+              </div>
               <div id="x-button-div">
                 <!-- add function here! -->
                 <img src="images/x-circle-fill.svg" onclick="removeItem();" /><br>
@@ -62,10 +71,23 @@
                 <img src="images/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
               </div>
             </div>
+            <!-- add function here! -->
+            <div id="add-btn-div">
+              <button id="add-btn">+ Add Items</button>
+            </div>
+            <div class="flex-parent" id="charge-discount-div">
+              <div>
+                <h3 id="charge-label">Charge</h3>
+                <div id="charge-calc"></div>
+              </div>
+              <div id="discount-div">
+                <label for="discount">Discount</label>
+                <input type="number" name="discount" min="0" step=".01" id="discount-input" placeholder="Discount">
+              </div>
+            </div>
             <label for="charge" id="charge-label">Total Charge*</label><br>
-            <input type="number" name="charge" min="0" step=".01" id="charge-input" placeholder="Total Charge" />
-            <button id="add-btn">+ Add Items</button>
-          </div>
+            <div id="total-calc"></div>
+        </div>
           <div class="flex-child">
             <label for="edt">Estimated Day of Transport</label><br>
             <input type="date" name="edt" class="input-normal"><br>
@@ -81,11 +103,11 @@
               <option value="manila">Manila</option>
               <option value="romblon">Romblon</option>
             </select>
+            <div id="btns">
+              <button id="cancel-btn">CANCEL</button>
+              <input id="submit-btn" type="submit" value="SUBMIT FORM">
+            </div>
           </div>
-        </div>
-        <div id="btns">
-          <button id="cancel-btn">CANCEL</button>
-          <input id="submit-btn" type="submit" value="SUBMIT FORM">
         </div>
       </form> 
     </div>
