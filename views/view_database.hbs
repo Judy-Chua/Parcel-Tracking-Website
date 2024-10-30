@@ -20,16 +20,42 @@
     {{/each}}
 </table>
 
-<div id="popup" style="display:none;" name="detailsPopup" class="detailsPopup">
-    <p id="orderIdDetails"></p>
-    <p id="receiverDetails"></p>
-    <p id="senderDetails"></p>
-    <p id="chargeDetails"></p>
-    <p id="statusDetails"></p>
-    <p id="edaDetails"></p>
-    <p id="originDetails"></p>
-    <button onclick="editDetails()">Edit</button>
-    <button onclick="closeDetails()">Close</button>
+<div id="popup" style="display: none;" name="detailsPopup" class="detailsPopup">
+    <h1>TRANSACTION #1A2B3C4D</h1>
+    <table class="popup-table">
+        <tr class="popup-tr">
+            <th class="popup-th">Sender:</th>
+            <td class="popup-td" id="senderDetails"></td>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th">Receiver:</th>
+            <td class="popup-td" id="receiverDetails"></td>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th">Item:</th>
+            <td class="popup-td" id="orderIdDetails"></td>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th">Charge:</th>
+            <td class="popup-td" id="chargeDetails"></td>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th">Status:</th>
+            <td class="popup-td" id="statusDetails"></td>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th">EDA:</th>
+            <td class="popup-td" id="edaDetails"></td>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th">Origin Branch:</th>
+            <td class="popup-td" id="originDetails"></td>
+        </tr>
+    </table>
+    <div class="popup-btns" class="flex-parent">
+        <button class="close-btn" onclick="editDetails()">CLOSE</button>
+        <button id="edit-btn" onclick="closeDetails()">EDIT DETAILS</button>
+    </div>
 </div>
 
 <div id="popup" style="display:none;" name="editPopup" class="editPopup">

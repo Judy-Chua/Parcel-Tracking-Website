@@ -1,4 +1,4 @@
-{{!-- <p>Sender: {{orderDetails.senderName}}</p>
+<p>Sender: {{orderDetails.senderName}}</p>
 <p>Receiver: {{orderDetails.receiverName}}</p>
 <p>Item: {{orderDetails.itemDesc}}</p>
 <p>Charge: {{orderDetails.total}}</p>
@@ -8,42 +8,4 @@
 
 <a href="/admin/view-orders">Back</a>
 <br>
-<a href="/admin/edit-order={{orderDetails.orderId}}">Edit</a> --}}
-
-<div class="popup">
-    <h1>TRANSACTION #1A2B3C4D</h1>
-    <table class="popup-table">
-        <tr class="popup-tr">
-            <th class="popup-th">Sender:</th>
-            <td class="popup-td" id="senderDetails">{{orderDetails.senderName}}</td>
-        </tr>
-        <tr class="popup-tr">
-            <th class="popup-th">Receiver:</th>
-            <td class="popup-td">{{orderDetails.receiverName}}</td>
-        </tr>
-        <tr class="popup-tr">
-            <th class="popup-th">Item:</th>
-            <td class="popup-td">{{orderDetails.itemDesc}}</td>
-        </tr>
-        <tr class="popup-tr">
-            <th class="popup-th">Charge:</th>
-            <td class="popup-td">{{orderDetails.total}}</td>
-        </tr>
-        <tr class="popup-tr">
-            <th class="popup-th">Status:</th>
-            <td class="popup-td">{{orderDetails.status}}</td>
-        </tr>
-        <tr class="popup-tr">
-            <th class="popup-th">EDA:</th>
-            <td class="popup-td">{{orderDetails.arrivalDate}}</td>
-        </tr>
-        <tr class="popup-tr">
-            <th class="popup-th">Origin Branch:</th>
-            <td class="popup-td">{{orderDetails.originBranch}}</td>
-        </tr>
-    </table>
-    <div class="popup-btns" class="flex-parent">
-        <button class="close-btn">CLOSE</button>
-        <button id="edit-btn">EDIT DETAILS</button>
-    </div>
-</div>
+<a href="/admin/edit-order={{orderDetails.orderId}}">Edit</a>
