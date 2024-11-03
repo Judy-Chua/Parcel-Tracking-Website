@@ -1,13 +1,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div>
     <table style="text-align: center;" class="view-table" id="order-popup">
         <tr>
+            <td class="popup-td">
+                <button class="add-order-btn"><i class="material-icons">filter_list</i></button>
+            </td>
+            <td class="popup-td">
+                <input type="text">
+                <button class="add-order-btn"><i class="material-icons">search</i></button>
+            </td>
             <td class="popup-td"></td>
             <td class="popup-td"></td>
             <td class="popup-td"></td>
-            <td class="popup-td"></td>
-            <td class="popup-td"></td>
-            <td class="popup-td"><button class="add-order-btn" onclick="window.location.href = '/admin/create-order';">+ Add Order</button></td>
+            <td class="popup-td">
+                <button class="add-order-btn" onclick="window.location.href = '/admin/create-order';">+ Add Order</button>
+            </td>
         </tr>
         <tr>
             <th class="popup-th">ControlID</th>
@@ -24,7 +32,10 @@
             <td class="popup-td">{{this.receiverName}}</td>
             <td class="popup-td">{{this.itemDesc}}</td>
             <td class="popup-td">{{this.status}}</td>
-            <td class="popup-td"><button onclick="viewDetails('{{this.orderId}}')">Details</button></td>
+            <td class="popup-td">
+                <button class="action-btn" onclick="viewDetails('{{this.orderId}}')"><i class="material-icons">remove_red_eye</i></button>
+                <button class="action-btn" onclick="editDetails('{{this.orderId}}')"><i class="material-icons">create</i></button>
+            </td>
         </tr>
         {{/each}}
     </table>
@@ -70,7 +81,7 @@
         </div>
         <div class="popup-btns">
             <button class="close-btn" onclick="closeDetails()">CLOSE</button>
-            <button id="edit-btn" onclick="editDetails()">EDIT DETAILS</button>
+            <button id="edit-btn" onclick="editDetails(currentId)">EDIT DETAILS</button>
         </div>
     </div>
 </div>
@@ -157,15 +168,16 @@
             popup[0].style.display = "none";
     }
 
-    function editDetails()
+    function editDetails(id)
     {
         closeDetails();
+        currentId = id;
         var editPopup = document.getElementsByClassName("editPopup");
         if (editPopup)
             editPopup[0].style.display = "block";
 
         var idData = {
-            id: currentId
+            id: id
         }
 
         $.post('/admin/view-order/more-details', idData, function (message, status) {
