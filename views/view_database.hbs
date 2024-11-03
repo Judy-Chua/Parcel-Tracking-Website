@@ -21,7 +21,7 @@
 </table>
 
 <div id="popup" style="display: none;" name="detailsPopup" class="detailsPopup">
-    <h1>TRANSACTION #HELP HERE</h1>
+    <h1>TRANSACTION #test</h1>
     <table class="popup-table">
         <tr class="popup-tr">
             <th class="popup-th">Sender:</th>
@@ -58,34 +58,58 @@
             <p>Manila Branch</p>
             <p>Dec. 22, 2024</p>
         </div>
-        <div class="popup-btns" class="flex-parent"> 
-            <button class="close-btn" onclick="editDetails()">CLOSE</button>
-        <button id="edit-btn" onclick="closeDetails()">EDIT DETAILS</button>
+        <div class="popup-btns">
+            <button class="close-btn" onclick="closeDetails()">CLOSE</button>
+            <button id="edit-btn" onclick="editDetails()">EDIT DETAILS</button>
         </div>
     </div>
 </div>
 
 <div id="popup" style="display:none;" name="editPopup" class="editPopup">
-    <p id="orderIdDetailsE"></p>
-    <p id="receiverDetailsE"></p>
-    <p id="senderDetailsE"></p>
-    <p id="chargeDetailsE"></p>
-    <form>
-        <p>Status: </p>
-        <select id="newStatus">
-            <option value="PROCESSING">PROCESSING</option>
-            <option value="IN TRANSIT">IN TRANSIT</option>
-            <option value="READY FOR PICKUP">READY FOR PICKUP</option>
-            <option value="DELIVERED">DELIVERED</option>
-        </select>
-        <p>EDA: </p>
-        <input type="date" id="newEDA">
-        <p>Origin Branch:</p>
-        <input type="text" id="newOrigin">
-        <br>
+    <form onsubmit="saveEdit()">
+        <h1>TRANSACTION #test</h1>
+        <table class="popup-table">
+            <tr class="popup-tr">
+                <th class="popup-th">Sender:</th>
+                <td class="popup-td" id="senderDetailsE"></td>
+            </tr>
+            <tr class="popup-tr">
+                <th class="popup-th">Receiver:</th>
+                <td class="popup-td" id="receiverDetailsE"></td>
+            </tr>
+            <tr class="popup-tr">
+                <th class="popup-th">Item:</th>
+                <td class="popup-td" id="orderIdDetailsE"></td>
+            </tr>
+            <tr class="popup-tr">
+                <th class="popup-th">Charge:</th>
+                <td class="popup-td" id="chargeDetailsE"></td>
+            </tr>
+            <tr>
+                <th class="popup-th">Status: </th>
+                <td>
+                    <select id="newStatus">
+                        <option value="PROCESSING">PROCESSING</option>
+                        <option value="IN TRANSIT">IN TRANSIT</option>
+                        <option value="READY FOR PICKUP">READY FOR PICKUP</option>
+                        <option value="DELIVERED">DELIVERED</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th class="popup-th">EDA: </th>
+                <td><input type="date" id="newEDA"></td>
+            </tr>
+            <tr>
+                <th class="popup-th">Origin Branch: </th>
+                <td><input type="text" id="newOrigin"></td>
+            </tr>
+        </table>
+        <div class="popup-btns">
+            <button class="close-btn" onclick="closeEdit()">CLOSE</button>
+            <input type="submit" id="edit-btn" value="SAVE">
+        </div>
     </form>
-    <button onclick="saveEdit()">Save</button>
-    <button onclick="closeEdit()">Close</button>
 </div>
 
 <script>
@@ -161,6 +185,8 @@
             newOriginEdit: newOrigin
         }
 
-        $.post('/admin/edit-order', editData, function (message, status) {});
+        $.post('/admin/edit-order', editData, function (message, status) {
+            window.location.reload();
+        });
     }
 </script>
