@@ -1,26 +1,36 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<table id="popup">
-    <tr>
-        <th>ControlID</th>
-        <th>Sender</th>
-        <th>Receiver</th>
-        <th>Item Description</th>
-        <th>Status</th>
-        <th>Actions</th>
-    </tr>
-    {{#each orders}}
+<div>
+    <table style="text-align: center;" class="view-table" id="order-popup">
         <tr>
-            <td id="postId">{{this.orderId}}</td>
-            <td>{{this.senderName}}</td>
-            <td>{{this.receiverName}}</td>
-            <td>{{this.itemDesc}}</td>
-            <td>{{this.status}}</td>
-            <td><button onclick="viewDetails('{{this.orderId}}')">Details</button></td>
+            <td class="popup-td"></td>
+            <td class="popup-td"></td>
+            <td class="popup-td"></td>
+            <td class="popup-td"></td>
+            <td class="popup-td"></td>
+            <td class="popup-td"><button class="add-order-btn" onclick="window.location.href = '/admin/create-order';">+ Add Order</button></td>
         </tr>
-    {{/each}}
-</table>
+        <tr>
+            <th class="popup-th">ControlID</th>
+            <th class="popup-th">Sender</th>
+            <th class="popup-th">Receiver</th>
+            <th class="popup-th">Item Description</th>
+            <th class="popup-th">Status</th>
+            <th class="popup-th">Actions</th>
+        </tr>
+        {{#each orders}}
+        <tr class="view-tr">
+            <td class="popup-td">{{this.orderId}}</td>
+            <td class="popup-td">{{this.senderName}}</td>
+            <td class="popup-td">{{this.receiverName}}</td>
+            <td class="popup-td">{{this.itemDesc}}</td>
+            <td class="popup-td">{{this.status}}</td>
+            <td class="popup-td"><button onclick="viewDetails('{{this.orderId}}')">Details</button></td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
 
-<div id="popup" style="display: none;" name="detailsPopup" class="detailsPopup">
+<div id="popup" style="display:none;" name="detailsPopup" class="detailsPopup">
     <h1 id="orderIdDetails">TRANSACTION #test</h1>
     <table class="popup-table">
         <tr class="popup-tr">

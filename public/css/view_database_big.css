@@ -44,6 +44,16 @@ body {
     text-align: center;
     padding-bottom: 20vh;
 }
+#order-popup {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background-color: #fffaeb;
+    border-radius: 20px;
+    text-align: center;
+    margin: auto;
+}
 h1 {
     font-family: 'Arial Narrow';
     font-weight: bold;
@@ -58,6 +68,15 @@ h1 {
     text-wrap: nowrap;
     margin-left: 5vw;
 }
+.view-table {
+    font-family: 'Arial';
+    font-size: 16px;
+    width: 80%;
+    text-align: left;
+    text-wrap: nowrap;
+    margin-left: 5vw;
+    border-collapse: collapse;
+}
 .popup-tr {
     border: 3px solid #fc0404;
 }
@@ -66,6 +85,9 @@ h1 {
 }
 .popup-td {
     padding: 1vh;
+}
+.view-tr {
+    border-top: 2px solid black;
 }
 #updated-by {
     position: absolute;
@@ -153,4 +175,19 @@ footer {
     font-family: 'Arial';
     font-size: 16px;
     font-weight: 600;
+}
+.add-order-btn {
+    margin-right: 15px;
+    background-color: #fc0404;
+    border-radius: 50px;
+    border: 1px solid #fffaeb;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    text-wrap: nowrap;
+    font-family: 'Arial';
+    color: #ffffff;
+    font-size: 16px;
+    text-shadow: 0.025px 0.025px 0.005px;
 }
