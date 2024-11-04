@@ -41,7 +41,7 @@
     </table>
 </div>
 
-<div id="popup" style="display:none;" name="detailsPopup" class="detailsPopup">
+<div id="popup" style="display: none;" name="detailsPopup" class="detailsPopup">
     <h1 id="orderIdDetails">TRANSACTION #test</h1>
     <table class="popup-table">
         <tr class="popup-tr">
@@ -86,24 +86,6 @@
     </div>
 </div>
 
-{{!-- <div id="popup" style="display:none;" name="editPopup" class="editPopup">
-    <p id="orderIdDetailsE"></p>
-    <p id="receiverDetailsE"></p>
-    <p id="senderDetailsE"></p>
-    <p id="chargeDetailsE"></p>
-    <form>
-        <p>Status: </p>
-        <select id="newStatus">
-            <option value="PROCESSING">PROCESSING</option>
-            <option value="IN TRANSIT">IN TRANSIT</option>
-            <option value="READY FOR PICKUP">READY FOR PICKUP</option>
-            <option value="DELIVERED">DELIVERED</option>
-        </select>
-        <p>EDA: </p>
-        <input type="date" id="newEDA">
-        <p>Origin Branch:</p>
-        <input type="text" id="newOrigin">
-        <br>
 <div id="popup" style="display:none;" name="editPopup" class="editPopup">
     <form onsubmit="saveEdit()">
         <h1 id="orderIdDetailsE">TRANSACTION #test</h1>
@@ -144,17 +126,14 @@
                 <td><input type="text" id="newOrigin"></td>
             </tr>
         </table>
-        <div class="popup-btns">
+        <div class="popup-btns flex-parent">
             <input type="button" class="close-btn" onclick="closeEdit()" value="CLOSE">
-            <input type="submit" id="edit-btn" value="SAVE">
+            <input type="submit" id="save-btn" value="SAVE">
         </div>
     </form>
-    <button onclick="saveEdit()">Save</button>
-    <button onclick="closeEdit()">Close</button>
-</div> --}}
+</div>
 
 <script>
-
     var currentId;
 
     function viewDetails(id)
@@ -189,4 +168,49 @@
             popup[0].style.display = "none";
     }
 
+    function editDetails(id)
+    {
+        closeDetails();
+        currentId = id;
+        var editPopup = document.getElementsByClassName("editPopup");
+        if (editPopup)
+            editPopup[0].style.display = "block";
+
+        var idData = {
+            id: id
+        }
+
+        $.post('/admin/view-order/more-details', idData, function (message, status) {
+            document.getElementById('orderIdDetailsE').innerHTML = "TRANSACTION #" + message.orderDetails.orderId;
+            document.getElementById('itemDetailsE').innerHTML = message.orderDetails.itemDesc;
+            document.getElementById('receiverDetailsE').innerHTML = message.orderDetails.receiverName;
+            document.getElementById('senderDetailsE').innerHTML = message.orderDetails.senderName;
+            document.getElementById('chargeDetailsE').innerHTML = message.orderDetails.total;
+        });
+    }
+
+    function closeEdit()
+    {
+        var editPopup = document.getElementsByClassName("editPopup");
+        if (editPopup)
+            editPopup[0].style.display = "none";
+    }
+
+    function saveEdit()
+    {
+        var newStatus = document.getElementById('newStatus').value;
+        var newEDA = document.getElementById('newEDA').value;
+        var newOrigin = document.getElementById('newOrigin').value;
+
+        var editData = {
+            id: currentId,
+            newStatusEdit: newStatus,
+            newEDAEdit: newEDA,
+            newOriginEdit: newOrigin
+        }
+
+        $.post('/admin/edit-order', editData, function (message, status) {
+            window.location.reload();
+        });
+    }
 </script>
