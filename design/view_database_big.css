@@ -44,6 +44,19 @@ body {
     text-align: center;
     padding-bottom: 20vh;
 }
+
+.order-popup {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background-color: #fffaeb;
+    height: 50vh;
+    width: 500px;
+    border-radius: 20px;
+    text-align: center;
+    padding-bottom: 20vh;
+}
 h1 {
     font-family: 'Arial Narrow';
     font-weight: bold;

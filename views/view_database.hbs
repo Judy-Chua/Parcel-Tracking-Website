@@ -1,27 +1,48 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<table id="popup">
-    <tr>
-        <th>ControlID</th>
-        <th>Sender</th>
-        <th>Receiver</th>
-        <th>Item Description</th>
-        <th>Status</th>
-        <th>Actions</th>
-    </tr>
-    {{#each orders}}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div>
+    <table style="text-align: center;" class="view-table" id="order-popup">
         <tr>
-            <td id="postId">{{this.orderId}}</td>
-            <td>{{this.senderName}}</td>
-            <td>{{this.receiverName}}</td>
-            <td>{{this.itemDesc}}</td>
-            <td>{{this.status}}</td>
-            <td><button onclick="viewDetails('{{this.orderId}}')">Details</button></td>
+            <td class="popup-td">
+                <button class="add-order-btn"><i class="material-icons">filter_list</i></button>
+            </td>
+            <td class="popup-td">
+                <input type="text">
+                <button class="add-order-btn"><i class="material-icons">search</i></button>
+            </td>
+            <td class="popup-td"></td>
+            <td class="popup-td"></td>
+            <td class="popup-td"></td>
+            <td class="popup-td">
+                <button class="add-order-btn" onclick="window.location.href = '/admin/create-order';">+ Add Order</button>
+            </td>
         </tr>
-    {{/each}}
-</table>
+        <tr>
+            <th class="popup-th">ControlID</th>
+            <th class="popup-th">Sender</th>
+            <th class="popup-th">Receiver</th>
+            <th class="popup-th">Item Description</th>
+            <th class="popup-th">Status</th>
+            <th class="popup-th">Actions</th>
+        </tr>
+        {{#each orders}}
+        <tr class="view-tr">
+            <td class="popup-td">{{this.orderId}}</td>
+            <td class="popup-td">{{this.senderName}}</td>
+            <td class="popup-td">{{this.receiverName}}</td>
+            <td class="popup-td">{{this.itemDesc}}</td>
+            <td class="popup-td">{{this.status}}</td>
+            <td class="popup-td">
+                <button class="action-btn" onclick="viewDetails('{{this.orderId}}')"><i class="material-icons">remove_red_eye</i></button>
+                <button class="action-btn" onclick="editDetails('{{this.orderId}}')"><i class="material-icons">create</i></button>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
 
-<div id="popup" style="display: none;" name="detailsPopup" class="detailsPopup">
-    <h1>TRANSACTION #HELP HERE</h1>
+<div id="popup" style="display:none;" name="detailsPopup" class="detailsPopup">
+    <h1 id="orderIdDetails">TRANSACTION #test</h1>
     <table class="popup-table">
         <tr class="popup-tr">
             <th class="popup-th">Sender:</th>
@@ -33,7 +54,7 @@
         </tr>
         <tr class="popup-tr">
             <th class="popup-th">Item:</th>
-            <td class="popup-td" id="orderIdDetails"></td>
+            <td class="popup-td" id="itemDetails"></td>
         </tr>
         <tr class="popup-tr">
             <th class="popup-th">Charge:</th>
@@ -83,6 +104,50 @@
         <p>Origin Branch:</p>
         <input type="text" id="newOrigin">
         <br>
+<div id="popup" style="display:none;" name="editPopup" class="editPopup">
+    <form onsubmit="saveEdit()">
+        <h1 id="orderIdDetailsE">TRANSACTION #test</h1>
+        <table class="popup-table">
+            <tr class="popup-tr">
+                <th class="popup-th">Sender:</th>
+                <td class="popup-td" id="senderDetailsE"></td>
+            </tr>
+            <tr class="popup-tr">
+                <th class="popup-th">Receiver:</th>
+                <td class="popup-td" id="receiverDetailsE"></td>
+            </tr>
+            <tr class="popup-tr">
+                <th class="popup-th">Item:</th>
+                <td class="popup-td" id="itemDetailsE"></td>
+            </tr>
+            <tr class="popup-tr">
+                <th class="popup-th">Charge:</th>
+                <td class="popup-td" id="chargeDetailsE"></td>
+            </tr>
+            <tr>
+                <th class="popup-th">Status: </th>
+                <td>
+                    <select id="newStatus">
+                        <option value="PROCESSING">PROCESSING</option>
+                        <option value="IN TRANSIT">IN TRANSIT</option>
+                        <option value="READY FOR PICKUP">READY FOR PICKUP</option>
+                        <option value="DELIVERED">DELIVERED</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th class="popup-th">EDA: </th>
+                <td><input type="date" id="newEDA"></td>
+            </tr>
+            <tr>
+                <th class="popup-th">Origin Branch: </th>
+                <td><input type="text" id="newOrigin"></td>
+            </tr>
+        </table>
+        <div class="popup-btns">
+            <input type="button" class="close-btn" onclick="closeEdit()" value="CLOSE">
+            <input type="submit" id="edit-btn" value="SAVE">
+        </div>
     </form>
     <button onclick="saveEdit()">Save</button>
     <button onclick="closeEdit()">Close</button>
@@ -105,8 +170,9 @@
         }
 
         $.post('/admin/view-order/more-details', idData, function (message, status) {
-            console.log(typeof(message.orderDetails.orderId));
-            document.getElementById('orderIdDetails').innerHTML = message.orderDetails.orderId;
+            console.log(typeof (message.orderDetails.orderId));
+            document.getElementById('orderIdDetails').innerHTML = "TRANSACTION #" + message.orderDetails.orderId;
+            document.getElementById('itemDetails').innerHTML = message.orderDetails.itemDesc;
             document.getElementById('receiverDetails').innerHTML = message.orderDetails.receiverName;
             document.getElementById('senderDetails').innerHTML = message.orderDetails.senderName;
             document.getElementById('chargeDetails').innerHTML = message.orderDetails.total;
