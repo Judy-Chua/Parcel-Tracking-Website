@@ -58,14 +58,14 @@
             <p>Manila Branch</p>
             <p>Dec. 22, 2024</p>
         </div>
-        <div class="popup-btns" class="flex-parent"> 
-            <button class="close-btn" onclick="editDetails()">CLOSE</button>
-        <button id="edit-btn" onclick="closeDetails()">EDIT DETAILS</button>
+        <div class="popup-btns flex-parent"> 
+            <button class="close-btn" onclick="closeDetails()">CLOSE</button>
+            <a id="edit-btn" href="/admin/edit-order">EDIT DETAILS</a>
         </div>
     </div>
 </div>
 
-<div id="popup" style="display:none;" name="editPopup" class="editPopup">
+{{!-- <div id="popup" style="display:none;" name="editPopup" class="editPopup">
     <p id="orderIdDetailsE"></p>
     <p id="receiverDetailsE"></p>
     <p id="senderDetailsE"></p>
@@ -86,9 +86,10 @@
     </form>
     <button onclick="saveEdit()">Save</button>
     <button onclick="closeEdit()">Close</button>
-</div>
+</div> --}}
 
 <script>
+
     var currentId;
 
     function viewDetails(id)
@@ -122,45 +123,4 @@
             popup[0].style.display = "none";
     }
 
-    function editDetails()
-    {
-        closeDetails();
-        var editPopup = document.getElementsByClassName("editPopup");
-        if (editPopup)
-            editPopup[0].style.display = "block";
-
-        var idData = {
-            id: currentId
-        }
-
-        $.post('/admin/view-order/more-details', idData, function (message, status) {
-            document.getElementById('orderIdDetailsE').innerHTML = message.orderDetails.orderId;
-            document.getElementById('receiverDetailsE').innerHTML = message.orderDetails.receiverName;
-            document.getElementById('senderDetailsE').innerHTML = message.orderDetails.senderName;
-            document.getElementById('chargeDetailsE').innerHTML = message.orderDetails.total;
-        });
-    }
-
-    function closeEdit()
-    {
-        var editPopup = document.getElementsByClassName("editPopup");
-        if (editPopup)
-            editPopup[0].style.display = "none";
-    }
-
-    function saveEdit()
-    {
-        var newStatus = document.getElementById('newStatus').value;
-        var newEDA = document.getElementById('newEDA').value;
-        var newOrigin = document.getElementById('newOrigin').value;
-
-        var editData = {
-            id: currentId,
-            newStatusEdit: newStatus,
-            newEDAEdit: newEDA,
-            newOriginEdit: newOrigin
-        }
-
-        $.post('/admin/edit-order', editData, function (message, status) {});
-    }
 </script>

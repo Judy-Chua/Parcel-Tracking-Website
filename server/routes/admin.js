@@ -17,6 +17,13 @@ router.get('/login', async (req, res) =>{
 
 /* === */
 
+/* FOR DEBUGGING ONLY, replace as needed*/
+router.get('/edit-order', async (req, res) =>{
+    res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order_big"});
+})
+/* === */
+
+
 /* SUMMARY OF ORDERS */
 router.get('/view-orders', async (req, res) =>{
     try {

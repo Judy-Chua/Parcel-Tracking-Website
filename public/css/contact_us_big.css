@@ -9,7 +9,7 @@
 
 body {
     background-color: #fc0404;
-    background-image: url(./images/truck.svg);
+    background-image: url(/img/truck.svg);
     background-repeat: no-repeat;
     background-position: center 20vh;
     background-size: auto 90vh;
@@ -54,6 +54,7 @@ p {
     margin-top: 9px;
     font-size: 16px;
     text-align: center;
+    text-wrap: nowrap;
 }
 .topbar-menu {
     padding-inline: 10px;
@@ -89,29 +90,28 @@ p {
     color: #000000;
 }
 .contact-us-link {
-    display: block;
+    display: grid;
     border: solid;
     border-width: 1px;
     border-color: #0d0d0d;
-    background-color: #0d0d0d;
-    width: 127px;
     height: 50px;
     border-radius: 5px;
     margin-top: 32.5px;
     margin-left: 150px;
+    padding-inline: 10px;
     text-align: center;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-decoration: none;
-}
-.contact-us-link:visited {
-    color: #fffaeb;
-}
-.contact-us-text {
-    color: #fffaeb;
-    margin-top: 13.5px;
+    color: #000000;
     font-family: "Poppins";
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
     font-size: 16px;
+    text-wrap: nowrap;
+    place-content: center;
+}
+.contact-us-link:visited {
+    text-decoration: none;
+    color: #000000;
 }
 h1 {
     font-family: "Big Shoulders Display";

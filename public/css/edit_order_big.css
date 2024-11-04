@@ -195,10 +195,12 @@ button {
     border-radius: 4px;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     width: 19vw;
-    height: 30px;
+    height: 28px;
     margin-top: 1vh;
     margin-bottom: 3vh;
+    padding-top: 4px;
     padding-left: 1vw;
+    font-family: "Poppins";
 }
 #discount-div {
     margin-left: 1vw;
@@ -221,10 +223,12 @@ button {
     border-radius: 4px;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     width: 40.25vw;
-    height: 30px;
+    height: 28px;
     margin-top: 1vh;
     margin-bottom: 3vh;
+    padding-top: 4px;
     padding-left: 1vw;
+    font-family: "Poppins";
 }
 select {
     font-family: "Poppins";

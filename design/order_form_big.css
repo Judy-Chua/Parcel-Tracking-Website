@@ -79,16 +79,16 @@ input::placeholder {
     font-family: "Poppins";
 }
 .number-code {
-    display: block;
+    display: grid;
+    place-content: center;
     background-color: #ffffff;
     font-family: "Poppins";
-    height: 24px;
+    height: 30px;
     border-radius: 4px 0px 0px 4px;
     border-right: 1px solid #000000;
     width: 3vw;
     margin-top: 1vh;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
-    padding-top: 6px;
     text-align: center;
 }
 .phone-number {

@@ -22,7 +22,7 @@ body {
 #left-box {
 	text-align: center;
 	background-color: #fc0404;
-	background-image: url(./img/truck.svg);
+	background-image: url(/img/truck.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% auto;
