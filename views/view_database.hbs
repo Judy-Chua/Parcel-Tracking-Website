@@ -34,7 +34,9 @@
             <td class="popup-td">{{this.status}}</td>
             <td class="popup-td">
                 <button class="action-btn" onclick="viewDetails('{{this.orderId}}')"><i class="material-icons">remove_red_eye</i></button>
-                <button class="action-btn" onclick="editDetails('{{this.orderId}}')"><i class="material-icons">create</i></button>
+                <a href="/admin/edit-order">
+                    <button class="action-btn"><i class="material-icons">create</i></button>
+                </a>
             </td>
         </tr>
         {{/each}}
@@ -86,53 +88,6 @@
     </div>
 </div>
 
-<div id="popup" style="display:none;" name="editPopup" class="editPopup">
-    <form onsubmit="saveEdit()">
-        <h1 id="orderIdDetailsE">TRANSACTION #test</h1>
-        <table class="popup-table">
-            <tr class="popup-tr">
-                <th class="popup-th">Sender:</th>
-                <td class="popup-td" id="senderDetailsE"></td>
-            </tr>
-            <tr class="popup-tr">
-                <th class="popup-th">Receiver:</th>
-                <td class="popup-td" id="receiverDetailsE"></td>
-            </tr>
-            <tr class="popup-tr">
-                <th class="popup-th">Item:</th>
-                <td class="popup-td" id="itemDetailsE"></td>
-            </tr>
-            <tr class="popup-tr">
-                <th class="popup-th">Charge:</th>
-                <td class="popup-td" id="chargeDetailsE"></td>
-            </tr>
-            <tr>
-                <th class="popup-th">Status: </th>
-                <td>
-                    <select id="newStatus">
-                        <option value="PROCESSING">PROCESSING</option>
-                        <option value="IN TRANSIT">IN TRANSIT</option>
-                        <option value="READY FOR PICKUP">READY FOR PICKUP</option>
-                        <option value="DELIVERED">DELIVERED</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th class="popup-th">EDA: </th>
-                <td><input type="date" id="newEDA"></td>
-            </tr>
-            <tr>
-                <th class="popup-th">Origin Branch: </th>
-                <td><input type="text" id="newOrigin"></td>
-            </tr>
-        </table>
-        <div class="popup-btns flex-parent">
-            <input type="button" class="close-btn" onclick="closeEdit()" value="CLOSE">
-            <input type="submit" id="save-btn" value="SAVE">
-        </div>
-    </form>
-</div>
-
 <script>
     var currentId;
 
@@ -166,51 +121,5 @@
         var popup = document.getElementsByClassName("detailsPopup");
         if (popup)
             popup[0].style.display = "none";
-    }
-
-    function editDetails(id)
-    {
-        closeDetails();
-        currentId = id;
-        var editPopup = document.getElementsByClassName("editPopup");
-        if (editPopup)
-            editPopup[0].style.display = "block";
-
-        var idData = {
-            id: id
-        }
-
-        $.post('/admin/view-order/more-details', idData, function (message, status) {
-            document.getElementById('orderIdDetailsE').innerHTML = "TRANSACTION #" + message.orderDetails.orderId;
-            document.getElementById('itemDetailsE').innerHTML = message.orderDetails.itemDesc;
-            document.getElementById('receiverDetailsE').innerHTML = message.orderDetails.receiverName;
-            document.getElementById('senderDetailsE').innerHTML = message.orderDetails.senderName;
-            document.getElementById('chargeDetailsE').innerHTML = message.orderDetails.total;
-        });
-    }
-
-    function closeEdit()
-    {
-        var editPopup = document.getElementsByClassName("editPopup");
-        if (editPopup)
-            editPopup[0].style.display = "none";
-    }
-
-    function saveEdit()
-    {
-        var newStatus = document.getElementById('newStatus').value;
-        var newEDA = document.getElementById('newEDA').value;
-        var newOrigin = document.getElementById('newOrigin').value;
-
-        var editData = {
-            id: currentId,
-            newStatusEdit: newStatus,
-            newEDAEdit: newEDA,
-            newOriginEdit: newOrigin
-        }
-
-        $.post('/admin/edit-order', editData, function (message, status) {
-            window.location.reload();
-        });
     }
 </script>
