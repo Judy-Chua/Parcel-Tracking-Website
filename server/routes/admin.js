@@ -37,7 +37,7 @@ router.get('/view-orders', async (req, res) =>{
     }
 })
 
-router.post('/view-order/more-details', async (req, res) => {
+router.post('/view-orders/more-details', async (req, res) => {
     try {
         const { id } = req.body
         const orderDetails = await Order.findOne({ orderId: id });
@@ -48,6 +48,18 @@ router.post('/view-order/more-details', async (req, res) => {
         res.status(500).send("Server Error");
     }
 })
+
+router.get('/view-orders/control-id', async (req, res) => {
+    try {
+        const controlId = req.query.controlId;
+        const orders = await Order.find({ "orderId": {$regex : controlId} });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
 
 router.post('/edit-order', async (req, res) => {
     try {

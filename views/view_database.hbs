@@ -8,29 +8,35 @@
             </td>
             <td class="popup-td">
                 <div id="controlIdSearch">
-                    <input type="text">
-                    <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    <form action="/admin/view-orders/control-id">
+                        <input type="text" id="controlId" name="controlId">
+                        <button class="add-order-btn" onclick="searchByControlId()"><i class="material-icons">search</i></button>
+                    </form>
                 </div>
                 <div id="hubToHubSearch" style="display: none;">
-                    <select name="originSearch">
-                        <option value="any">Any</option>
-                        <option value="hub1">Hub 1</option>
-                        <option value="hub2">Hub 2</option>
-                        <option value="hub3">Hub 3</option>
-                        <option value="hub4">Hub 4</option>
-                    </select>
-                     to 
-                    <select name="destinationSearch">
-                        <option value="any">Any</option>
-                        <option value="hub1">Hub 1</option>
-                        <option value="hub2">Hub 2</option>
-                        <option value="hub3">Hub 3</option>
-                        <option value="hub4">Hub 4</option>
-                    </select>
-                    <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    <form>
+                        <select name="originSearch">
+                            <option value="any">Any</option>
+                            <option value="hub1">Hub 1</option>
+                            <option value="hub2">Hub 2</option>
+                            <option value="hub3">Hub 3</option>
+                            <option value="hub4">Hub 4</option>
+                        </select>
+                         to 
+                        <select name="destinationSearch">
+                            <option value="any">Any</option>
+                            <option value="hub1">Hub 1</option>
+                            <option value="hub2">Hub 2</option>
+                            <option value="hub3">Hub 3</option>
+                            <option value="hub4">Hub 4</option>
+                        </select>
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
                 </div>
             </td>
-            <td class="popup-td"></td>
+            <td class="popup-td">
+                <button class="add-order-btn" onclick="window.location.href = '/admin/view-orders';">VIEW ALL</button>
+            </td>
             <td class="popup-td"></td>
             <td class="popup-td"></td>
             <td class="popup-td">
@@ -140,7 +146,7 @@
             id: id
         }
 
-        $.post('/admin/view-order/more-details', idData, function (message, status) {
+        $.post('/admin/view-orders/more-details', idData, function (message, status) {
             console.log(typeof (message.orderDetails.orderId));
             document.getElementById('orderIdDetails').innerHTML = "TRANSACTION #" + message.orderDetails.orderId;
             document.getElementById('itemDetails').innerHTML = message.orderDetails.itemDesc;
@@ -191,5 +197,10 @@
         var testNone = document.getElementById("testNone");
         if (popup)
             popup[0].style.display = "none";
+    }
+
+    function searchByControlId()
+    {
+
     }
 </script>
