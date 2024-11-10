@@ -9,27 +9,43 @@
             <td class="popup-td">
                 <div id="controlIdSearch">
                     <form action="/admin/view-orders/control-id">
-                        <input type="text" id="controlId" name="controlId">
-                        <button class="add-order-btn" onclick="searchByControlId()"><i class="material-icons">search</i></button>
+                        <input type="text" id="controlId" name="controlId" placeholder="Input a control ID eg. A1A2">
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
                     </form>
                 </div>
                 <div id="hubToHubSearch" style="display: none;">
-                    <form>
-                        <select name="originSearch">
-                            <option value="any">Any</option>
-                            <option value="hub1">Hub 1</option>
-                            <option value="hub2">Hub 2</option>
-                            <option value="hub3">Hub 3</option>
-                            <option value="hub4">Hub 4</option>
+                    <form action="/admin/view-orders/hub-to-hub">
+                        <select id="originSearch" name="originSearch">
+                            <option value="Hub 1">Hub 1</option>
+                            <option value="Hub 2">Hub 2</option>
+                            <option value="Hub 3">Hub 3</option>
+                            <option value="Hub 4">Hub 4</option>
                         </select>
-                         to 
-                        <select name="destinationSearch">
-                            <option value="any">Any</option>
-                            <option value="hub1">Hub 1</option>
-                            <option value="hub2">Hub 2</option>
-                            <option value="hub3">Hub 3</option>
-                            <option value="hub4">Hub 4</option>
+                        to
+                        <select id="destSearch" name="destSearch">
+                            <option value="Hub 1">Hub 1</option>
+                            <option value="Hub 2">Hub 2</option>
+                            <option value="Hub 3">Hub 3</option>
+                            <option value="Hub 4">Hub 4</option>
                         </select>
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
+                <div id="dailySearch" style="display: none;">
+                    <form action="/admin/view-orders/daily-net">
+                        <input type="text" id="daySearch" name="daySearch" placeholder="date eg. 1-1-2000">
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
+                <div id="monthlySearch" style="display: none;">
+                    <form action="/admin/view-orders/monthly-net">
+                        <input type="text" id="monthSearch" name="monthSearch" placeholder="month eg. 1-2000">
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
+                <div id="annualSearch" style="display: none;">
+                    <form action="/admin/view-orders/annual-net">
+                        <input type="text" id="yearSearch" name="yearSearch" placeholder="year eg. 2000">
                         <button class="add-order-btn"><i class="material-icons">search</i></button>
                     </form>
                 </div>
@@ -37,7 +53,11 @@
             <td class="popup-td">
                 <button class="add-order-btn" onclick="window.location.href = '/admin/view-orders';">VIEW ALL</button>
             </td>
-            <td class="popup-td"></td>
+            <td class="popup-td">
+                {{#if net}}
+                    <p>Net: {{net}}</p>
+                {{/if}}
+            </td>
             <td class="popup-td"></td>
             <td class="popup-td">
                 <button class="add-order-btn" onclick="window.location.href = '/admin/create-order';">+ Add Order</button>
@@ -123,6 +143,15 @@
         <tr class="popup-tr">
             <th class="popup-th"><input type="radio" name="filterOptions" value="hubToHub" />Hub to Hub Selection</th>
         </tr>
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="daily" />Daily Net</th>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="monthly" />Monthly Net</th>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="annual" />Annual Net</th>
+        </tr>
     </table>
     <div class="popup-btns flex-parent">
         <button class="close-btn" onclick="closeFilter()">CLOSE</button>
@@ -177,6 +206,9 @@
     {
         var controlIdSearch = document.getElementById("controlIdSearch");
         var hubToHubSearch = document.getElementById("hubToHubSearch");
+        var dailySearch = document.getElementById("dailySearch");
+        var monthlySearch = document.getElementById("monthlySearch");
+        var annualSearch = document.getElementById("annualSearch");
         var optionSelected = document.querySelector('input[name=filterOptions]:checked').value;
         filterSelected = optionSelected;
 
@@ -184,11 +216,37 @@
         {
             controlIdSearch.style.display = "block";
             hubToHubSearch.style.display = "none";
+            dailySearch.style.display = "none";
+            monthlySearch.style.display = "none";
+            annualSearch.style.display = "none";
         }
-        else
-        {
-            hubToHubSearch.style.display = "block";
+        if (optionSelected == "hubToHub") {
             controlIdSearch.style.display = "none";
+            hubToHubSearch.style.display = "block";
+            dailySearch.style.display = "none";
+            monthlySearch.style.display = "none";
+            annualSearch.style.display = "none";
+        }
+        if (optionSelected == "daily") {
+            controlIdSearch.style.display = "none";
+            hubToHubSearch.style.display = "none";
+            dailySearch.style.display = "block";
+            monthlySearch.style.display = "none";
+            annualSearch.style.display = "none";
+        }
+        if (optionSelected == "monthly") {
+            controlIdSearch.style.display = "none";
+            hubToHubSearch.style.display = "none";
+            dailySearch.style.display = "none";
+            monthlySearch.style.display = "block";
+            annualSearch.style.display = "none";
+        }
+        if (optionSelected == "annual") {
+            controlIdSearch.style.display = "none";
+            hubToHubSearch.style.display = "none";
+            dailySearch.style.display = "none";
+            monthlySearch.style.display = "none";
+            annualSearch.style.display = "block";
         }
     }
 
@@ -197,10 +255,5 @@
         var testNone = document.getElementById("testNone");
         if (popup)
             popup[0].style.display = "none";
-    }
-
-    function searchByControlId()
-    {
-
     }
 </script>

@@ -61,6 +61,103 @@ router.get('/view-orders/control-id', async (req, res) => {
     }
 });
 
+router.get('/view-orders/hub-to-hub', async (req, res) => {
+    try {
+        const originSearch = req.query.originSearch;
+        const destSearch = req.query.destSearch;
+        const orders = await Order.find({
+            "originBranch": { $regex: originSearch },
+            "destBranch": { $regex: destSearch }
+        });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+router.get('/view-orders/daily-net', async (req, res) => {
+    try {
+        const daySearch = req.query.daySearch;
+        const orders = await Order.find({
+            "transDate": { $regex: daySearch }
+        });
+        const dailyNet = await Order.aggregate([
+            {
+                $match: {
+                    transDate: { $regex: daySearch }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalSum: { $sum: '$total' }
+                }
+            }
+        ]);
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: dailyNet[0].totalSum });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+router.get('/view-orders/monthly-net', async (req, res) => {
+    try {
+        const monthSearch = req.query.monthSearch;
+        const orders = await Order.find({
+            "transDate": { $regex: monthSearch }
+        });
+        const monthlyNet = await Order.aggregate([
+            {
+                $match: {
+                    transDate: { $regex: monthSearch }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalSum: { $sum: '$total' }
+                }
+            }
+        ]);
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: monthlyNet[0].totalSum });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+router.get('/view-orders/annual-net', async (req, res) => {
+    try {
+        const yearSearch = req.query.yearSearch;
+        const orders = await Order.find({
+            "transDate": { $regex: yearSearch }
+        });
+        const annualNet = await Order.aggregate([
+            {
+                $match: {
+                    transDate: { $regex: yearSearch }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalSum: { $sum: '$total' }
+                }
+            }
+        ]);
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: annualNet[0].totalSum });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
 router.post('/edit-order', async (req, res) => {
     try {
         const { id } = req.body;

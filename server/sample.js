@@ -40,7 +40,7 @@ const sampleOrders = [
         updates: [30002, 30003]
     },
 
-    /* 1 */
+    /* 2 */
     {
         orderId: "A1A3",
         senderName: "Joseph Santos",
@@ -55,7 +55,7 @@ const sampleOrders = [
         total: 1503.25,
 
         status: "IN TRANSIT",
-        arrivalDate: "10-20-2024",
+        arrivalDate: "12-12-2024",
         updatedBy: "Hub 1",
         updates: []
     },
