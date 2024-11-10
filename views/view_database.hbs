@@ -4,11 +4,31 @@
     <table style="text-align: center;" class="view-table" id="order-popup">
         <tr>
             <td class="popup-td">
-                <button class="add-order-btn"><i class="material-icons">filter_list</i></button>
+                <button class="add-order-btn" onclick="filterOptions()"><i class="material-icons">filter_list</i></button>
             </td>
             <td class="popup-td">
-                <input type="text">
-                <button class="add-order-btn"><i class="material-icons">search</i></button>
+                <div id="controlIdSearch">
+                    <input type="text">
+                    <button class="add-order-btn"><i class="material-icons">search</i></button>
+                </div>
+                <div id="hubToHubSearch" style="display: none;">
+                    <select name="originSearch">
+                        <option value="any">Any</option>
+                        <option value="hub1">Hub 1</option>
+                        <option value="hub2">Hub 2</option>
+                        <option value="hub3">Hub 3</option>
+                        <option value="hub4">Hub 4</option>
+                    </select>
+                     to 
+                    <select name="destinationSearch">
+                        <option value="any">Any</option>
+                        <option value="hub1">Hub 1</option>
+                        <option value="hub2">Hub 2</option>
+                        <option value="hub3">Hub 3</option>
+                        <option value="hub4">Hub 4</option>
+                    </select>
+                    <button class="add-order-btn"><i class="material-icons">search</i></button>
+                </div>
             </td>
             <td class="popup-td"></td>
             <td class="popup-td"></td>
@@ -88,8 +108,25 @@
     </div>
 </div>
 
+<div id="popup" style="display: none;" name="filterPopup" class="filterPopup">
+    <h1 id="orderIdDetails">FILTER OPTIONS</h1>
+    <table class="popup-table">
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="controlId" checked />By Control ID</th>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="hubToHub" />Hub to Hub Selection</th>
+        </tr>
+    </table>
+    <div class="popup-btns flex-parent">
+        <button class="close-btn" onclick="closeFilter()">CLOSE</button>
+        <button id="edit-btn" onclick="selectFilter()">SELECT</button>
+    </div>
+</div>
+
 <script>
     var currentId;
+    var filterSelected = "controlId";
 
     function viewDetails(id)
     {
@@ -119,6 +156,39 @@
     function closeDetails()
     {
         var popup = document.getElementsByClassName("detailsPopup");
+        if (popup)
+            popup[0].style.display = "none";
+    }
+
+    function filterOptions()
+    {
+        var popup = document.getElementsByClassName("filterPopup");
+        if (popup)
+            popup[0].style.display = "block";
+    }
+
+    function selectFilter()
+    {
+        var controlIdSearch = document.getElementById("controlIdSearch");
+        var hubToHubSearch = document.getElementById("hubToHubSearch");
+        var optionSelected = document.querySelector('input[name=filterOptions]:checked').value;
+        filterSelected = optionSelected;
+
+        if (optionSelected == "controlId")
+        {
+            controlIdSearch.style.display = "block";
+            hubToHubSearch.style.display = "none";
+        }
+        else
+        {
+            hubToHubSearch.style.display = "block";
+            controlIdSearch.style.display = "none";
+        }
+    }
+
+    function closeFilter() {
+        var popup = document.getElementsByClassName("filterPopup");
+        var testNone = document.getElementById("testNone");
         if (popup)
             popup[0].style.display = "none";
     }
