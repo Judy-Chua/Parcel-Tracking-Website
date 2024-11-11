@@ -37,7 +37,28 @@ const sampleOrders = [
         status : "IN TRANSIT",
         arrivalDate : "10-20-2024",
         updatedBy : "Hub 1",
-        updates : [30002, 30003] },
+        updates: [30002, 30003]
+    },
+
+    /* 2 */
+    {
+        orderId: "A1A3",
+        senderName: "Joseph Santos",
+        receiverName: "Juan Perez",
+        senderNum: 56788,
+        receiverNum: 22222,
+        itemDesc: ["Item11", "Item22"],
+        itemNum: [3, 5],
+        transDate: "18-10-2024",
+        originBranch: "Hub 1",
+        destBranch: "Hub 2",
+        total: 1503.25,
+
+        status: "IN TRANSIT",
+        arrivalDate: "12-12-2024",
+        updatedBy: "Hub 1",
+        updates: []
+    },
 
     /* 2 */
     {   orderId : "B1B2",

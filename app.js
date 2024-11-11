@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { engine } = require('express-handlebars');
 const path = require('path');
@@ -10,6 +11,11 @@ const { sampleUsers, sampleOrders, sampleUpdates } = require('./server/sample');
 const User = require('./server/models/User');
 const Order = require('./server/models/Order');
 const Update = require('./server/models/Update');
+
+const Sessions =  require('./server/models/Sessions.js');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const passport = require('passport');
 
 const PORT = 3000;
 
@@ -24,6 +30,31 @@ async function createSample() {
     await Order.insertMany(sampleOrders);
     await Update.insertMany(sampleUpdates);
 }
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl : process.env.MONGODB_URI,
+        mongoOptions: {
+            useNewUrlParser: true,
+        },
+        cookie : {
+            maxAge: (req,res) => {
+                if(req.user && req.user.rememberme){
+                    console.log("inside")
+                    return 24 * 60 * 60 * 1000
+                } else {
+                    console.log("inside")
+                    return null
+                }
+            },
+            expires: false
+        },
+        collectionName:  'sessions'
+    })
+}))
 
 createSample().catch(console.error);
 
@@ -42,9 +73,22 @@ app.engine('hbs', engine({
     }
 }));
 
+
+
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'hbs');
+
+
+
+require('./server/config/passport.js');
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+    console.log(req.body);
+    next();
+});
 
 app.use('/', require('./server/routes/main.js'));
 app.use('/search_parcel', require('./server/routes/tracking.js'));

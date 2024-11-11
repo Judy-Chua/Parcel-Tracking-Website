@@ -4,14 +4,60 @@
     <table style="text-align: center;" class="view-table" id="order-popup">
         <tr>
             <td class="popup-td">
-                <button class="add-order-btn"><i class="material-icons">filter_list</i></button>
+                <button class="add-order-btn" onclick="filterOptions()"><i class="material-icons">filter_list</i></button>
             </td>
             <td class="popup-td">
-                <input type="text">
-                <button class="add-order-btn"><i class="material-icons">search</i></button>
+                <div id="controlIdSearch">
+                    <form action="/admin/view-orders/control-id">
+                        <input type="text" id="controlId" name="controlId" placeholder="Input a control ID eg. A1A2">
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
+                <div id="hubToHubSearch" style="display: none;">
+                    <form action="/admin/view-orders/hub-to-hub">
+                        <select id="originSearch" name="originSearch">
+                            <option value="Hub 1">Hub 1</option>
+                            <option value="Hub 2">Hub 2</option>
+                            <option value="Hub 3">Hub 3</option>
+                            <option value="Hub 4">Hub 4</option>
+                        </select>
+                        to
+                        <select id="destSearch" name="destSearch">
+                            <option value="Hub 1">Hub 1</option>
+                            <option value="Hub 2">Hub 2</option>
+                            <option value="Hub 3">Hub 3</option>
+                            <option value="Hub 4">Hub 4</option>
+                        </select>
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
+                <div id="dailySearch" style="display: none;">
+                    <form action="/admin/view-orders/daily-net">
+                        <input type="text" id="daySearch" name="daySearch" placeholder="date eg. 1-1-2000">
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
+                <div id="monthlySearch" style="display: none;">
+                    <form action="/admin/view-orders/monthly-net">
+                        <input type="text" id="monthSearch" name="monthSearch" placeholder="month eg. 1-2000">
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
+                <div id="annualSearch" style="display: none;">
+                    <form action="/admin/view-orders/annual-net">
+                        <input type="text" id="yearSearch" name="yearSearch" placeholder="year eg. 2000">
+                        <button class="add-order-btn"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
             </td>
-            <td class="popup-td"></td>
-            <td class="popup-td"></td>
+            <td class="popup-td">
+                <button class="add-order-btn" onclick="window.location.href = '/admin/view-orders';">VIEW ALL</button>
+            </td>
+            <td class="popup-td">
+                {{#if net}}
+                    <p>Net: {{net}}</p>
+                {{/if}}
+            </td>
             <td class="popup-td"></td>
             <td class="popup-td">
                 <button class="add-order-btn" onclick="window.location.href = '/admin/create-order';">+ Add Order</button>
@@ -88,8 +134,34 @@
     </div>
 </div>
 
+<div id="popup" style="display: none;" name="filterPopup" class="filterPopup">
+    <h1 id="orderIdDetails">FILTER OPTIONS</h1>
+    <table class="popup-table">
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="controlId" checked />By Control ID</th>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="hubToHub" />Hub to Hub Selection</th>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="daily" />Daily Net</th>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="monthly" />Monthly Net</th>
+        </tr>
+        <tr class="popup-tr">
+            <th class="popup-th"><input type="radio" name="filterOptions" value="annual" />Annual Net</th>
+        </tr>
+    </table>
+    <div class="popup-btns flex-parent">
+        <button class="close-btn" onclick="closeFilter()">CLOSE</button>
+        <button id="edit-btn" onclick="selectFilter()">SELECT</button>
+    </div>
+</div>
+
 <script>
     var currentId;
+    var filterSelected = "controlId";
 
     function viewDetails(id)
     {
@@ -103,7 +175,7 @@
             id: id
         }
 
-        $.post('/admin/view-order/more-details', idData, function (message, status) {
+        $.post('/admin/view-orders/more-details', idData, function (message, status) {
             console.log(typeof (message.orderDetails.orderId));
             document.getElementById('orderIdDetails').innerHTML = "TRANSACTION #" + message.orderDetails.orderId;
             document.getElementById('itemDetails').innerHTML = message.orderDetails.itemDesc;
@@ -119,6 +191,68 @@
     function closeDetails()
     {
         var popup = document.getElementsByClassName("detailsPopup");
+        if (popup)
+            popup[0].style.display = "none";
+    }
+
+    function filterOptions()
+    {
+        var popup = document.getElementsByClassName("filterPopup");
+        if (popup)
+            popup[0].style.display = "block";
+    }
+
+    function selectFilter()
+    {
+        var controlIdSearch = document.getElementById("controlIdSearch");
+        var hubToHubSearch = document.getElementById("hubToHubSearch");
+        var dailySearch = document.getElementById("dailySearch");
+        var monthlySearch = document.getElementById("monthlySearch");
+        var annualSearch = document.getElementById("annualSearch");
+        var optionSelected = document.querySelector('input[name=filterOptions]:checked').value;
+        filterSelected = optionSelected;
+
+        if (optionSelected == "controlId")
+        {
+            controlIdSearch.style.display = "block";
+            hubToHubSearch.style.display = "none";
+            dailySearch.style.display = "none";
+            monthlySearch.style.display = "none";
+            annualSearch.style.display = "none";
+        }
+        if (optionSelected == "hubToHub") {
+            controlIdSearch.style.display = "none";
+            hubToHubSearch.style.display = "block";
+            dailySearch.style.display = "none";
+            monthlySearch.style.display = "none";
+            annualSearch.style.display = "none";
+        }
+        if (optionSelected == "daily") {
+            controlIdSearch.style.display = "none";
+            hubToHubSearch.style.display = "none";
+            dailySearch.style.display = "block";
+            monthlySearch.style.display = "none";
+            annualSearch.style.display = "none";
+        }
+        if (optionSelected == "monthly") {
+            controlIdSearch.style.display = "none";
+            hubToHubSearch.style.display = "none";
+            dailySearch.style.display = "none";
+            monthlySearch.style.display = "block";
+            annualSearch.style.display = "none";
+        }
+        if (optionSelected == "annual") {
+            controlIdSearch.style.display = "none";
+            hubToHubSearch.style.display = "none";
+            dailySearch.style.display = "none";
+            monthlySearch.style.display = "none";
+            annualSearch.style.display = "block";
+        }
+    }
+
+    function closeFilter() {
+        var popup = document.getElementsByClassName("filterPopup");
+        var testNone = document.getElementById("testNone");
         if (popup)
             popup[0].style.display = "none";
     }
