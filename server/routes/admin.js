@@ -19,14 +19,14 @@ checkAuthenticated = (req,res, next) => {
 }
 
 /* LOGIN */
-router.get('/', async (req, res) =>{
+router.get('/', checkAuthenticated, async (req, res) =>{
     if(req.isAuthenticated()){
         res.redirect('/admin/view-orders')
     }
     res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login_big"});
 })
 
-router.get('/login', async (req, res) =>{
+router.get('/login', checkAuthenticated, async (req, res) =>{
     if(req.isAuthenticated()){
         res.redirect('/admin/view-orders')
     }
@@ -48,14 +48,14 @@ router.post('/login', passport.authenticate('local', { successRedirect : '/admin
 /* === */
 
 /* FOR DEBUGGING ONLY, replace as needed*/
-router.get('/edit-order', async (req, res) =>{
+router.get('/edit-order', checkAuthenticated, async (req, res) =>{
     res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order_big"});
 })
 /* === */
 
 
 /* SUMMARY OF ORDERS */
-router.get('/view-orders', checkAuthenticated , async (req, res) =>{
+router.get('/view-orders', checkAuthenticated , checkAuthenticated, async (req, res) =>{
     try {
         const orders = await Order.find();
         res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
@@ -67,7 +67,7 @@ router.get('/view-orders', checkAuthenticated , async (req, res) =>{
     }
 })
 
-router.post('/view-order/more-details', async (req, res) => {
+router.post('/view-order/more-details', checkAuthenticated, async (req, res) => {
     try {
         const { id } = req.body
         const orderDetails = await Order.findOne({ orderId: id });
@@ -79,7 +79,7 @@ router.post('/view-order/more-details', async (req, res) => {
     }
 })
 
-router.get('/view-orders/control-id', async (req, res) => {
+router.get('/view-orders/control-id', checkAuthenticated, async (req, res) => {
     try {
         const controlId = req.query.controlId;
         const orders = await Order.find({ "orderId": {$regex : controlId} });
@@ -91,7 +91,7 @@ router.get('/view-orders/control-id', async (req, res) => {
     }
 });
 
-router.get('/view-orders/hub-to-hub', async (req, res) => {
+router.get('/view-orders/hub-to-hub', checkAuthenticated, async (req, res) => {
     try {
         const originSearch = req.query.originSearch;
         const destSearch = req.query.destSearch;
@@ -107,7 +107,7 @@ router.get('/view-orders/hub-to-hub', async (req, res) => {
     }
 });
 
-router.get('/view-orders/daily-net', async (req, res) => {
+router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
     try {
         const daySearch = req.query.daySearch;
         const orders = await Order.find({
@@ -134,7 +134,7 @@ router.get('/view-orders/daily-net', async (req, res) => {
     }
 });
 
-router.get('/view-orders/monthly-net', async (req, res) => {
+router.get('/view-orders/monthly-net', checkAuthenticated, async (req, res) => {
     try {
         const monthSearch = req.query.monthSearch;
         const orders = await Order.find({
@@ -161,7 +161,7 @@ router.get('/view-orders/monthly-net', async (req, res) => {
     }
 });
 
-router.get('/view-orders/annual-net', async (req, res) => {
+router.get('/view-orders/annual-net', checkAuthenticated, async (req, res) => {
     try {
         const yearSearch = req.query.yearSearch;
         const orders = await Order.find({
@@ -188,7 +188,7 @@ router.get('/view-orders/annual-net', async (req, res) => {
     }
 });
 
-router.get('/view-orders/control-id', async (req, res) => {
+router.get('/view-orders/control-id', checkAuthenticated, async (req, res) => {
     try {
         const controlId = req.query.controlId;
         const orders = await Order.find({ "orderId": {$regex : controlId} });
@@ -200,7 +200,7 @@ router.get('/view-orders/control-id', async (req, res) => {
     }
 });
 
-router.get('/view-orders/hub-to-hub', async (req, res) => {
+router.get('/view-orders/hub-to-hub', checkAuthenticated, async (req, res) => {
     try {
         const originSearch = req.query.originSearch;
         const destSearch = req.query.destSearch;
@@ -216,7 +216,7 @@ router.get('/view-orders/hub-to-hub', async (req, res) => {
     }
 });
 
-router.get('/view-orders/daily-net', async (req, res) => {
+router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
     try {
         const daySearch = req.query.daySearch;
         const orders = await Order.find({
@@ -243,7 +243,7 @@ router.get('/view-orders/daily-net', async (req, res) => {
     }
 });
 
-router.get('/view-orders/monthly-net', async (req, res) => {
+router.get('/view-orders/monthly-net', checkAuthenticated, async (req, res) => {
     try {
         const monthSearch = req.query.monthSearch;
         const orders = await Order.find({
@@ -270,7 +270,7 @@ router.get('/view-orders/monthly-net', async (req, res) => {
     }
 });
 
-router.get('/view-orders/annual-net', async (req, res) => {
+router.get('/view-orders/annual-net', checkAuthenticated, async (req, res) => {
     try {
         const yearSearch = req.query.yearSearch;
         const orders = await Order.find({
@@ -297,7 +297,7 @@ router.get('/view-orders/annual-net', async (req, res) => {
     }
 });
 
-router.post('/edit-order', checkAuthenticated, async (req, res) => {
+router.post('/edit-order', checkAuthenticated, checkAuthenticated, async (req, res) => {
     try {
         const { id } = req.body;
         const { newStatusEdit } = req.body;
@@ -323,7 +323,7 @@ router.post('/edit-order', checkAuthenticated, async (req, res) => {
 /* === */
 
 /* ADD ORDER */
-router.get('/create-order', checkAuthenticated, async (req, res) =>{
+router.get('/create-order', checkAuthenticated, checkAuthenticated, async (req, res) =>{
     res.render('order_form', {layout: "admin.hbs", title: "Order Form", css:"order_form_big"});
 })
 
