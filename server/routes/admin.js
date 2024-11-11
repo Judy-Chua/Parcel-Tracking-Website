@@ -1,19 +1,49 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const User = require('../models/User.js');
+const passport = require('passport');
+const bcrypt = require('bcrypt');
+const Sessions = require('../models/Sessions.js');
+
 
 //const User = require('../models/User.js');
 const Order = require('../models/Order.js');
 //const Update = require('../models/Update.js');
 
+checkAuthenticated = (req,res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/admin/login');
+}
+
 /* LOGIN */
 router.get('/', async (req, res) =>{
+    if(req.isAuthenticated()){
+        res.redirect('/admin/view-orders')
+    }
     res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login_big"});
 })
 
 router.get('/login', async (req, res) =>{
+    if(req.isAuthenticated()){
+        res.redirect('/admin/view-orders')
+    }
     res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login_big"});
 })
+
+
+router.post('/login', passport.authenticate('local', { successRedirect : '/admin/view-orders', failureRedirect : '/admin/login' }), function(req, res, next){
+    console.log("ENTERED!");
+    res.redirect('/admin/view-orders');
+});
+
+
+router.post('/login', passport.authenticate('local', { successRedirect : '/admin/view-orders', failureRedirect : '/admin/login' }), function(req, res, next){
+    console.log("ENTERED!");
+    res.redirect('/admin/view-orders');
+});
 
 /* === */
 
@@ -25,7 +55,7 @@ router.get('/edit-order', async (req, res) =>{
 
 
 /* SUMMARY OF ORDERS */
-router.get('/view-orders', async (req, res) =>{
+router.get('/view-orders', checkAuthenticated , async (req, res) =>{
     try {
         const orders = await Order.find();
         res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
@@ -37,7 +67,7 @@ router.get('/view-orders', async (req, res) =>{
     }
 })
 
-router.post('/view-orders/more-details', async (req, res) => {
+router.post('/view-order/more-details', async (req, res) => {
     try {
         const { id } = req.body
         const orderDetails = await Order.findOne({ orderId: id });
@@ -158,7 +188,116 @@ router.get('/view-orders/annual-net', async (req, res) => {
     }
 });
 
-router.post('/edit-order', async (req, res) => {
+router.get('/view-orders/control-id', async (req, res) => {
+    try {
+        const controlId = req.query.controlId;
+        const orders = await Order.find({ "orderId": {$regex : controlId} });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+router.get('/view-orders/hub-to-hub', async (req, res) => {
+    try {
+        const originSearch = req.query.originSearch;
+        const destSearch = req.query.destSearch;
+        const orders = await Order.find({
+            "originBranch": { $regex: originSearch },
+            "destBranch": { $regex: destSearch }
+        });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+router.get('/view-orders/daily-net', async (req, res) => {
+    try {
+        const daySearch = req.query.daySearch;
+        const orders = await Order.find({
+            "transDate": { $regex: daySearch }
+        });
+        const dailyNet = await Order.aggregate([
+            {
+                $match: {
+                    transDate: { $regex: daySearch }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalSum: { $sum: '$total' }
+                }
+            }
+        ]);
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: dailyNet[0].totalSum });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+router.get('/view-orders/monthly-net', async (req, res) => {
+    try {
+        const monthSearch = req.query.monthSearch;
+        const orders = await Order.find({
+            "transDate": { $regex: monthSearch }
+        });
+        const monthlyNet = await Order.aggregate([
+            {
+                $match: {
+                    transDate: { $regex: monthSearch }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalSum: { $sum: '$total' }
+                }
+            }
+        ]);
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: monthlyNet[0].totalSum });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+router.get('/view-orders/annual-net', async (req, res) => {
+    try {
+        const yearSearch = req.query.yearSearch;
+        const orders = await Order.find({
+            "transDate": { $regex: yearSearch }
+        });
+        const annualNet = await Order.aggregate([
+            {
+                $match: {
+                    transDate: { $regex: yearSearch }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalSum: { $sum: '$total' }
+                }
+            }
+        ]);
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: annualNet[0].totalSum });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+router.post('/edit-order', checkAuthenticated, async (req, res) => {
     try {
         const { id } = req.body;
         const { newStatusEdit } = req.body;
@@ -184,11 +323,11 @@ router.post('/edit-order', async (req, res) => {
 /* === */
 
 /* ADD ORDER */
-router.get('/create-order', async (req, res) =>{
+router.get('/create-order', checkAuthenticated, async (req, res) =>{
     res.render('order_form', {layout: "admin.hbs", title: "Order Form", css:"order_form_big"});
 })
 
-router.post('/add-order', async (req, res) =>{
+router.post('/add-order', checkAuthenticated,    async (req, res) =>{
     try {
         var { orderId, senderName, receiverName, senderNum, receiverNum,
               itemDesc, itemNum, transDate, originBranch, destBranch,
