@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "1. Run the `npm install` command to install the required dependencies along with the development dependencies (nodemon)\r 2. To start the application run the `npm run dev` which will automatically start nodemon.\r 3. To view the page, visit `127.0.0.1:3000` or `localhost:3000` in the browser.",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bson": "^6.8.0",
     "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.5",
@@ -18,7 +19,8 @@
     "express-sessions": "^1.0.6",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.1",
-    "passport": "^0.7.0"
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

@@ -1,24 +1,48 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const User = require('../models/User.js');
+const passport = require('passport');
+const bcrypt = require('bcrypt');
+const Sessions = require('../models/Sessions.js');
+
 
 //const User = require('../models/User.js');
 const Order = require('../models/Order.js');
 //const Update = require('../models/Update.js');
 
+checkAuthenticated = (req,res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/admin/login');
+}
+
 /* LOGIN */
 router.get('/', async (req, res) =>{
+    if(req.isAuthenticated()){
+        res.redirect('/admin/view-orders')
+    }
     res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login_big"});
 })
 
 router.get('/login', async (req, res) =>{
+    if(req.isAuthenticated()){
+        res.redirect('/admin/view-orders')
+    }
     res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login_big"});
 })
+
+
+router.post('/login', passport.authenticate('local', { successRedirect : '/admin/view-orders', failureRedirect : '/admin/login' }), function(req, res, next){
+    console.log("ENTERED!");
+    res.redirect('/admin/view-orders');
+});
 
 /* === */
 
 /* SUMMARY OF ORDERS */
-router.get('/view-orders', async (req, res) =>{
+router.get('/view-orders', checkAuthenticated , async (req, res) =>{
     try {
         const orders = await Order.find();
         res.render('view_database', { layout: "admin.hbs", title: "Search | ESMC", css: "view_database_big", orders: orders });
@@ -30,7 +54,7 @@ router.get('/view-orders', async (req, res) =>{
     }
 })
 
-router.post('/view-order/more-details', async (req, res) => {
+router.post('/view-order/more-details', checkAuthenticated,  async (req, res) => {
     try {
         const { id } = req.body
         const orderDetails = await Order.findOne({ orderId: id });
@@ -42,7 +66,7 @@ router.post('/view-order/more-details', async (req, res) => {
     }
 })
 
-router.post('/edit-order', async (req, res) => {
+router.post('/edit-order', checkAuthenticated, async (req, res) => {
     try {
         const { id } = req.body;
         const { newStatusEdit } = req.body;
@@ -68,11 +92,11 @@ router.post('/edit-order', async (req, res) => {
 /* === */
 
 /* ADD ORDER */
-router.get('/create-order', async (req, res) =>{
+router.get('/create-order', checkAuthenticated, async (req, res) =>{
     res.render('order_form', {layout: "admin.hbs", title: "Order Form", css:"order_form_big"});
 })
 
-router.post('/add-order', async (req, res) =>{
+router.post('/add-order', checkAuthenticated,    async (req, res) =>{
     try {
         var { orderId, senderName, receiverName, senderNum, receiverNum,
               itemDesc, itemNum, transDate, originBranch, destBranch,
