@@ -112,6 +112,9 @@ p {
     text-decoration: none;
     color: #000000;
 }
+#small-nav {
+    display: none;
+}
 h1 {
     font-family: "Big Shoulders Display";
     font-weight: bolder;
@@ -173,11 +176,8 @@ td {
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 footer {
-    position: fixed;
-    bottom: 0px;
     background-color: #58020e;
     text-align: center;
-    margin-top: 50px;
     width: 100%;
     padding: 5px;
 }

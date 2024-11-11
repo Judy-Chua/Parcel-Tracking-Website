@@ -94,6 +94,7 @@ p {
     border: solid;
     border-width: 1px;
     border-color: #0d0d0d;
+    background-color: #0d0d0d;
     height: 50px;
     border-radius: 5px;
     margin-top: 32.5px;
@@ -102,7 +103,7 @@ p {
     text-align: center;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-decoration: none;
-    color: #000000;
+    color: #fffaeb;
     font-family: "Poppins";
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
     font-size: 16px;
@@ -111,7 +112,10 @@ p {
 }
 .contact-us-link:visited {
     text-decoration: none;
-    color: #000000;
+    color: #fffaeb;
+}
+#small-nav {
+    display: none;
 }
 h1 {
     font-family: "Big Shoulders Display";
@@ -167,6 +171,7 @@ h6 {
     margin-top: 10vh;
     padding-left: 3vw;
     margin-bottom: 0vh;
+    padding-bottom: 1vh;
 }
 h5 {
     font-family: "Poppins";

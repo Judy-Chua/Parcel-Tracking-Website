@@ -30,9 +30,6 @@ body {
 .flex-parent {
     display: flex;
 }
-.flex-justified {
-    justify-content: space-around;
-}
 #esmc-logo {
     margin-left: 20px;
 }
@@ -42,6 +39,7 @@ body {
     height: 40px;
     border-radius: 5px;
     margin-top: 37.5px;
+    margin-left: 150px;
 }
 p {
     margin-left: 1px;
@@ -52,13 +50,36 @@ p {
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
     margin-top: 9px;
     font-size: 16px;
+    text-align: center;
+    text-wrap: nowrap;
 }
 .topbar-menu {
     padding-inline: 10px;
 }
+#homepage {
+    flex: 1 1 0px;
+}
+#homepage-link {
+    text-decoration: none;
+    color: #000000;
+}
+#homepage-link:visited {
+    color: #000000;
+}
+#branches {
+    flex: 1 1 0px;
+}
+#branches-link {
+    text-decoration: none;
+    color: #000000;
+}
+#branches-link:visited {
+    color: #000000;
+}
 #search-page {
     background-color: #acacac;
     border-radius: 5px;
+    flex: 1 1 0px;
 }
 #search-page-link {
     text-decoration: none;
@@ -68,27 +89,28 @@ p {
     color: #000000;
 }
 .contact-us-link {
-    display: block;
+    display: grid;
     border: solid;
     border-width: 1px;
     border-color: #0d0d0d;
-    width: 127px;
     height: 50px;
     border-radius: 5px;
     margin-top: 32.5px;
+    margin-left: 150px;
+    padding-inline: 10px;
     text-align: center;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-decoration: none;
-}
-.contact-us-link:visited {
     color: #000000;
-}
-.contact-us-text {
-    color: #000000;
-    margin-top: 13.5px;
     font-family: "Poppins";
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
     font-size: 16px;
+    text-wrap: nowrap;
+    place-content: center;
+}
+.contact-us-link:visited {
+    text-decoration: none;
+    color: #000000;
 }
 h1 {
     font-family: "Big Shoulders Display";
@@ -151,11 +173,9 @@ td {
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 footer {
-    position: fixed;
-    bottom: 0px;
+    margin-top: 10vh;
     background-color: #58020e;
     text-align: center;
-    margin-top: 50px;
     width: 100%;
     padding: 5px;
 }

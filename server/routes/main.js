@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 
 router.get('', async (req, res) =>{
-    res.render('index', {title: "Home Page", css:"about_us"});
+    res.render('index', {title: "Home Page", css:"about_us_big"});
 })
 
 router.get('/branches', async (req, res) =>{

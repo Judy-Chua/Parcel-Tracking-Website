@@ -170,17 +170,14 @@ p {
     text-shadow: 0.025px 0.025px 0.005px;
 }
 footer {
-    position: fixed;
-    bottom: 0px;
     background-color: #58020e;
     text-align: center;
-    margin-top: 50px;
     width: 100%;
     padding: 5px;
 }
 #copyright {
     color: #ffffff;
-    font-family: 'Arial';
+    font-family: "Inter";
     font-size: 16px;
     font-weight: 600;
 }
