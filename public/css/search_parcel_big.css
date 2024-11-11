@@ -94,6 +94,7 @@ p {
     border-width: 1px;
     border-color: #0d0d0d;
     height: 50px;
+    width: fit-content;
     border-radius: 5px;
     margin-top: 32.5px;
     margin-left: 150px;
@@ -111,6 +112,9 @@ p {
 .contact-us-link:visited {
     text-decoration: none;
     color: #000000;
+}
+#small-nav {
+    display: none;
 }
 h1 {
     font-family: "Big Shoulders Display";
@@ -147,21 +151,23 @@ button {
     background-color: #870505;
     color: #ffffff;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
-    height: 70px;
+    height: 75px;
     width: 20%;
     font-family: "Jost";
     font-weight: bold;
     font-size: 2vw;
     text-wrap: nowrap;
     position: absolute;
-    top: -0.25vh;
+    top: -0.5vh;
     right: 15%;
 }
 #msg {
     justify-content: center;
 }
-#contact-link {
+#contact-here {
     text-decoration: underline;
+    text-decoration-color: #ffffff;
+    font-style: italic;
 }
 #contact-here:visited {
     color: #ffffff;
@@ -173,11 +179,10 @@ p {
     color: #ffffff;
 }
 footer {
-    position: fixed;
-    bottom: 0px;
+    position: absolute;
+    bottom: 0;
     background-color: #58020e;
     text-align: center;
-    margin-top: 50px;
     width: 100%;
     padding: 5px;
 }
@@ -212,7 +217,7 @@ h2 {
     color: #0d0d0d;
 }
 #contact-us-popup {
-    margin-top: 6vh;
+    margin-top: 8vh;
     margin-left: auto;
     margin-right: 3vw;
 }

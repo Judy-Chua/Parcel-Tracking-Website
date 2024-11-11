@@ -12,7 +12,7 @@ body {
     background-image: url(/img/truck.svg);
     background-repeat: no-repeat;
     background-position: center 19.5vh;
-    background-size: auto 90vh;
+    background-size: 90vw 90vh;
     margin-top: -16px;
     margin-inline: 0%;
     margin-bottom: 0%;
@@ -112,6 +112,9 @@ p {
     text-decoration: none;
     color: #000000;
 }
+#small-nav {
+    display: none;
+}
 footer {
     background-color: #58020e;
     text-align: center;
@@ -197,7 +200,7 @@ h2 {
     font-family: "Jost";
     font-size: 16px;
     color: #333;
-    max-width: 800px;
+    width: 80%;
     margin: 0 auto;
     line-height: 1.6;
     text-align: justify;
