@@ -11,8 +11,8 @@ body {
     background-color: #fc0404;
     background-image: url(./images/truck.svg);
     background-repeat: no-repeat;
-    background-position: center 20vh;
-    background-size: auto 90vh;
+    background-position: center 19.5vh;
+    background-size: 90vw 90vh;
     margin-top: -16px;
     margin-inline: 0%;
     margin-bottom: 0%;
@@ -20,102 +20,61 @@ body {
     overflow-x: hidden;
 }
 #navbar {
-    position: sticky;
-    top: 0;
-    background-color: #ffffff;
-    height: 115px;
-    vertical-align: middle;
-    z-index: 1;
+    display: none;
 }
 .flex-parent {
     display: flex;
 }
-.flex-justified {
-    justify-content: space-around;
+#small-nav {
+    overflow: hidden;
+    position: relative;
 }
-#esmc-logo {
+#esmc-logo-small-nav {
+    margin-top: 11px;
     margin-left: 20px;
 }
-#menu {
-    background-color: #cdcdcd;
-    width: 563px;
-    height: 40px;
-    border-radius: 5px;
-    margin-top: 37.5px;
-    margin-left: 150px;
-}
-p {
-    margin-left: 1px;
-}
-.topbar-links {
-    font-family: "Poppins";
-    color: #000000;
-    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
-    margin-top: 9px;
-    font-size: 16px;
-    text-align: center;
-    text-wrap: nowrap;
-}
-.topbar-menu {
-    padding-inline: 10px;
-}
-#homepage {
-    flex: 1 1 0px;
-}
-#homepage-link {
-    text-decoration: none;
-    color: #000000;
-}
-#homepage-link:visited {
-    color: #000000;
-}
-#branches {
-    flex: 1 1 0px;
-}
-#branches-link {
-    text-decoration: none;
-    color: #000000;
-}
-#branches-link:visited {
-    color: #000000;
-}
-#search-page {
-    flex: 1 1 0px;
-}
-#search-page-link {
-    text-decoration: none;
-    color: #000000;
-}
-#search-page-link:visited {
-    color: #000000;
-}
-.contact-us-link {
-    display: grid;
-    border: solid;
-    border-width: 1px;
-    border-color: #0d0d0d;
-    background-color: #0d0d0d;
-    height: 50px;
-    border-radius: 5px;
-    margin-top: 32.5px;
-    margin-left: 150px;
-    padding-inline: 10px;
-    text-align: center;
-    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
-    text-decoration: none;
-    color: #fffaeb;
-    font-family: "Poppins";
-    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
-    font-size: 16px;
-    text-wrap: nowrap;
-    place-content: center;
-}
-.contact-us-link:visited {
-    text-decoration: none;
-    color: #fffaeb;
-}
-#small-nav {
+#links {
     display: none;
+}
+.small-nav-links {
+    font-family: "Poppins";
+    color: #000000;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    padding-left: 20px;
+    text-decoration: none;
+    display: block;
+}
+#home-small {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #cdcdcd;
+}
+#branches-small {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #cdcdcd;
+}
+#search-small {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #cdcdcd;
+}
+#contact-small {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #0d0d0d;
+    color: #fffaeb;
+}
+a#hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 47px;
+}
+.active {
+    background-color: #ffffff;
+    height: 115px;
 }
 h1 {
     font-family: "Big Shoulders Display";
