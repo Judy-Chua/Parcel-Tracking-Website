@@ -23,14 +23,14 @@ router.get('/', async (req, res) =>{
     if(req.isAuthenticated()){
         res.redirect('/admin/view-orders')
     }
-    res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login_big"});
+    res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login"});
 })
 
 router.get('/login', async (req, res) =>{
     if(req.isAuthenticated()){
         res.redirect('/admin/view-orders')
     }
-    res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login_big"});
+    res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login"});
 })
 
 
@@ -49,7 +49,7 @@ router.post('/login', passport.authenticate('local', { successRedirect : '/admin
 
 /* FOR DEBUGGING ONLY, replace as needed*/
 router.get('/edit-order', checkAuthenticated, async (req, res) =>{
-    res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order_big"});
+    res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order"});
 })
 /* === */
 
@@ -58,7 +58,7 @@ router.get('/edit-order', checkAuthenticated, async (req, res) =>{
 router.get('/view-orders', checkAuthenticated , checkAuthenticated, async (req, res) =>{
     try {
         const orders = await Order.find();
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
     }
     catch (error)
     { 
@@ -83,7 +83,7 @@ router.get('/view-orders/control-id', checkAuthenticated, async (req, res) => {
     try {
         const controlId = req.query.controlId;
         const orders = await Order.find({ "orderId": {$regex : controlId} });
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -99,7 +99,7 @@ router.get('/view-orders/hub-to-hub', checkAuthenticated, async (req, res) => {
             "originBranch": { $regex: originSearch },
             "destBranch": { $regex: destSearch }
         });
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -126,7 +126,7 @@ router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: dailyNet[0].totalSum });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: dailyNet[0].totalSum });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -153,7 +153,7 @@ router.get('/view-orders/monthly-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: monthlyNet[0].totalSum });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: monthlyNet[0].totalSum });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -180,7 +180,7 @@ router.get('/view-orders/annual-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: annualNet[0].totalSum });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: annualNet[0].totalSum });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -192,7 +192,7 @@ router.get('/view-orders/control-id', checkAuthenticated, async (req, res) => {
     try {
         const controlId = req.query.controlId;
         const orders = await Order.find({ "orderId": {$regex : controlId} });
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -208,7 +208,7 @@ router.get('/view-orders/hub-to-hub', checkAuthenticated, async (req, res) => {
             "originBranch": { $regex: originSearch },
             "destBranch": { $regex: destSearch }
         });
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -235,7 +235,7 @@ router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: dailyNet[0].totalSum });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: dailyNet[0].totalSum });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -262,7 +262,7 @@ router.get('/view-orders/monthly-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: monthlyNet[0].totalSum });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: monthlyNet[0].totalSum });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -289,7 +289,7 @@ router.get('/view-orders/annual-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database_big", orders: orders, net: annualNet[0].totalSum });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: annualNet[0].totalSum });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -324,7 +324,7 @@ router.post('/edit-order', checkAuthenticated, checkAuthenticated, async (req, r
 
 /* ADD ORDER */
 router.get('/create-order', checkAuthenticated, checkAuthenticated, async (req, res) =>{
-    res.render('order_form', {layout: "admin.hbs", title: "Order Form", css:"order_form_big"});
+    res.render('order_form', {layout: "admin.hbs", title: "Order Form", css:"order_form"});
 })
 
 router.post('/add-order', checkAuthenticated,    async (req, res) =>{

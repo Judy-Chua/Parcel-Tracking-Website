@@ -1,14 +1,18 @@
-/* Jost */
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-/* Big Shoulders Display */
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Big Shoulders Display */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Jost */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-    background-color: #FFFAEB;
+    background-color: #fc0404;
+    background-image: url(./images/truck.svg);
+    background-repeat: no-repeat;
+    background-position: center 20vh;
+    background-size: auto 90vh;
     margin-top: -16px;
     margin-inline: 0%;
     margin-bottom: 0%;
@@ -16,136 +20,6 @@ body {
     overflow-x: hidden;
 }
 
-.update-container{
-    margin-left: 5%;
-    color: #720110;
-    width: 40%;
-}
-
-ul {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-content: start;
-}
-
-
-li {
-    position: relative;
-    padding-top:0;
-    margin: 0;
-    padding-bottom: 1em;
-    list-style: none;
-    display:flex;
-    flex-direction: row;
-}
-
-
-li > * {
-    margin-top: 0px;
-    padding-top: 0px;
-    margin-bottom: 0px;
-}
-
-li p:not(#customBullet) {
-    font-family: "Jost", sans-serif;
-    margin: 0;
-}
-
-li h2 {
-    font-family: "Jost", sans-serif;
-    font-weight: 700;
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-#customBullet {
-    font-size: 5rem;
-    color:#FC0404;
-}
-
-.text-info{
-    display: flex;
-    flex-direction: column;
-}
-
-
-li:not(:last-child):before {
-    background-color: #FC0404;
-    width: .5em;
-    height: 100%;
-    position: absolute;
-    content: '';
-    top: 50px;
-    bottom: 0px;
-    left: 2.45%;
-    padding:0;
-    margin:0;
-}
-
-.textInfo {
-    margin-left: 5%;
-    padding-top: 3%
-}
-
-.progress-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 70%;
-    height: 100px;
-    margin-bottom: 2%;
-}
-
-.empty-progress {
-    background-image: url("/img/details_bar.svg");
-    background-size: contain;
-    height: 70%;
-    width: 100%;
-}
-
-.track-info {
-    height: 350px;
-    width: 500px;
-    background-color: #fc0404;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial;
-    color: #FFFAEB;
-    border-radius: 25px;
-    font-family: "Big Shoulders Display", sans-serif;
-    font-size: 20px;
-    background-image: url("/img/truck.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.track-info p {
-    font-family: "Jost", sans-serif;
-}
-
-.sub-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0 2% 0 2%;
-}
-
-.main-container{
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    margin-top: 5%;
-    align-items: center;
-}
-
-
-/* bigger screen */
 @media only screen and (min-width: 1061px) {
     #navbar {
         position: sticky;
@@ -157,6 +31,9 @@ li:not(:last-child):before {
     }
     .flex-parent {
         display: flex;
+    }
+    .flex-justified {
+        justify-content: space-around;
     }
     #esmc-logo {
         margin-left: 20px;
@@ -205,8 +82,6 @@ li:not(:last-child):before {
         color: #000000;
     }
     #search-page {
-        background-color: #acacac;
-        border-radius: 5px;
         flex: 1 1 0px;
     }
     #search-page-link {
@@ -239,14 +114,13 @@ li:not(:last-child):before {
     }
     .contact-us-link:visited {
         text-decoration: none;
-        color: #000000;
+        color: #fffaeb;
     }
     #small-nav {
         display: none;
     }
 }
 
-/* smaller screen */
 @media only screen and (max-width: 1061px) {
     #navbar {
         display: none;
@@ -290,12 +164,13 @@ li:not(:last-child):before {
     #search-small {
         padding-top: 10px;
         padding-bottom: 10px;
-        background-color: #acacac;
+        background-color: #cdcdcd;
     }
     #contact-small {
         padding-top: 20px;
         padding-bottom: 20px;
-        background-color: #ffffff;
+        background-color: #0d0d0d;
+        color: #fffaeb;
     }
     a#hamburger {
         display: block;
@@ -308,64 +183,91 @@ li:not(:last-child):before {
         height: 115px;
     }
 }
+
 h1 {
     font-family: "Big Shoulders Display";
     font-weight: bolder;
-    font-size: 48px;
+    font-size: 40px;
     color: #fffaeb;
     margin-left: 50px;
     margin-top: 50px;
 }
-table {
+h2 {
     font-family: "Jost";
     font-size: 20px;
-    border-collapse: collapse;
-    background: #ffffff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-wrap: nowrap;
+    color: #fffaeb;
+    margin-left: 50px;
+    font-weight: normal;
 }
-tr {
-    border: 3px solid #fc0404;
-}
-th {
-    padding: 15px;
-}
-td {
-    padding: 15px;
+.round-rec {
+    border-style: solid; 
+    border-radius: 35px;
+    border-width: 5px;
+    border-color: #fffaeb;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 300px;
     text-align: center;
-}
-#header {
-    background-color: #fffaeb;
-}
-.details, .details:visited {
-    color: #fc0404;
-}
-#button-link {
-    display: block;
-    position: relative;
-    background-color: #fffaeb;
-    border-radius: 5px;
-    width: 152px;
-    height: 50px;
-    margin-top: 50vh;
-    margin-left: auto;
-    margin-right: 10vw;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
 }
-#button-text {
+h4 {
+    font-family: "Jost";
+    font-size: 20px;
+    color: #fffaeb;
+    margin-top: 0;
+}
+h6 {
+    font-family: "Jost";
+    font-weight: normal;
+    color: #fffaeb;
     margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: 10px;
+    margin-top: 1.5px;
+    font-size: 15px;
+}
+.contact {
+    justify-content: center;
+}
+.phone {
+    width: 24px;
+}
+#fb-msg {
+    height: 10vh;
+    width: 100%;
+    background-color: #fffaeb;
+    margin-top: 10vh;
+    padding-left: 3vw;
+    margin-bottom: 0vh;
+    padding-bottom: 1vh;
+}
+h5 {
+    font-family: "Poppins";
+    font-size: 20px;
+    color: #371010;
     text-wrap: nowrap;
-    font-family: 'Arial';
-    color: #000000;
-    font-size: 16px;
-    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+    margin-top: 3.5vh;
+}
+#fb-text {
+    color: #ae161e;
+}
+a {
+    text-decoration: none;
+}
+#facebook {
+    justify-content: center;
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+}
+.img-icon {
+    width: 70px;
+}
+#fb-name {
+    font-family: "Big Shoulders Display";
+    font-weight: bolder;
+    margin-top: 40px;
+    margin-left: 20px;
+    font-size: 50px;
+    text-wrap: nowrap;
 }
 footer {
     background-color: #58020e;

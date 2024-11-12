@@ -7,7 +7,7 @@ const Update = require('../models/Update.js');
 
 
 router.get('/', async (req, res) =>{
-    res.render('search_parcel', {title: "Search | ESMC", css:"search_parcel_big"});
+    res.render('search_parcel', {title: "Search | ESMC", css:"search_parcel"});
 })
 
 router.post('/', async (req, res) =>{
@@ -34,7 +34,7 @@ router.get('/track=:id', async (req, res) =>{
             return res.status(404).render('error', { message: 'Order not found' });
         }
         res.render('search_results', {title: "Order Now | ESMC", 
-                                      css:"search_results_big", 
+                                      css:"search_results", 
                                       trackerId: order.orderId, 
                                       status: order.status, 
                                       estDate: order.arrivalDate, 
@@ -76,10 +76,6 @@ router.get('/track=:id/more-details', async (req, res) =>{
 })
 
 module.exports = router;
-
-
-
-
 
 //Helper functions
 function getUpdateTitle(status) {
