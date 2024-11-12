@@ -9,10 +9,13 @@ const OrderSchema = new mongoose.Schema({
     receiverNum : Number,
     itemDesc : [],
     itemNum : [],
+    itemPrice : [],
     transDate : String,         //date of transport
             //format: mm-dd-yyyy
     originBranch : String,
     destBranch : String,         //destination branch
+    initialCharge : Number,
+    discount : Number,
     total : Number,
 
     //to be updated / automatic assignment

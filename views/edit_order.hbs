@@ -20,25 +20,26 @@
 <br> --}}
 <h1>EDIT FORM</h1>
 <div id="main-body">
-	<!-- ACTION HERE!!! -->
-	<form action="/action_page.php">
+	<form id="order-form">
 	<div class="flex-parent">
 		<div class="flex-child">
 		<label for="sender-name">Sender's Name*</label><br>
-		<input type="text" name="sender-name" class="input-normal" placeholder="Sender's Name" value="HELP" required><br>
+		<input type="text" name="sender-name" class="input-normal" id="inputSender" placeholder="Sender's Name" value="{{orderDetails.senderName}}" required><br>
 		<label for="sender-number">Sender's Mobile Number*</label><br>
 		<div class="flex-parent test">
 			<p class="number-code">+63</p>
-			<input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" value="HELP" placeholder="9XX XXX XXXX" required><br>
+			<input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" id="inputSenderNum"
+			       class="phone-number" value="{{orderDetails.senderNum}}" placeholder="9XX XXX XXXX" required><br>
 		</div>
 		</div>
 		<div class="flex-child">
 		<label for="sender-name">Receiver's Name*</label><br>
-		<input type="text" name="sender-name" class="input-normal" placeholder="Receiver's Name" value="HELP" required><br>
+		<input type="text" name="sender-name" class="input-normal" id="inputReceiver" placeholder="Receiver's Name" value="{{orderDetails.receiverName}}" required><br>
 		<label for="sender-number">Receiver's Mobile Number*</label><br>
 		<div class="flex-parent test">
 			<p class="number-code">+63</p>
-			<input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" value="HELP" required><br>
+			<input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" id="inputReceiverNum"
+			       class="phone-number" placeholder="9XX XXX XXXX" value="{{orderDetails.receiverNum}}" required><br>
 		</div>
 		</div>
 	</div>
@@ -46,69 +47,67 @@
 	<div class="flex-parent">
 		<div class="flex-child">
 		<div class="flex-parent" id="items-div">
-			<div>
-			<h3>Qty.</h3>
-			<input type="number" min="0" class="qty-input" placeholder="Qty." value="43.14"><br>
-			<input type="number" min="0" class="qty-input" placeholder="Qty." value="43.14"><br>
-			<input type="number" min="0" class="qty-input" placeholder="Qty." value="43.14"><br>
-			</div>
-			<div>
-			<h3>Item Description</h3>
-			<input type="text" class="desc-input" placeholder="Item Description" value="HELP">
-			<br>
-			<input type="text" class="desc-input" placeholder="Item Description" value="HELP">
-			<br>
-			<input type="text" class="desc-input" placeholder="Item Description" value="HELP">
-			<br>
-			</div>
-			<div>
-			<h3>Cost</h3>
-			<input type="text" class="cost-input" placeholder="Cost" value="HELP">
-			<br>
-			<input type="text" class="cost-input" placeholder="Cost" value="HELP">
-			<br>
-			<input type="text" class="cost-input" placeholder="Cost" value="HELP">
-			<br>
-			</div>
-			<div id="x-button-div">
-			<!-- add function here! -->
-			<img src="/img/x-circle-fill.svg" onclick="removeItem();" /><br>
-			<img src="/img/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
-			<img src="/img/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
-			</div>
+			{{#each orderDetails.itemDesc}}
+				<div class="{{#if @first}}item-container{{else}}add-item-container{{/if}}">
+					<div>
+						<h3>Qty.</h3>
+						<input type="number" min="0" class="qty-input" placeholder="Qty." value="{{lookup ../itemNum @index}}"><br>
+					</div>
+					<div>
+						<h3>Item Description</h3>
+						<input type="text" class="desc-input" placeholder="Item Description" value="{{this}}">
+						<br>
+					</div>
+					<div>
+						<h3>Cost</h3>
+						<input type="text" class="cost-input" placeholder="Cost" value="{{lookup ../itemPrice @index}}">
+						<br>
+					</div>
+					{{#unless @first}}
+						<div id="x-button-div">
+							<img src="/img/x-circle-fill.svg" class="x-button" /><br>
+						</div>
+					{{/unless}}
+				</div>
+			{{/each}}
 		</div>
-		<!-- add function here! -->
 		<div id="add-btn-div">
 			<button id="add-btn">+ Add Items</button>
 		</div>
 		<div class="flex-parent" id="charge-discount-div">
 			<div>
 			<h3 id="charge-label">Charge</h3>
-			<p id="charge-calc">HELP</p>
+			<p id="charge-calc">{{orderDetails.initialCharge}}</p>
 			</div>
 			<div id="discount-div">
 			<label for="discount">Discount</label>
-			<input type="number" name="discount" min="0" step=".01" id="discount-input" placeholder="Discount" value="43.14">
+			<input type="number" name="discount" min="0" step=".01" id="discount-input" placeholder="Discount" value="{{orderDetails.discount}}">
 			</div>
 		</div>
 		<label for="charge" id="charge-label">Total Charge*</label><br>
-		<p id="total-calc">HELP</p>
+		<p id="total-calc">{{orderDetails.total}}</p>
 	</div>
 		<div class="flex-child">
 		<label for="edt">Estimated Day of Transport</label><br>
-		<input type="date" name="edt" class="input-normal"><br>
+		<input type="date" name="edt" class="input-normal" id="inputDate" min="" value="{{orderDetails.transDate}}"><br>
 		<label for="origin-branch">Origin Branch*</label><br>
-		<select name="origin-branch">
-			<option value="select">&#40Select Branch&#41</option>
-			<option value="manila">Manila</option>
-			<option value="romblon">Romblon</option>
-		</select><br>
-		<label for="dest-branch">Destination Branch*</label><br>
-		<select name="dest-branch">
-			<option value="select">&#40Select Branch&#41</option>
-			<option value="manila">Manila</option>
-			<option value="romblon">Romblon</option>
-		</select>
+        <select name="origin-branch" id="inputBranch" required>
+          <option value="">&#40Select Branch&#41</option>
+          <option value="Manila" {{#if (isEqual orderDetails.originBranch "Manila")}}selected{{/if}}>Manila</option>
+		  <option value="Romblon" {{#if (isEqual orderDetails.originBranch "Romblon")}}selected{{/if}}>Romblon</option>
+		  <option value="Magdiwang" {{#if (isEqual orderDetails.originBranch "Magdiwang")}}selected{{/if}}>Magdiwang</option>
+		  <option value="Cajidiocan" {{#if (isEqual orderDetails.originBranch "Cajidiocan")}}selected{{/if}}>Cajidiocan</option>
+		  <option value="San-Fernando" {{#if (isEqual orderDetails.originBranch "San-Fernando")}}selected{{/if}}>San Fernando</option>
+        </select><br>
+        <label for="dest-branch">Destination Branch*</label><br>
+        <select name="dest-branch" id="inputDestBranch" required>
+          <option value="">&#40Select Branch&#41</option>
+		  <option value="Manila" {{#if (isEqual orderDetails.destBranch "Manila")}}selected{{/if}}>Manila</option>
+		  <option value="Romblon" {{#if (isEqual orderDetails.destBranch "Romblon")}}selected{{/if}}>Romblon</option>
+		  <option value="Magdiwang" {{#if (isEqual orderDetails.destBranch "Magdiwang")}}selected{{/if}}>Magdiwang</option>
+		  <option value="Cajidiocan" {{#if (isEqual orderDetails.destBranch "Cajidiocan")}}selected{{/if}}>Cajidiocan</option>
+		  <option value="San-Fernando" {{#if (isEqual orderDetails.destBranch "San-Fernando")}}selected{{/if}}>San Fernando</option>
+        </select>
 		<div id="btns">
 			<button id="cancel-btn">CANCEL</button>
 			<input id="submit-btn" type="submit" value="SAVE FORM">

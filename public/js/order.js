@@ -2,123 +2,137 @@
 //$('.className');
 
 $(document).ready(function() {
-    removeErrorMsg(); //sets all error messages to blank
     setDateLimit(); //sets the limit of possible date to input
 
-    //change color if user inputs something (red if empty)
-    updateColor('#inputSender', 1); 
-    updateColor('#inputSenderNum', 1); 
-    checkNumber('#inputSenderNum', '#errorSenderNum');
-    updateColor('#inputReceiver', 1);
-    updateColor('#inputReceiverNum', 1); 
-    checkNumber('#inputReceiverNum', '#errorReceiverNum');
-    updateColor('#inputCharge', 1);
-    updateColor('#inputDate', 1);
-    updateColor('#inputBranch', 1);
-    updateColor('#inputDestBranch', 1);
-
     //add button for item description in case more than one item
-    $('#addItem').click(function() {
-        var newItem = $('<div>' +
-                            '<input type="text" placeholder="Item Description" class="inputItem">' +
-                         '</div>'); //new item to be placed in moreItems
-        $('#moreItems').append(newItem);
+    $('#add-btn').click( async function(e) {
+        e.preventDefault();
+        var newItem = 
+            $("<div class='add-item-container'>" + 
+                "<div>" +
+                    "<input type='number' min='1' class='qty-input' placeholder='Qty.' required><br>" +
+                "</div>" +
+                "<div>" +
+                    "<input type='text' class='desc-input' placeholder='Item Description' required>" +
+                    "<br>" +
+                "</div>" +
+                "<div>" +
+                    "<input type='number' class='cost-input' min='1' placeholder='Cost' required>" +
+                "</div>" +
+                "<div id='x-button-div'>" +
+                    "<img src='/img/x-circle-fill.svg' class='x-button' /><br>" +
+                "</div>" +
+            "</div>"); //new item to be placed in items-div
+        $('#items-div').append(newItem);
+        $('#charge-calc').text('');
+        $('#total-calc').text('');
     });
 
-    //error-handling for class (item description)
-    $('#moreItems').on('input', '.inputItem', function() {
-        if ($(this).val() != '') { 
-            $(this).css('background-color', 'white');
-            $(this).css('color', 'black');
+    //removes the specific item based on x button
+    $('#items-div').on('click', '.x-button', function () {
+        $(this).closest('.add-item-container').remove();
+        updateCharge();
+    });
+
+    //updates the charge based on quantity and cost, including discount
+    $('#items-div').on('input', '.qty-input, .desc-input, .cost-input', function() {
+        updateCharge();
+    });
+
+    $('#discount-input').on('input', function () {
+        var final = 0;
+        var charge = 0;
+        var discount = 0;
+        var filled = true;
+        const inputCharge = $('#charge-calc').text();
+        const inputDiscount = $('#discount-input').val();
+
+        if (inputCharge === '') {
+            filled = false;
         } else {
-            $(this).css('background-color', 'red');
-            $(this).css('color', 'white');
+            charge = parseFloat(inputCharge);
+        }
+
+        if (inputDiscount !== '') {
+            discount = parseFloat(inputDiscount);
+            if (discount > charge) {
+                $('#discount-input').val('');
+                discount = 0;
+            }
+        }
+        final = charge - discount;
+
+        if (filled) {
+            $('#total-calc').text(final.toFixed(2));
+        } else {  // Clear display
+            $('#total-calc').text('');
         }
     });
-
 
     //validates the order form when submit button is clicked
-    $('#submitOrder').click(function() { 
+    $('#submit-btn').click(async function(e) {
+        e.preventDefault(); 
+        console.log("clicked button");
         if (validateInput()) {
+            console.log("validated");
             //remove all inputs, save to database, confirm that
-            addToDatabase();
+            await addToDatabase();
             clear();
-            $("#validate").html("Order will be saved to database.");
         }
     });
 
+    //clears all input then go back to view order
+    $('#cancel-btn').click(function() { 
+        clear();
+        setTimeout(function() {
+            window.location.href = "/admin/view-orders";
+        }, 2000);
+    });
 });
 
 /*  validates all the required inputs by the user
     returns true if ALL is VALID; otherwise, false
 */
-function validateInput() {
+function validateInput() { //discount is optional
     const sender = $('#inputSender').val();
     const senderNum = $('#inputSenderNum').val();
     const receiver = $('#inputReceiver').val();
     const receiverNum = $('#inputReceiverNum').val();
-    const charge = $('#inputCharge').val();
     const date = $('#inputDate').val();
     const branch = $('#inputBranch').val();
     const destBranch = $('#inputDestBranch').val();
 
     var noError = true;
-    removeErrorMsg();
 
-    if (checkEmpty(sender, "#inputSender")) { //sender
-        $('#errorSender').html("Please input sender name.");
+    if (checkEmpty(sender) || checkEmpty(senderNum) ||      //sender and sender num
+        checkEmpty(receiver) || checkEmpty(receiverNum) ||  //receiver and receiver number
+        checkEmpty(date) || checkDate() ||                  //estimated date of transport
+        checkEmpty(branch) || checkEmpty(destBranch)) {      //current branch and destination branch
         noError = false;
     }
 
-    if (checkEmpty(senderNum, "#inputSenderNum")) { //sender number
-        $('#errorSenderNum').html("Please input sender number.");
-        noError = false;
-    }
-
-    if (checkEmpty(receiver, "#inputReceiver")) { //receiver
-        $('#errorReceiver').html("Please input receiver name.");
-        noError = false;
-    }
-
-    if (checkEmpty(receiverNum, "#inputReceiverNum")) { //receiver number
-        $('#errorReceiverNum').html("Please input receiver number.");
-        noError = false;
-    }
-
-    $('.inputItem').each(function() {
-        var description = $(this).val();
-        if (!description) { //check if input is empty or not 
-            $(this).css('background-color', 'red');
-            $(this).css('color', 'white');
-            $('#errorItem').html("Please input item description.");
+    $('.qty-input').each(function() {  //each quantity
+        var qty = $(this).val();
+        if (!qty) { //check if input is empty or not 
             noError = false;
-        } else { //reset in case it is originally empty
-            $(this).css('background-color', 'white');
-            $(this).css('color', 'black');
         }
     });
 
-    if (checkEmpty(charge, "#inputCharge")) { //charge
-        $('#errorCharge').html("Please input charge."); //add functionality for negative
-        noError = false;
-    }
+    $('.desc-input').each(function() {  //each description
+        var desc = $(this).val();
+        if (!desc) { //check if input is empty or not 
+            noError = false;
+        }
+    });
 
-    if (checkEmpty(date, "#inputDate")) { //estimated date of transport
-        $('#errorDate').html("Please select a date.");
-        noError = false;
-    } else if (checkDate()) {
-        noError = false;
-    }
+    $('.cost-input').each(function() {  //each cost
+        var cost = $(this).val();
+        if (!cost) { //check if input is empty or not 
+            noError = false;
+        }
+    });
 
-    if (checkEmpty(branch, "#inputBranch")) { //current branch
-        $('#errorBranch').html("Please input your current branch.");
-        noError = false;
-    }
-
-    if (checkEmpty(destBranch, "#inputDestBranch")) { //destination branch
-        $('#errorDestBranch').html("Please input your destination branch.");
-        noError = false;
-    }
+    console.log(noError);
 
     return noError;
 }
@@ -138,176 +152,216 @@ function setDateLimit() {
 }
 
 /*  validates the date the user inputs manually
-    sets the CSS color based on input
-    sets error message with suggested date that can be input
-    returns true if INVALID date; otherwise, false
+    returns true and clears input if INVALID date; otherwise, false
 */
 function checkDate() {
     const inputDate = new Date($('#inputDate').val());
     const today = new Date();
     today.setDate(today.getDate()); //today.setDate(today.getDate() + 2); if 2 days from now
-
-    //get month/day/year of valid date
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-    var dd = String(today.getDate()).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    var validDate = `${mm}/${dd}/${yyyy}`;
     
     if (inputDate < today) {
-        $('#inputDate').css('background-color', 'red');
-        $('#inputDate').css('color', 'white');
-        $('#errorDate').html("Please select a VALID date. (" + validDate + " onwards)");
+        $('#errorDate').val('');
         return true;
-    } else {
-        $('#inputDate').css('background-color', 'white');
-        $('#inputDate').css('color', 'black');
-        $('#errorDate').html("<br/>");
-        return false;
-    }
-}
-
-/*  starter pack of the website
-    sets all error messages to newline
-*/
-function removeErrorMsg() {
-    $('#errorSender').html('<br/>');
-    $('#errorSenderNum').html('<br/>');
-    $('#errorReceiver').html('<br/>');
-    $('#errorReceiverNum').html('<br/>');
-    $('#errorItem').html('<br/>');
-    $('#errorCharge').html('<br/>');
-    $('#errorDate').html('<br/>');
-    $('#errorBranch').html('<br/>');
-    $('#errorDestBranch').html('<br/>');
-}
-
-/*  checks if user input is empty or not
-    sets the CSS color based on input    
-    returns true if EMPTY; otherwise, false
-*/
-function checkEmpty(value, id) {
-    if (!value) { //check if input is empty or not 
-        $(id).css('background-color', 'red');
-        $(id).css('color', 'white');
-        return true;
-    } else { //reset in case it is originally empty
-        $(id).css('background-color', 'white');
-        $(id).css('color', 'black');
     }
     return false;
 }
 
-/*  dynamically checks if the user inputs or chooses something on the order form
-    sets the color red if left blank; otherwise, white
-    num can only be 1 or 2
-        1 means text or number input
-        2 means choice 
+/*  checks if user input is empty or not
+    returns true if EMPTY; otherwise, false
 */
-function updateColor(id, num) {
-    if (num == 1) {
-        $(id).on('input', function() {
-            if ($(id).val() != '') { 
-                $(id).css('background-color', 'white');
-                $(id).css('color', 'black');
-            } else {
-                $(id).css('background-color', 'red');
-                $(id).css('color', 'white');
-            }
-        });
-    } else if (num == 2) {
-        if ($(id).val() != "") { 
-            $(id).css('background-color', 'white');
-            $(id).css('color', 'black');
-        } else {
-            $(id).css('background-color', 'red');
-            $(id).css('color', 'white');
-        }
-    }
-    
-}
-
-/*  dynamically checks if the user inputs numbers or not
-    automatically clears the input field if there is non-number in the input
-*/
-function checkNumber(id) {
-    $(id).on('input', function() {
-        var value = $(id).val();
-        value = value.replace(/[^0-9]/g, ''); // clear if not number
-        $(id).val(value);
-    });
+function checkEmpty(value) {
+    if (!value) 
+        return true;
+    console.log(value);
+    return false;
 }
 
 function clear() {
     $('#inputSender').val('');
-    $('#inputSenderNum').val('');
+    $('#inputSenderNum').val();
     $('#inputReceiver').val('');
-    $('#inputReceiverNum').val();
-    $('#inputItem').val('');
-    $('#inputCharge').val('');
+    $('#inputReceiverNum').val('');
+    
+    $('.qty-input').val('');
+    $('.desc-input').val('');
+    $('.cost-input').val('');
+    $('#items-div .add-item-container').remove();
+
+    $('#discount-input').val('');
     $('#inputDate').val('');
     $('#inputBranch').val('');
     $('#inputDestBranch').val('');
-    
-    $('#moreItems').empty();
 }
 
-function addToDatabase() {
-    const sender = $('#inputSender').val();
-    const senderNum = $('#inputSenderNum').val();
-    const receiver = $('#inputReceiver').val();
-    const receiverNum = $('#inputReceiverNum').val();
-    const charge = $('#inputCharge').val();
-    const date = $('#inputDate').val();
-    const branch = $('#inputBranch').val();
-    const destBranch = $('#inputDestBranch').val();
+function updateCharge() {
+    var totalCharge = 0;
+    var discount = 0;
+    var finalCharge = 0;
+    var filled = true;
 
-    var allItems = [];
-    $('.inputItem').each(function() {
-        allItems.push($(this).val());
-    });
+    // Loop through each item container
+    $('.item-container').each(function() {
+        const qty = $(this).find('.qty-input').val();
+        const desc = $(this).find('.desc-input').val();
+        const cost = $(this).find('.cost-input').val();
 
-    var [year, month, day] = date.split("-"); //date is yyyy-mm-dd
-    var newDate = "" + month + "-" + day + "-" + year + "";
-
-    var ID = generateTrackerID();
-
-    var orderData = {
-        orderId : ID,
-        senderName : sender,
-        receiverName : receiver,
-        senderNum : senderNum,
-        receiverNum : receiverNum,
-        itemDesc : allItems,
-        itemNum : [],               //will change
-        transDate : newDate,
-        originBranch : branch,
-        destBranch : destBranch,
-        total : charge,
-        status : "PROCESSING",
-        arrivalDate : "---",
-        updates : []
-    };
-
-    $.post('/admin/add-order', orderData, function(message, status) {
-        console.log("response data: ", message, status);
-        if (message.success) {
-            setTimeout(function() {
-                window.location.href = "/admin/view-orders";
-            }, 3000);
-        } else {
-            console.log("not success");
+        if (qty === '' || cost === '' || desc === '') {    // If either one is blank, stop
+            filled = false;
+            return false; // Stop the loop
         }
-    });
-}
 
-function generateTrackerID() {
-    const randomize = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    var trackID = '';
-    
-    for (var i = 0; i < 8; i++) {   // 8 characters
-                        //find index, round down, random is numbers between 0 to 1
-        trackID += randomize.charAt(Math.floor(Math.random() * randomize.length));
+        // Add to totals after converting to float
+        var quantity = parseFloat(qty, 10);
+        var charge = parseFloat(cost, 10);
+        totalCharge += quantity * charge;
+    });
+
+    if ($('.add-item-container').length > 0) {  //check if this exists
+        $('.add-item-container').each(function() {
+            const qty = $(this).find('.qty-input').val();
+            const desc = $(this).find('.desc-input').val();
+            const cost = $(this).find('.cost-input').val();
+
+            if (qty === '' || cost === '' || desc === '') {    // If either one is blank, stop
+                filled = false;
+                return false; // Stop the loop
+            }
+
+            // Add to totals after converting to float
+            var quantity = parseFloat(qty, 10);
+            var charge = parseFloat(cost, 10);
+            totalCharge += quantity * charge;
+        });
     }
 
-    return trackID;
+    const inputDiscount = $('#discount-input').val();
+    if (inputDiscount !== '') {
+        discount = parseFloat(inputDiscount);
+    }
+    finalCharge = totalCharge - discount;
+
+    // Update display
+    if (filled) {
+        $('#charge-calc').text(totalCharge.toFixed(2)); //2 decimal places
+        $('#total-calc').text(finalCharge.toFixed(2));
+    } else {  // Clear display
+        $('#charge-calc').text('');
+        $('#total-calc').text('');
+    }
 }
+
+async function addToDatabase() {
+    try {
+        const ID = await generateTrackerID();
+        const sender = $('#inputSender').val();
+        const senderNum = parseInt($('#inputSenderNum').val().replace(/\s+/g, ''), 10);
+        const receiver = $('#inputReceiver').val();
+        const receiverNum = parseInt($('#inputReceiverNum').val().replace(/\s+/g, ''), 10);
+        
+        const date = $('#inputDate').val();
+        const branch = $('#inputBranch').val();
+        const destBranch = $('#inputDestBranch').val();
+
+        const initial = parseFloat($('#charge-calc').text());
+        const discount = parseFloat($('#discount-input').val()) || 0;
+        const charge = parseFloat($('#total-calc').text());
+
+        var allQty = [];
+        var allDesc = [];
+        var allCost = [];
+
+        $('.qty-input').each(function() {
+            var num = parseInt($(this).val(), 10);
+            allQty.push(num);
+        });
+
+        $('.desc-input').each(function() {
+            allDesc.push($(this).val());
+        });
+
+        $('.cost-input').each(function() {
+            var num = parseFloat($(this).val());
+            allCost.push(num.toFixed(2));
+        });
+
+        var [year, month, day] = date.split("-"); //date is yyyy-mm-dd
+        var newDate = "" + month + "-" + day + "-" + year + "";
+
+        var orderData = {
+            orderId : ID,
+            senderName : sender,
+            receiverName : receiver,
+            senderNum : senderNum,
+            receiverNum : receiverNum,
+
+            itemNum : allQty,
+            itemDesc : allDesc,
+            itemPrice : allCost,
+
+            transDate : newDate,
+            originBranch : branch,
+            destBranch : destBranch,
+
+            initialCharge : initial,
+            discount : discount,
+            total : charge,
+
+            status : "PROCESSING",
+            arrivalDate : "---",
+            updates : []
+        };
+
+        $.post('/admin/add-order', orderData, function(message, status) {
+            console.log("response data: ", message, status);
+            if (message.success) {
+                setTimeout(function() {
+                    window.location.href = "/admin/view-orders";
+                }, 2000);
+            } else {
+                console.log("not success");
+            }
+        });
+    } catch (error) {
+        console.error("Error in generating tracker ID:", error);
+    }
+}
+
+function generateTrackerID() {    
+    return new Promise((resolve, reject) => { //this is since there is loop in validating
+        const dateInput = $('#inputDate').val();
+        const date = new Date(dateInput);
+
+        const constantDay = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+        const dayStr = constantDay[date.getDay()]; 
+
+        const randomize = '0123456789';
+
+        // Function to generate a random tracking ID and validate it
+        function tryGenerate() {
+            let trackID = dayStr;
+            let number = '';
+            for (let i = 0; i < 5; i++) {
+                const randomNum = randomize[Math.floor(Math.random() * 10)];
+                trackID += randomNum;
+                number += randomNum;
+            }
+
+            // Validate the generated number
+            $.post('/admin/validate', { number: number }, function(message, status) {
+                if (message.success) {
+                    resolve(trackID); // Resolve with the valid trackID
+                } else {
+                    tryGenerate(); // loop part
+                }
+            }).fail(function() {
+                reject('Failed to validate'); // Reject 
+            });
+        }
+
+        tryGenerate(); //call the function
+    });
+}
+
+
+
+

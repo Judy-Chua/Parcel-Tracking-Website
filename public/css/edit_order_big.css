@@ -111,6 +111,14 @@ h2 {
 }
 #items-div {
     margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.item-container, .add-item-container {
+    display: flex;
+    flex-direction: row;
 }
 h3 {
     color: #ffffff;

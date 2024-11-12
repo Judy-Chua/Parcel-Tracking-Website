@@ -1,24 +1,23 @@
 <h1>ORDER FORM</h1>
 <div id="main-body">
-  <!-- ACTION HERE!!! -->
-  <form action="/action_page.php">
+  <form id="order-form">
     <div class="flex-parent">
       <div class="flex-child">
         <label for="sender-name">Sender's Name*</label><br>
-        <input type="text" name="sender-name" class="input-normal" placeholder="Sender's Name" required><br>
+        <input type="text" name="sender-name" class="input-normal" id="inputSender" placeholder="Sender's Name" required><br>
         <label for="sender-number">Sender's Mobile Number*</label><br>
         <div class="flex-parent test">
           <p class="number-code">+63</p>
-          <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" required><br>
+          <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" id="inputSenderNum" placeholder="9XX XXX XXXX" required><br>
         </div>
       </div>
       <div class="flex-child">
         <label for="sender-name">Receiver's Name*</label><br>
-        <input type="text" name="sender-name" class="input-normal" placeholder="Receiver's Name" required><br>
+        <input type="text" name="sender-name" class="input-normal" id="inputReceiver" placeholder="Receiver's Name" required><br>
         <label for="sender-number">Receiver's Mobile Number*</label><br>
         <div class="flex-parent test">
           <p class="number-code">+63</p>
-          <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" required><br>
+          <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" id="inputReceiverNum" placeholder="9XX XXX XXXX" required><br>
         </div>
       </div>
     </div>
@@ -26,40 +25,24 @@
     <div class="flex-parent">
       <div class="flex-child">
         <div class="flex-parent" id="items-div">
-          <div>
-            <h3>Qty.</h3>
-            <input type="number" min="0" class="qty-input" placeholder="Qty."><br>
-            <input type="number" min="0" class="qty-input" placeholder="Qty."><br>
-            <input type="number" min="0" class="qty-input" placeholder="Qty."><br>
-          </div>
-          <div>
-            <h3>Item Description</h3>
-            <input type="text" class="desc-input" placeholder="Item Description">
-            <br>
-            <input type="text" class="desc-input" placeholder="Item Description">
-            <br>
-            <input type="text" class="desc-input" placeholder="Item Description">
-            <br>
-          </div>
-          <div>
-            <h3>Cost</h3>
-            <input type="text" class="cost-input" placeholder="Cost">
-            <br>
-            <input type="text" class="cost-input" placeholder="Cost">
-            <br>
-            <input type="text" class="cost-input" placeholder="Cost">
-            <br>
-          </div>
-          <div id="x-button-div">
-            <!-- add function here! -->
-            <img src="/img/x-circle-fill.svg" onclick="removeItem();" /><br>
-            <img src="/img/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
-            <img src="/img/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
+          <div class='item-container'>
+            <div>
+              <h3>Qty.</h3>
+              <input type="number" min="1" class="qty-input" placeholder="Qty." required><br>
+            </div>
+            <div>
+              <h3>Item Description</h3>
+              <input type="text" class="desc-input" placeholder="Item Description" required>
+              <br>
+            </div>
+            <div>
+              <h3>Cost</h3>
+              <input type="number" class="cost-input" min="1" placeholder="Cost" required>
+            </div>
           </div>
         </div>
-        <!-- add function here! -->
         <div id="add-btn-div">
-          <button id="add-btn">+ Add Items</button>
+          <button id="add-btn" type="button">+ Add Items</button>
         </div>
         <div class="flex-parent" id="charge-discount-div">
           <div>
@@ -76,18 +59,24 @@
     </div>
       <div class="flex-child">
         <label for="edt">Estimated Day of Transport</label><br>
-        <input type="date" name="edt" class="input-normal"><br>
+        <input type="date" name="edt" class="input-normal" id="inputDate" min="" required><br>
         <label for="origin-branch">Origin Branch*</label><br>
-        <select name="origin-branch">
-          <option value="select">&#40Select Branch&#41</option>
-          <option value="manila">Manila</option>
-          <option value="romblon">Romblon</option>
+        <select name="origin-branch" id="inputBranch" required>
+          <option value="">&#40Select Branch&#41</option>
+          <option value="Manila">Manila</option>
+          <option value="Romblon">Romblon</option>
+          <option value="Magdiwang">Magdiwang</option>
+          <option value="Cajidiocan">Cajidiocan</option>
+          <option value="San-Fernando">San Fernando</option>
         </select><br>
         <label for="dest-branch">Destination Branch*</label><br>
-        <select name="dest-branch">
-          <option value="select">&#40Select Branch&#41</option>
-          <option value="manila">Manila</option>
-          <option value="romblon">Romblon</option>
+        <select name="dest-branch" id="inputDestBranch" required>
+          <option value="">&#40Select Branch&#41</option>
+          <option value="Manila">Manila</option>
+          <option value="Romblon">Romblon</option>
+          <option value="Magdiwang">Magdiwang</option>
+          <option value="Cajidiocan">Cajidiocan</option>
+          <option value="San-Fernando">San Fernando</option>
         </select>
         <div id="btns">
           <button id="cancel-btn">CANCEL</button>
