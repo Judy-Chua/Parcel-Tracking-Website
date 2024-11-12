@@ -19,14 +19,14 @@ checkAuthenticated = (req,res, next) => {
 }
 
 /* LOGIN */
-router.get('/', checkAuthenticated, async (req, res) =>{
+router.get('/', async (req, res) =>{
     if(req.isAuthenticated()){
         res.redirect('/admin/view-orders')
     }
     res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login_big"});
 })
 
-router.get('/login', checkAuthenticated, async (req, res) =>{
+router.get('/login', async (req, res) =>{
     if(req.isAuthenticated()){
         res.redirect('/admin/view-orders')
     }
