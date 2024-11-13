@@ -45,7 +45,7 @@ const sampleOrders = [
 
     /* 2 */
     {
-        orderId: "A1A3",
+        orderId: "FRI98765",
         senderName: "Joseph Santos",
         receiverName: "Juan Perez",
         senderNum: 9124446574,
