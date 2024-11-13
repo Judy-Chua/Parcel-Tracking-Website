@@ -296,11 +296,11 @@ h2 {
     border-color: #0d0d0d;
     background-color: #fc0404;
     height: 50px;
-    width: 81px;
+    width: 67px;
     border-radius: 5px;
     margin-top: 32.5px;
     margin-left: 15px;
-    padding-inline: 1vw;
+    padding-inline: 6px;
     text-align: center;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-decoration: none;

@@ -96,6 +96,7 @@ body {
         border: solid;
         border-width: 1px;
         border-color: #0d0d0d;
+        background-color: #0d0d0d;
         height: 50px;
         width: fit-content;
         border-radius: 5px;

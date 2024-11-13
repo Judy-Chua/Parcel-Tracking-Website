@@ -25,21 +25,29 @@
       <form action="/action_page.php">
         <div class="flex-parent flex-wrappable">
           <div class="flex-child">
-            <label for="sender-name">Sender's Name*</label><br>
-            <input type="text" name="sender-name" class="input-normal" placeholder="Sender's Name" value="VALUE" required><br>
-            <label for="sender-number">Sender's Mobile Number*</label><br>
+            <label for="sender-name">Sender's Name*</label>
+            <br>
+            <input type="text" name="sender-name" class="input-normal" placeholder="Sender's Name" value="VALUE" required>
+            <br>
+            <label for="sender-number">Sender's Mobile Number*</label>
+            <br>
             <div class="flex-parent">
               <p class="number-code">+63</p>
-              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" value="VALUE" placeholder="9XX XXX XXXX" required><br>
+              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" value="VALUE" placeholder="9XX XXX XXXX" required>
+              <br>
             </div>
           </div>
           <div class="flex-child">
-            <label for="sender-name">Receiver's Name*</label><br>
-            <input type="text" name="sender-name" class="input-normal" placeholder="Receiver's Name" value="VALUE" required><br>
-            <label for="sender-number">Receiver's Mobile Number*</label><br>
+            <label for="sender-name">Receiver's Name*</label>
+            <br>
+            <input type="text" name="sender-name" class="input-normal" placeholder="Receiver's Name" value="VALUE" required>
+            <br>
+            <label for="sender-number">Receiver's Mobile Number*</label>
+            <br>
             <div class="flex-parent">
               <p class="number-code">+63</p>
-              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" value="VALUE" required><br>
+              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" value="VALUE" required>
+              <br>
             </div>
           </div>
         </div>
@@ -76,9 +84,12 @@
               </div>
               <div id="x-button-div">
                 <!-- add function here! -->
-                <img src="./images/x-circle-fill.svg" onclick="removeItem();" /><br>
-                <img src="./images/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
-                <img src="./images/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
+                <img src="./images/x-circle-fill.svg" onclick="removeItem();" />
+                <br>
+                <img src="./images/x-circle-fill.svg" class="x-button" onclick="removeItem();" />
+                <br>
+                <img src="./images/x-circle-fill.svg" class="x-button" onclick="removeItem();" />
+                <br>
               </div>
             </div>
             <!-- add function here! -->
@@ -95,23 +106,42 @@
                 <input type="number" name="discount" min="0" step=".01" id="discount-input" placeholder="Discount" value="0.0">
               </div>
             </div>
-            <label for="charge" id="charge-label">Total Charge*</label><br>
+            <label for="charge" id="charge-label">Total Charge*</label>
+            <br>
             <p id="total-calc">VALUE</p>
         </div>
           <div class="flex-child">
-            <label for="edt">Estimated Day of Transport</label><br>
-            <input type="date" name="edt" class="input-normal"><br>
-            <label for="origin-branch">Origin Branch*</label><br>
+            <label for="edt">Estimated Day of Transport</label>
+            <br>
+            <input type="date" name="edt" class="input-normal">
+            <br>
+            <label for="origin-branch">Origin Branch*</label>
+            <br>
             <select name="origin-branch">
               <option value="select">&#40Select Branch&#41</option>
               <option value="manila">Manila</option>
               <option value="romblon">Romblon</option>
-            </select><br>
-            <label for="dest-branch">Destination Branch*</label><br>
+            </select>
+            <br>
+            <label for="dest-branch">Destination Branch*</label>
+            <br>
             <select name="dest-branch">
               <option value="select">&#40Select Branch&#41</option>
               <option value="manila">Manila</option>
               <option value="romblon">Romblon</option>
+            </select>
+            <label for="eda">Estimated Day of Arrival</label>
+            <br>
+            <input type="date" name="eda" class="input-normal">
+            <br>
+            <label for="status">Status*</label>
+            <br>
+            <select name="status">
+              <option value="select">&#40Select Status&#41</option>
+              <option value="PROCESSING">PROCESSING</option>
+              <option value="IN TRANSIT">IN TRANSIT</option>
+              <option value="PROCESSING">READY FOR PICKUP</option>
+              <option value="IN TRANSIT">DELIVERED</option>
             </select>
             <div id="btns">
               <button id="cancel-btn">CANCEL</button>
