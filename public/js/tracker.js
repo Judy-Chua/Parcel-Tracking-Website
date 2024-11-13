@@ -7,6 +7,10 @@ $(document).ready(function() {
         checkTrackerID();
     });
 
+    $('#close-btn').click(function(e) {
+        e.preventDefault();
+        $('#popup').fadeOut(2000);
+    })
 });
 
 /*  validates the tracker ID inputted by the user
@@ -23,10 +27,13 @@ function checkTrackerID() {
             $('#trackingNumber').val("");
             window.location.href = "/search_parcel/track=" + id;
         } else {    
-            $('#popup').show();        
+            $('#popup').show();    
+            
             setTimeout(function() {
-                $('#popup').fadeOut(3000);
-            }, 2000);
+                if ($('#popup').is(':visible')) {
+                    $('#popup').fadeOut(2000);
+                }
+            }, 10000);
         }
     });
 }
