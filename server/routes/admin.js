@@ -291,7 +291,7 @@ router.get('/view-orders/annual-net', checkAuthenticated, async (req, res) => {
     }
 });
 
-router.post('/edit-order', checkAuthenticated, checkAuthenticated, async (req, res) => {
+router.post('/update-order', checkAuthenticated, checkAuthenticated, async (req, res) => {
     try {
         const { id } = req.body;
         const { newStatusEdit } = req.body;
@@ -447,7 +447,7 @@ router.get('/edit-order/:orderId', async (req, res) =>{
         total: specificOrder.total
     }
 
-    res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order_big",
+    res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order",
                                orderDetails: orderDetails});
 })
 
