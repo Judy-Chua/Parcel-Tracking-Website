@@ -129,7 +129,7 @@
         </div>
         <div class="popup-btns flex-parent"> 
             <button class="close-btn" onclick="closeDetails()">CLOSE</button>
-            <a id="edit-btn" href="/admin/edit-order">EDIT DETAILS</a>
+            <a class="edit-btn" href="/admin/edit-order">EDIT DETAILS</a>
         </div>
     </div>
 </div>
@@ -138,24 +138,24 @@
     <h1 id="orderIdDetails">FILTER OPTIONS</h1>
     <table class="popup-table">
         <tr class="popup-tr">
-            <th class="popup-th"><input type="radio" name="filterOptions" value="controlId" checked />By Control ID</th>
+            <th class="popup-th"><input type="radio" class="radio-btn" name="filterOptions" value="controlId" checked />By Control ID</th>
         </tr>
         <tr class="popup-tr">
-            <th class="popup-th"><input type="radio" name="filterOptions" value="hubToHub" />Hub to Hub Selection</th>
+            <th class="popup-th"><input type="radio" class="radio-btn" name="filterOptions" value="hubToHub" />Hub to Hub Selection</th>
         </tr>
         <tr class="popup-tr">
-            <th class="popup-th"><input type="radio" name="filterOptions" value="daily" />Daily Net</th>
+            <th class="popup-th"><input type="radio" class="radio-btn" name="filterOptions" value="daily" />Daily Net</th>
         </tr>
         <tr class="popup-tr">
-            <th class="popup-th"><input type="radio" name="filterOptions" value="monthly" />Monthly Net</th>
+            <th class="popup-th"><input type="radio" class="radio-btn" name="filterOptions" value="monthly" />Monthly Net</th>
         </tr>
         <tr class="popup-tr">
-            <th class="popup-th"><input type="radio" name="filterOptions" value="annual" />Annual Net</th>
+            <th class="popup-th"><input type="radio" class="radio-btn" name="filterOptions" value="annual" />Annual Net</th>
         </tr>
     </table>
     <div class="popup-btns flex-parent">
         <button class="close-btn" onclick="closeFilter()">CLOSE</button>
-        <button id="edit-btn" onclick="selectFilter()">SELECT</button>
+        <button class="edit-btn" onclick="selectFilter()">SELECT</button>
     </div>
 </div>
 
@@ -255,5 +255,14 @@
         var testNone = document.getElementById("testNone");
         if (popup)
             popup[0].style.display = "none";
+    }
+
+    function dropDownMenu() {
+        var x = document.getElementById("links");
+        if (x.style.display === "block") {
+        x.style.display = "none";
+        } else {
+        x.style.display = "block";
+        }
     }
 </script>

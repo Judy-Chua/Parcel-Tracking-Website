@@ -43,11 +43,11 @@
           </div>
           <div>
             <h3>Cost</h3>
-            <input type="text" class="cost-input" placeholder="Cost">
+            <input type="number" min="0" step=".01" class="cost-input" placeholder="Cost">
             <br>
-            <input type="text" class="cost-input" placeholder="Cost">
+            <input type="number" min="0" step=".01" class="cost-input" placeholder="Cost">
             <br>
-            <input type="text" class="cost-input" placeholder="Cost">
+            <input type="number" min="0" step=".01" class="cost-input" placeholder="Cost">
             <br>
           </div>
           <div id="x-button-div">
@@ -97,3 +97,14 @@
     </div>
   </form> 
 </div>
+
+<script>
+  function dropDownMenu() {
+      var x = document.getElementById("links");
+      if (x.style.display === "block") {
+      x.style.display = "none";
+      } else {
+      x.style.display = "block";
+      }
+  }
+</script>
