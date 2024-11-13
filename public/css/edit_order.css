@@ -145,6 +145,14 @@ h2 {
 }
 #items-div {
     margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.item-container, .add-item-container {
+    display: flex;
+    flex-direction: row;
 }
 h3 {
     color: #ffffff;
@@ -301,7 +309,7 @@ input[type="date"] {
     font-size: 16px;
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
-#submit-btn {
+#save-btn {
     margin-left: 2vw;
     background-color: transparent;
     border-radius: 5px;

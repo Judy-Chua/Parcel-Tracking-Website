@@ -19,15 +19,14 @@ function checkTrackerID() {
     }
 
     $.post('/search_parcel', idData, function(message, status) {
-        console.log("response data: ", message, status);
         if (message.exists) {
             $('#trackingNumber').val("");
             window.location.href = "/search_parcel/track=" + id;
         } else {    
             $('#popup').show();        
             setTimeout(function() {
-                $('#popup').hide();
-            }, 3000);
+                $('#popup').fadeOut(3000);
+            }, 2000);
         }
     });
 }
