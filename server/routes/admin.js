@@ -447,7 +447,7 @@ router.get('/edit-order/:orderId', async (req, res) =>{
         total: specificOrder.total
     }
 
-    res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order_big",
+    res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order",
                                orderDetails: orderDetails});
 })
 
