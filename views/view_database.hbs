@@ -112,11 +112,21 @@
         </tr>
         <tr class="popup-tr">
             <th class="popup-th">Status:</th>
-            <td class="popup-td" id="statusDetails"></td>
+            <td class="popup-td" id="statusDetails">
+                <select name="status" id="edit-select">
+                    <option value="select">&#40Select Status&#41</option>
+                    <option value="PROCESSING">PROCESSING</option>
+                    <option value="IN TRANSIT">IN TRANSIT</option>
+                    <option value="PROCESSING">READY FOR PICKUP</option>
+                    <option value="IN TRANSIT">DELIVERED</option>
+                </select>
+            </td>
         </tr>
         <tr class="popup-tr">
             <th class="popup-th">EDA:</th>
-            <td class="popup-td" id="edaDetails"></td>
+            <td class="popup-td" id="edaDetails">
+                <input type="date" name="eda" value="2001-01-01"/>
+            </td>
         </tr>
         <tr class="popup-tr">
             <th class="popup-th">Origin Branch:</th>
@@ -131,7 +141,7 @@
         </div>
         <div class="popup-btns flex-parent"> 
             <button class="close-btn" onclick="closeDetails()">CLOSE</button>
-            <a class="edit-btn" href="/admin/edit-order/{{this.orderId}}">EDIT DETAILS</a>
+            <a class="edit-btn">SAVE DETAILS</a>
         </div>
     </div>
 </div>

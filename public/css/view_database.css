@@ -195,7 +195,7 @@ p {
     text-decoration: none;
     color: #000000;
 }
-.edit-select, input {
+#edit-select, input {
     border: none;
     border-bottom: 1px solid #000000;
     background-color: #fffaeb;
