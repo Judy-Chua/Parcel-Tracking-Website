@@ -27,12 +27,15 @@ const sampleOrders = [
         receiverName : "Juan Perez",
         senderNum : 9121231234,
         receiverNum : 9121234567,
+
         itemDesc : ["Item1", "Item2"],
         itemNum : [1, 1],
         itemPrice : [123, 456],
+
         transDate : "10-18-2024",
         originBranch : "Manila",
         destBranch : "Romblon",
+
         initialCharge : 579,
         discount : 123,
         total : 456,
@@ -50,31 +53,40 @@ const sampleOrders = [
         receiverName: "Juan Perez",
         senderNum: 9124446574,
         receiverNum: 9122222222,
+
         itemDesc: ["Item11", "Item22"],
         itemNum: [3, 5],
+        itemPrice: [300, 100],
+
         transDate: "10-18-2024",
         originBranch: "Manila",
         destBranch: "Romblon",
-        total: 1503.25,
 
-        status: "IN TRANSIT",
-        arrivalDate: "12-12-2024",
-        updatedBy: "Manila",
+        initialCharge : 1400,
+        discount : 100,
+        total: 1500,
+
+        status: "PROCESSING",
+        arrivalDate: "---",
+        updatedBy: "---",
         updates: []
     },
 
-    /* 2 */
+    /* 3 */
     {   orderId : "THU11111",
         senderName : "Juan Dela Cruz",
         receiverName : "Juanita",
         senderNum : 9129874567,
         receiverNum : 9123331122,
+
         itemDesc : ["Item12"],
-        itemNum : [1],
-        itemPrice : [2000],
+        itemNum : [5],
+        itemPrice : [400],
+
         transDate : "10-17-2024",
         originBranch : "Magdiwang",
         destBranch : "Manila",
+
         initialCharge : 2000,
         discount : 100,
         total : 1900,

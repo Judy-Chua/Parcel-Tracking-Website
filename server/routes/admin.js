@@ -291,29 +291,6 @@ router.get('/view-orders/annual-net', checkAuthenticated, async (req, res) => {
     }
 });
 
-router.post('/edit-order', checkAuthenticated, checkAuthenticated, async (req, res) => {
-    try {
-        const { id } = req.body;
-        const { newStatusEdit } = req.body;
-        const { newEDAEdit } = req.body;
-        const { newOriginEdit } = req.body;
-        const newDoc = await Order.findOneAndUpdate(
-            { orderId: id },
-            {
-                status: newStatusEdit,
-                arrivalDate: newEDAEdit,
-                originBranch: newOriginEdit
-            },
-            { new: true }
-        );
-        console.log(newDoc)
-    }
-    catch (error) {
-        console.error("Error retrieving orders:", error);
-        res.status(500).send("Server Error");
-    }
-})
-
 /* === */
 
 /* ADD ORDER */
@@ -498,7 +475,28 @@ router.post('/edit-order', async (req, res) =>{
 /* === */
 
 /* UPDATE ORDERS */
-
+router.post('/update-order', checkAuthenticated, checkAuthenticated, async (req, res) => {
+    try {
+        const { id } = req.body;
+        const { newStatusEdit } = req.body;
+        const { newEDAEdit } = req.body;
+        const { newOriginEdit } = req.body;
+        const newDoc = await Order.findOneAndUpdate(
+            { orderId: id },
+            {
+                status: newStatusEdit,
+                arrivalDate: newEDAEdit,
+                originBranch: newOriginEdit
+            },
+            { new: true }
+        );
+        console.log(newDoc)
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+})
 /* === */
 
 module.exports = router;

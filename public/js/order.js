@@ -82,9 +82,7 @@ $(document).ready(function() {
     //clears all input then go back to view order
     $('#cancel-btn').click(function() { 
         clear();
-        setTimeout(function() {
-            window.location.href = "/admin/view-orders";
-        }, 1000);
+        window.location.href = "/admin/view-orders";
     });
 
     //validates the order form when submit button is clicked
@@ -328,7 +326,7 @@ async function addToDatabase() {
             if (message.success) {
                 setTimeout(function() {
                     window.location.href = "/admin/view-orders";
-                }, 2000);
+                }, 1000);
             } else {
                 console.log("not success");
             }
