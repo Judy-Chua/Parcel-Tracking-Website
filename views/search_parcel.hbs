@@ -13,10 +13,19 @@
 </div>
 
 <div id="popup" style="display:none;">
-  <img id="question-mark" src="/img/question_mark.svg" />
-  <h2>The tracking ID is invalid or might have expired.</h2>
-  <p id="popup-msg">Having trouble tracking your parcel? Contact us.</p>
-  <a class="contact-us-link" id="contact-us-popup" href="/contact_us">
-      <p class="contact-us-text">CONTACT US</p>
-  </a>
+    <img id="question-mark" src="/img/question_mark.svg" />
+    <h2>The tracking ID is invalid or might have expired.</h2>
+    <p id="popup-msg">Having trouble tracking your parcel? Contact us.</p>
+    <a class="contact-us-link" id="contact-us-popup" href="/contact_us">CONTACT US</a>
 </div>
+
+<script>
+    function dropDownMenu() {
+        var x = document.getElementById("links");
+        if (x.style.display === "block") {
+        x.style.display = "none";
+        } else {
+        x.style.display = "block";
+        }
+    }
+</script>

@@ -1,0 +1,291 @@
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Big Shoulders Display */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Jost */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    background-color: #fc0404;
+    background-image: url(/img/truck.svg);
+    background-repeat: no-repeat;
+    background-position: center 10vh;
+    background-size: 90vw 90vh;
+    margin-top: -16px;
+    margin-inline: 0%;
+    margin-bottom: 0%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* bigger screen */
+@media only screen and (min-width: 1061px) {
+    #navbar {
+        position: sticky;
+        top: 0;
+        background-color: #ffffff;
+        height: 115px;
+        vertical-align: middle;
+        z-index: 1;
+    }
+    .flex-parent {
+        display: flex;
+    }
+    #esmc-logo {
+        margin-left: 20px;
+    }
+    #menu {
+        background-color: #cdcdcd;
+        width: 563px;
+        height: 40px;
+        border-radius: 5px;
+        margin-top: 37.5px;
+        margin-left: 150px;
+    }
+    p {
+        margin-left: 1px;
+    }
+    .topbar-links {
+        font-family: "Poppins";
+        color: #000000;
+        text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+        margin-top: 9px;
+        font-size: 16px;
+        text-align: center;
+        text-wrap: nowrap;
+    }
+    .topbar-menu {
+        padding-inline: 10px;
+    }
+    #homepage {
+        flex: 1 1 0px;
+    }
+    #homepage-link {
+        text-decoration: none;
+        color: #000000;
+    }
+    #homepage-link:visited {
+        color: #000000;
+    }
+    #branches {
+        flex: 1 1 0px;
+    }
+    #branches-link {
+        text-decoration: none;
+        color: #000000;
+    }
+    #branches-link:visited {
+        color: #000000;
+    }
+    #search-page {
+        background-color: #acacac;
+        border-radius: 5px;
+        flex: 1 1 0px;
+    }
+    #search-page-link {
+        text-decoration: none;
+        color: #000000;
+    }
+    #search-page-link:visited {
+        color: #000000;
+    }
+    #small-nav {
+        display: none;
+    }
+}
+
+.contact-us-link {
+    display: grid;
+    border: solid;
+    border-width: 1px;
+    border-color: #0d0d0d;
+    height: 50px;
+    width: fit-content;
+    border-radius: 5px;
+    margin-top: 32.5px;
+    margin-left: 150px;
+    padding-inline: 10px;
+    text-align: center;
+    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    color: #000000;
+    font-family: "Poppins";
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    text-wrap: nowrap;
+    place-content: center;
+}
+.contact-us-link:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* smaller screen */
+@media only screen and (max-width: 1061px) {
+    #navbar {
+        display: none;
+    }
+    .flex-parent {
+        display: flex;
+    }
+    #small-nav {
+        overflow: hidden;
+        position: relative;
+    }
+    #esmc-logo-small-nav {
+        margin-top: 11px;
+        margin-left: 20px;
+    }
+    #links {
+        display: none;
+        position: fixed;
+        z-index: 2;
+        width: 100%;
+    }
+    .small-nav-links {
+        font-family: "Poppins";
+        color: #000000;
+        text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+        font-size: 16px;
+        padding-left: 20px;
+        text-decoration: none;
+        display: block;
+    }
+    #home-small {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #cdcdcd;
+    }
+    #branches-small {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #cdcdcd;
+    }
+    #search-small {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #acacac;
+    }
+    #contact-small {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #ffffff;
+    }
+    a#hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 47px;
+    }
+    .active {
+        background-color: #ffffff;
+        height: 115px;
+    }
+}
+h1 {
+    font-family: "Big Shoulders Display";
+    font-weight: bolder;
+    font-size: 48px;
+    color: #fffaeb;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#search-bar {
+    margin-top: 7.5em;
+    position: relative;
+}
+input {
+    width: 60%;
+    height: 60px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5) inset;
+    margin-left: 15%;
+    padding-top: 4.5px;
+}
+input[type='text'] {
+    padding-left: 1.5vw;
+    font-size: 18px;
+}
+#placeholder::placeholder {
+    font-family: "Jost";
+    font-size: 24px;
+}
+button {
+    border: none;
+    border-radius: 20px;
+    background-color: #870505;
+    color: #ffffff;
+    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
+    height: 75px;
+    width: 20%;
+    font-family: "Jost";
+    font-weight: bold;
+    font-size: 2vw;
+    text-wrap: nowrap;
+    position: absolute;
+    top: -0.5vh;
+    right: 15%;
+}
+#msg {
+    justify-content: center;
+}
+#contact-here {
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+    font-style: italic;
+}
+#contact-here:visited {
+    color: #ffffff;
+}
+p {
+    text-align: center;
+    font-family: "Jost";
+    font-size: 20px;
+    color: #ffffff;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #58020e;
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+}
+#copyright {
+    color: #ffffff;
+    font-family: "Inter";
+    font-size: 16px;
+    font-weight: 600;
+}
+#popup {
+    position: fixed;
+    top: 12em;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: #fffaeb;
+    height: 394px;
+    width: 531px;
+    border-radius: 20px;
+    text-align: center;
+}
+#question-mark {
+    margin-top: 50px;
+}
+h2 {
+    font-family: 'Arial';
+    font-size: 24px;
+    color: #000000;
+    font-weight: bold;
+}
+#popup-msg {
+    font-family: 'Arial';
+    color: #0d0d0d;
+}
+#contact-us-popup {
+    margin-top: 8vh;
+    margin-left: auto;
+    margin-right: 3vw;
+}

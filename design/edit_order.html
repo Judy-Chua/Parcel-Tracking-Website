@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <title>Edit Form | ESMC</title>
-    <link rel="stylesheet" href="edit_form_big.css">
+    <link rel="stylesheet" href="edit_order.css">
   </head>
   <body>
     <div id="navbar" class="flex-parent">
-        <img id="esmc-logo" src="images/ESMC_logo.svg" />
+        <img id="esmc-logo" src="./images/ESMC_logo.svg" />
         <div id="profile" class="flex-parent">
             <img id="profile-icon" src="./images/profile_icon.svg" />
             <img id="profile-dropdown" src="./images/profile_dropdown.svg" />
@@ -16,59 +16,59 @@
     <div id="main-body">
       <!-- ACTION HERE!!! -->
       <form action="/action_page.php">
-        <div class="flex-parent">
+        <div class="flex-parent flex-wrappable">
           <div class="flex-child">
             <label for="sender-name">Sender's Name*</label><br>
-            <input type="text" name="sender-name" class="input-normal" placeholder="Sender's Name" value="HELP" required><br>
+            <input type="text" name="sender-name" class="input-normal" placeholder="Sender's Name" value="VALUE" required><br>
             <label for="sender-number">Sender's Mobile Number*</label><br>
-            <div class="flex-parent test">
+            <div class="flex-parent">
               <p class="number-code">+63</p>
-              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" value="HELP" placeholder="9XX XXX XXXX" required><br>
+              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" value="VALUE" placeholder="9XX XXX XXXX" required><br>
             </div>
           </div>
           <div class="flex-child">
             <label for="sender-name">Receiver's Name*</label><br>
-            <input type="text" name="sender-name" class="input-normal" placeholder="Receiver's Name" value="HELP" required><br>
+            <input type="text" name="sender-name" class="input-normal" placeholder="Receiver's Name" value="VALUE" required><br>
             <label for="sender-number">Receiver's Mobile Number*</label><br>
-            <div class="flex-parent test">
+            <div class="flex-parent">
               <p class="number-code">+63</p>
-              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" value="HELP" required><br>
+              <input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" class="phone-number" placeholder="9XX XXX XXXX" value="VALUE" required><br>
             </div>
           </div>
         </div>
           <h2>ITEMS</h2>
-        <div class="flex-parent">
+        <div class="flex-parent flex-wrappable">
           <div class="flex-child">
             <div class="flex-parent" id="items-div">
               <div>
                 <h3>Qty.</h3>
-                <input type="number" min="0" class="qty-input" placeholder="Qty." value="43.14"><br>
-                <input type="number" min="0" class="qty-input" placeholder="Qty." value="43.14"><br>
-                <input type="number" min="0" class="qty-input" placeholder="Qty." value="43.14"><br>
+                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0"><br>
+                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0"><br>
+                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0"><br>
               </div>
               <div>
                 <h3>Item Description</h3>
-                <input type="text" class="desc-input" placeholder="Item Description" value="HELP">
+                <input type="text" class="desc-input" placeholder="Item Description" value="VALUE">
                 <br>
-                <input type="text" class="desc-input" placeholder="Item Description" value="HELP">
+                <input type="text" class="desc-input" placeholder="Item Description" value="VALUE">
                 <br>
-                <input type="text" class="desc-input" placeholder="Item Description" value="HELP">
+                <input type="text" class="desc-input" placeholder="Item Description" value="VALUE">
                 <br>
               </div>
               <div>
                 <h3>Cost</h3>
-                <input type="text" class="cost-input" placeholder="Cost" value="HELP">
+                <input type="text" class="cost-input" placeholder="Cost" value="VALUE">
                 <br>
-                <input type="text" class="cost-input" placeholder="Cost" value="HELP">
+                <input type="text" class="cost-input" placeholder="Cost" value="VALUE">
                 <br>
-                <input type="text" class="cost-input" placeholder="Cost" value="HELP">
+                <input type="text" class="cost-input" placeholder="Cost" value="VALUE">
                 <br>
               </div>
               <div id="x-button-div">
                 <!-- add function here! -->
-                <img src="images/x-circle-fill.svg" onclick="removeItem();" /><br>
-                <img src="images/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
-                <img src="images/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
+                <img src="./images/x-circle-fill.svg" onclick="removeItem();" /><br>
+                <img src="./images/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
+                <img src="./images/x-circle-fill.svg" class="x-button" onclick="removeItem();" /><br>
               </div>
             </div>
             <!-- add function here! -->
@@ -78,15 +78,15 @@
             <div class="flex-parent" id="charge-discount-div">
               <div>
                 <h3 id="charge-label">Charge</h3>
-                <p id="charge-calc">HELP</p>
+                <p id="charge-calc">VALUE</p>
               </div>
               <div id="discount-div">
                 <label for="discount">Discount</label>
-                <input type="number" name="discount" min="0" step=".01" id="discount-input" placeholder="Discount" value="43.14">
+                <input type="number" name="discount" min="0" step=".01" id="discount-input" placeholder="Discount" value="0.0">
               </div>
             </div>
             <label for="charge" id="charge-label">Total Charge*</label><br>
-            <p id="total-calc">HELP</p>
+            <p id="total-calc">VALUE</p>
         </div>
           <div class="flex-child">
             <label for="edt">Estimated Day of Transport</label><br>

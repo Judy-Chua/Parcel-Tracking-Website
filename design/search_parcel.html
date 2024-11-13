@@ -2,26 +2,47 @@
 <html lang="en">
   <head>
     <title>Search | ESMC</title>
-    <link rel="stylesheet" href="search_parcel_big.css">
+    <link rel="stylesheet" href="search_parcel.css">
   </head>
   <body>
-    <div id="navbar" class="flex-parent flex-justified">
-        <img id="esmc-logo" src="images/ESMC_logo.svg">
-        <div class="flex-parent flex-justified" id="menu">
-            <div class="topbar-menu">
-                <p class="topbar-links">HOME</p>
+    <!-- big header here -->
+    <div id="navbar" class="flex-parent">
+        <a href="/">
+            <img id="esmc-logo" src="./images/ESMC_logo.svg">
+        </a>
+        <div class="flex-parent" id="menu">
+            <div class="topbar-menu" id="homepage">
+                <p class="topbar-links"><a id="homepage-link" href="about_us.html">HOME</a></p>
             </div>
-            <div class="topbar-menu">
-                <p class="topbar-links">BRANCHES</p>
+            <div class="topbar-menu" id="branches">
+                <p class="topbar-links"><a id="branches-link" href="branches.html">BRANCHES</a></p>
             </div>
             <div class="topbar-menu" id="search-page">
-                <p class="topbar-links"><a id="search-page-link" href="./search_parcel.html">SEARCH PARCEL</a></p>
+                <p class="topbar-links"><a id="search-page-link" href="search_parcel.html">SEARCH PARCEL</a></p>
             </div>
         </div>
-        <a class="contact-us-link" href="./contact_us.html">
-            <p class="contact-us-text">CONTACT US</p>
-        </a>
+        <a class="contact-us-link" href="contact_us.html">CONTACT US</a>
     </div>
+    <!-- until here -->
+    <!-- small header here -->
+    <div id="small-nav">
+        <div class="active">
+            <a href="about_us.html">
+                <img id="esmc-logo-small-nav" src="./images/ESMC_logo.svg">
+            </a>
+            
+            <a href="javascript:void(0);" id="hamburger" onclick="dropDownMenu()">
+            <img src="images/hamburger.svg" />
+            </a>
+        </div>
+        <div id="links">
+            <a class="small-nav-links" id="home-small" href="about_us.html">HOME</a>
+            <a class="small-nav-links" id="branches-small" href="branches.html">BRANCHES</a>
+            <a class="small-nav-links" id="search-small" href="search_parcel.html">SEARCH PARCEL</a>
+            <a class="small-nav-links" id="contact-small" href="contact_us.html">CONTACT US</a>
+        </div>
+    </div>
+    <!-- until here -->
     <h1>TRACK PARCEL</h1>
     <div id="search-bar">
         <!-- search functionality here -->
@@ -32,20 +53,29 @@
     </div>
     <div class="flex-parent" id="msg">
         <p>Having trouble tracking your parcel? Contact us&nbsp;</p>
-        <p id="contact-link"><a id="contact-here" href="./contact_us.html">here</a></p>
+        <a id="contact-here" href="/contact_us"><p id="contact-link">here</p></a>
         <p>.</p>
     </div>
     <footer>
         <p id="copyright">COPYRIGHT &copy; 2024 ALL RIGHTS RESERVED</p>
     </footer>
     <!-- pop up pag no results -->
-    <!-- <div id="popup">
-        <img id="question-mark" src="images/question_mark.svg" />
+    <div id="popup">
+        <img id="question-mark" src="./images/question_mark.svg" />
         <h2>The tracking ID is invalid or might have expired.</h2>
         <p id="popup-msg">Having trouble tracking your parcel? Contact us.</p>
-        <a class="contact-us-link" id="contact-us-popup" href="./contact_us.html">
-            <p class="contact-us-text">CONTACT US</p>
-        </a> -->
+        <a class="contact-us-link" id="contact-us-popup" href="./contact_us.html">CONTACT US</a>
     </div>
   </body>
 </html>
+
+<script>
+    function dropDownMenu() {
+        var x = document.getElementById("links");
+        if (x.style.display === "block") {
+        x.style.display = "none";
+        } else {
+        x.style.display = "block";
+        }
+    }
+</script>

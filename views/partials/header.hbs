@@ -1,5 +1,8 @@
+<!-- big header here -->
 <div id="navbar" class="flex-parent flex-justified">
-    <img id="esmc-logo" src="/img/ESMC_logo.svg">
+    <a href="/">
+        <img id="esmc-logo" src="/img/ESMC_logo.svg">
+    </a>
     <div class="flex-parent" id="menu">
         <div class="topbar-menu" id="homepage">
             <p class="topbar-links"><a id="homepage-link" href="/">HOME</a></p>
@@ -11,5 +14,25 @@
             <p class="topbar-links"><a id="search-page-link" href="/search_parcel">SEARCH PARCEL</a></p>
         </div>
     </div>
-    <a class="contact-us-link" href="./contact_us">CONTACT US</a>
+    <a class="contact-us-link" href="/contact_us">CONTACT US</a>
 </div>
+<!-- until here -->
+<!-- small header here -->
+<div id="small-nav">
+    <div class="active">
+        <a href="/">
+            <img id="esmc-logo-small-nav" src="/img/ESMC_logo.svg">
+        </a>
+        
+        <a href="javascript:void(0);" id="hamburger" onclick="dropDownMenu()">
+        <img src="/img/hamburger.svg" />
+        </a>
+    </div>
+    <div id="links">
+        <a class="small-nav-links" id="home-small" href="/">HOME</a>
+        <a class="small-nav-links" id="branches-small" href="branches">BRANCHES</a>
+        <a class="small-nav-links" id="search-small" href="search_parcel">SEARCH PARCEL</a>
+        <a class="small-nav-links" id="contact-small" href="contact_us">CONTACT US</a>
+    </div>
+</div>
+<!-- until here -->

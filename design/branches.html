@@ -2,26 +2,47 @@
 <html lang="en">
   <head>
     <title>Branches | ESMC</title>
-    <link rel="stylesheet" href="branches_big.css">
+    <link rel="stylesheet" href="branches.css">
   </head>
   <body>
-    <div id="navbar" class="flex-parent flex-justified">
-        <img id="esmc-logo" src="images/ESMC_logo.svg">
-        <div class="flex-parent flex-justified" id="menu">
+    <!-- big header here -->
+    <div id="navbar" class="flex-parent">
+        <a href="/">
+            <img id="esmc-logo" src="./images/ESMC_logo.svg">
+        </a>
+        <div class="flex-parent" id="menu">
             <div class="topbar-menu" id="homepage">
-                <p class="topbar-links"><a id="homepage-link" href="/">HOME</a></p>
+                <p class="topbar-links"><a id="homepage-link" href="about_us.html">HOME</a></p>
             </div>
             <div class="topbar-menu" id="branches">
-                <p class="topbar-links"><a id="branches-link" href="./branches.html">BRANCHES</a></p>
+                <p class="topbar-links"><a id="branches-link" href="branches.html">BRANCHES</a></p>
             </div>
             <div class="topbar-menu" id="search-page">
-                <p class="topbar-links"><a id="search-page-link" href="./search_parcel.html">SEARCH PARCEL</a></p>
+                <p class="topbar-links"><a id="search-page-link" href="search_parcel.html">SEARCH PARCEL</a></p>
             </div>
         </div>
-        <a class="contact-us-link" href="./contact_us.html">
-            <p class="contact-us-text">CONTACT US</p>
-        </a>
+        <a class="contact-us-link" href="contact_us.html">CONTACT US</a>
     </div>
+    <!-- until here -->
+    <!-- small header here -->
+    <div id="small-nav">
+        <div class="active">
+            <a href="about_us.html">
+                <img id="esmc-logo-small-nav" src="./images/ESMC_logo.svg">
+            </a>
+            
+            <a href="javascript:void(0);" id="hamburger" onclick="dropDownMenu()">
+            <img src="images/hamburger.svg" />
+            </a>
+        </div>
+        <div id="links">
+            <a class="small-nav-links" id="home-small" href="about_us.html">HOME</a>
+            <a class="small-nav-links" id="branches-small" href="branches.html">BRANCHES</a>
+            <a class="small-nav-links" id="search-small" href="search_parcel.html">SEARCH PARCEL</a>
+            <a class="small-nav-links" id="contact-small" href="contact_us.html">CONTACT US</a>
+        </div>
+    </div>
+    <!-- until here -->
     <div id="search-bar">
         <!-- search functionality here -->
         <form action="#">
@@ -29,17 +50,17 @@
             <button>Find</button>
         </form>
     </div>
-    <div class="flex-parent" id="body">
+    <div id="body">
         <div>
             <h1>BRANCHES NEARBY</h1>
             <!-- branch div starts here -->
             <div class="branch flex-parent">
-                <img src="images/temp_branch_img.svg" />
+                <img src="./images/temp_branch_img.svg" />
                 <div class="branch-info">
                     <h2>POBLACION</h2>
                     <div class="flex-parent">
                         <p class="branch-text">Mon, Tue, Wed, Thurs, Fri, Sat, Sun &nbsp;</p>
-                        <img src="images/vertical line.svg" />
+                        <img src="./images/vertical line.svg" />
                         <p class="branch-text">&nbsp; 5 &ndash; 7 PM</p>
                     </div>
                     <hr>
@@ -47,7 +68,7 @@
                     <div class="flex-parent last-row">
                         <div class="flex-parent">
                             <p class="branch-text">0.5 km &nbsp;</p>
-                            <img src="images/vertical line.svg" />
+                            <img src="./images/vertical line.svg" />
                             <p class="branch-text">&nbsp; 5 min</p>
                         </div>
                         <p class="branch-text phone-no">0917 460 0084</p>
@@ -57,12 +78,12 @@
             <!-- until here -->
             <!-- branch div starts here -->
             <div class="branch flex-parent">
-                <img src="images/temp_branch_img.svg" />
+                <img src="./images/temp_branch_img.svg" />
                 <div class="branch-info">
                     <h2>POBLACION</h2>
                     <div class="flex-parent">
                         <p class="branch-text">Mon, Tue, Wed, Thurs, Fri, Sat, Sun &nbsp;</p>
-                        <img src="images/vertical line.svg" />
+                        <img src="./images/vertical line.svg" />
                         <p class="branch-text">&nbsp; 5 &ndash; 7 PM</p>
                     </div>
                     <hr>
@@ -70,7 +91,7 @@
                     <div class="flex-parent last-row">
                         <div class="flex-parent">
                             <p class="branch-text">0.5 km &nbsp;</p>
-                            <img src="images/vertical line.svg" />
+                            <img src="./images/vertical line.svg" />
                             <p class="branch-text">&nbsp; 5 min</p>
                         </div>
                         <p class="branch-text phone-no">0917 460 0084</p>
@@ -80,12 +101,12 @@
             <!-- until here -->
              <!-- branch div starts here -->
             <div class="branch flex-parent">
-                <img src="images/temp_branch_img.svg" />
+                <img src="./images/temp_branch_img.svg" />
                 <div class="branch-info">
                     <h2>POBLACION</h2>
                     <div class="flex-parent">
                         <p class="branch-text">Mon, Tue, Wed, Thurs, Fri, Sat, Sun &nbsp;</p>
-                        <img src="images/vertical line.svg" />
+                        <img src="./images/vertical line.svg" />
                         <p class="branch-text">&nbsp; 5 &ndash; 7 PM</p>
                     </div>
                     <hr>
@@ -93,7 +114,7 @@
                     <div class="flex-parent last-row">
                         <div class="flex-parent">
                             <p class="branch-text">0.5 km &nbsp;</p>
-                            <img src="images/vertical line.svg" />
+                            <img src="./images/vertical line.svg" />
                             <p class="branch-text">&nbsp; 5 min</p>
                         </div>
                         <p class="branch-text phone-no">0917 460 0084</p>
@@ -103,12 +124,12 @@
             <!-- until here -->
              <!-- branch div starts here -->
             <div class="branch flex-parent">
-                <img src="images/temp_branch_img.svg" />
+                <img src="./images/temp_branch_img.svg" />
                 <div class="branch-info">
                     <h2>POBLACION</h2>
                     <div class="flex-parent">
                         <p class="branch-text">Mon, Tue, Wed, Thurs, Fri, Sat, Sun &nbsp;</p>
-                        <img src="images/vertical line.svg" />
+                        <img src="./images/vertical line.svg" />
                         <p class="branch-text">&nbsp; 5 &ndash; 7 PM</p>
                     </div>
                     <hr>
@@ -116,7 +137,7 @@
                     <div class="flex-parent last-row">
                         <div class="flex-parent">
                             <p class="branch-text">0.5 km &nbsp;</p>
-                            <img src="images/vertical line.svg" />
+                            <img src="./images/vertical line.svg" />
                             <p class="branch-text">&nbsp; 5 min</p>
                         </div>
                         <p class="branch-text phone-no">0917 460 0084</p>
@@ -132,6 +153,16 @@
     <footer>
         <p id="copyright">COPYRIGHT &copy; 2024 ALL RIGHTS RESERVED</p>
     </footer>
-    </div>
   </body>
 </html>
+
+<script>
+    function dropDownMenu() {
+        var x = document.getElementById("links");
+        if (x.style.display === "block") {
+        x.style.display = "none";
+        } else {
+        x.style.display = "block";
+        }
+    }
+</script>

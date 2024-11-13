@@ -40,7 +40,28 @@ const sampleOrders = [
         status : "IN TRANSIT",
         arrivalDate : "10-20-2024",
         updatedBy : "Manila",
-        updates : [30002, 30003] },
+        updates: [30002, 30003]
+    },
+
+    /* 2 */
+    {
+        orderId: "A1A3",
+        senderName: "Joseph Santos",
+        receiverName: "Juan Perez",
+        senderNum: 9124446574,
+        receiverNum: 9122222222,
+        itemDesc: ["Item11", "Item22"],
+        itemNum: [3, 5],
+        transDate: "10-18-2024",
+        originBranch: "Manila",
+        destBranch: "Romblon",
+        total: 1503.25,
+
+        status: "IN TRANSIT",
+        arrivalDate: "12-12-2024",
+        updatedBy: "Manila",
+        updates: []
+    },
 
     /* 2 */
     {   orderId : "THU11111",
@@ -61,7 +82,8 @@ const sampleOrders = [
         status : "PROCESSING",
         arrivalDate : "10-27-2024",
         updatedBy : "Magdiwang",
-        updates : [30001] },
+        updates : [30001] 
+    },
 ];
 
 const sampleUpdates = [
