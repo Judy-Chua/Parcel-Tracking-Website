@@ -72,9 +72,7 @@ $(document).ready(function() {
     //validates the order form when submit button is clicked
     $('#submit-btn').click(async function(e) {
         e.preventDefault(); 
-        console.log("clicked button");
-        if (validateInput()) {
-            console.log("validated");
+        if (validateInput(1)) {
             //remove all inputs, save to database, confirm that
             await addToDatabase();
             clear();
@@ -86,14 +84,24 @@ $(document).ready(function() {
         clear();
         setTimeout(function() {
             window.location.href = "/admin/view-orders";
-        }, 2000);
+        }, 1000);
+    });
+
+    //validates the order form when submit button is clicked
+    $('#save-btn').click(function(e) {
+        e.preventDefault(); 
+        if (validateInput(2)) {
+            //remove all inputs, save to database, confirm that
+            updateDatabase();
+            clear();
+        }
     });
 });
 
 /*  validates all the required inputs by the user
     returns true if ALL is VALID; otherwise, false
 */
-function validateInput() { //discount is optional
+function validateInput(type) { //discount is optional
     const sender = $('#inputSender').val();
     const senderNum = $('#inputSenderNum').val();
     const receiver = $('#inputReceiver').val();
@@ -106,8 +114,12 @@ function validateInput() { //discount is optional
 
     if (checkEmpty(sender) || checkEmpty(senderNum) ||      //sender and sender num
         checkEmpty(receiver) || checkEmpty(receiverNum) ||  //receiver and receiver number
-        checkEmpty(date) || checkDate() ||                  //estimated date of transport
+        checkEmpty(date) ||                                   //estimated date of transport
         checkEmpty(branch) || checkEmpty(destBranch)) {      //current branch and destination branch
+        noError = false;
+    }
+
+    if (type == 1 && checkDate()) {
         noError = false;
     }
 
@@ -170,9 +182,9 @@ function checkDate() {
     returns true if EMPTY; otherwise, false
 */
 function checkEmpty(value) {
-    if (!value) 
-        return true;
     console.log(value);
+    if (value === "" || value === null) 
+        return true;
     return false;
 }
 
@@ -362,6 +374,73 @@ function generateTrackerID() {
     });
 }
 
+function updateDatabase() {
+    const orderId = $('#orderId').val();
+    const sender = $('#inputSender').val();
+    const senderNum = parseInt($('#inputSenderNum').val().replace(/\s+/g, ''), 10);
+    const receiver = $('#inputReceiver').val();
+    const receiverNum = parseInt($('#inputReceiverNum').val().replace(/\s+/g, ''), 10);
+    
+    const date = $('#inputDate').val();
+    const branch = $('#inputBranch').val();
+    const destBranch = $('#inputDestBranch').val();
+
+    const initial = parseFloat($('#charge-calc').text());
+    const discount = parseFloat($('#discount-input').val()) || 0;
+    const charge = parseFloat($('#total-calc').text());
+
+    var allQty = [];
+    var allDesc = [];
+    var allCost = [];
+
+    $('.qty-input').each(function() {
+        var num = parseInt($(this).val(), 10);
+        allQty.push(num);
+    });
+
+    $('.desc-input').each(function() {
+        allDesc.push($(this).val());
+    });
+
+    $('.cost-input').each(function() {
+        var num = parseFloat($(this).val());
+        allCost.push(num.toFixed(2));
+    });
+
+    var [year, month, day] = date.split("-"); //date is yyyy-mm-dd
+    var newDate = "" + month + "-" + day + "-" + year + "";
+
+    var orderData = {
+        orderId : orderId,
+        senderName : sender,
+        receiverName : receiver,
+        senderNum : senderNum,
+        receiverNum : receiverNum,
+
+        itemNum : allQty,
+        itemDesc : allDesc,
+        itemPrice : allCost,
+
+        transDate : newDate,
+        originBranch : branch,
+        destBranch : destBranch,
+
+        initialCharge : initial,
+        discount : discount,
+        total : charge,
+    };
+
+    $.post('/admin/edit-order', orderData, function(message, status) {
+        console.log("response data: ", message, status);
+        if (message.success) {
+            setTimeout(function() {
+                window.location.href = "/admin/view-orders";
+            }, 1500);
+        } else {
+            console.log("not success");
+        }
+    });
+}
 
 
 

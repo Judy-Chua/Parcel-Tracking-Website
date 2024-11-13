@@ -17,11 +17,6 @@ router.get('/login', async (req, res) =>{
 
 /* === */
 
-/* FOR DEBUGGING ONLY, replace as needed*/
-router.get('/edit-order', async (req, res) =>{
-    res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order_big"});
-})
-/* === */
 
 
 /* SUMMARY OF ORDERS */
@@ -49,7 +44,7 @@ router.post('/view-order/more-details', async (req, res) => {
     }
 })
 
-router.post('/edit-order', async (req, res) => {
+router.post('/update-order', async (req, res) => {
     try {
         const { id } = req.body;
         const { newStatusEdit } = req.body;
@@ -159,19 +154,46 @@ router.get('/edit-order/:orderId', async (req, res) =>{
     const order = req.params.orderId;
     const specificOrder = await Order.findOne({ orderId: order});
 
+    var isOriginBranch = {
+        Manila: specificOrder.originBranch === "Manila",
+        Romblon: specificOrder.originBranch === "Romblon",
+        Magdiwang: specificOrder.originBranch === "Magdiwang",
+        Cajidiocan: specificOrder.originBranch === "Cajidiocan",
+        Fernando: specificOrder.originBranch === "San-Fernando"
+    }
+
+    var isDestBranch = {
+        Manila: specificOrder.destBranch === "Manila",
+        Romblon: specificOrder.destBranch === "Romblon",
+        Magdiwang: specificOrder.destBranch === "Magdiwang",
+        Cajidiocan: specificOrder.destBranch === "Cajidiocan",
+        Fernando: specificOrder.destBranch === "San-Fernando"
+    }
+
+    var [month, day, year] = specificOrder.transDate.split("-");
+    var date = `${year}-${month}-${day}`;
+
+    var sender = specificOrder.senderNum.toString().replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3");
+    var receiver = specificOrder.receiverNum.toString().replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3");
+
+    var combinedItems = specificOrder.itemDesc.map((description, index) => ({
+        description,
+        quantity: specificOrder.itemNum[index],
+        price: specificOrder.itemPrice[index]
+    }));
+
     orderDetails = {
+        orderId: order,
         senderName: specificOrder.senderName,
         receiverName: specificOrder.receiverName,
-        senderNum: specificOrder.senderNum,
-        receiverNum: specificOrder.receiverNum,
+        senderNum: sender,
+        receiverNum: receiver,
 
-        itemDesc: specificOrder.itemDesc,
-        itemNum: specificOrder.itemNum,
-        itemPrice: specificOrder.itemPrice,
+        items: combinedItems,
 
-        transDate: specificOrder.transDate,
-        originBranch: specificOrder.originBranch,
-        destBranch: specificOrder.destBranch,
+        transDate: date,
+        originBranch: isOriginBranch,
+        destBranch: isDestBranch,
 
         initialCharge: specificOrder.initialCharge,
         discount: specificOrder.discount,
@@ -181,6 +203,51 @@ router.get('/edit-order/:orderId', async (req, res) =>{
     res.render('edit_order', { layout: "admin.hbs", title: "Edit Order | ESMC", css: "edit_order_big",
                                orderDetails: orderDetails});
 })
+
+router.post('/edit-order', async (req, res) =>{
+    try {
+        var { orderId, senderName, receiverName, senderNum, receiverNum,
+                itemNum, itemDesc, itemPrice, 
+                transDate, originBranch, destBranch,
+                initialCharge, discount, total} = req.body;
+        var intSenderNum = parseInt(senderNum);
+        var intReceiverNum = parseInt(receiverNum);
+        var floatCharge = parseFloat(initialCharge);
+        var floatDiscount = parseFloat(discount);
+        var floatTotal = parseFloat(total);
+
+        var changes = {
+            senderName : senderName,
+            receiverName : receiverName,
+            senderNum : intSenderNum,
+            receiverNum : intReceiverNum,
+
+            itemDesc : itemDesc,
+            itemNum : itemNum,
+            itemPrice : itemPrice,
+        
+            transDate : transDate,
+            originBranch : originBranch,
+            destBranch : destBranch,
+
+            initialCharge : floatCharge,
+            discount : floatDiscount,
+            total : floatTotal,
+        };
+
+        const updatedOrder = await Order.findOneAndUpdate({ orderId: orderId}, changes, {new: true});
+
+        if (!updatedOrder) {
+            return res.status(404).send("Order not found");
+        }
+
+        console.log('Order saved:', updatedOrder);
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: 'An internal server error occurred' });
+    }
+})
+
 /* === */
 
 /* UPDATE ORDERS */
