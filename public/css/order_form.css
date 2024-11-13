@@ -110,6 +110,14 @@ h2 {
 }
 #items-div {
     margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.item-container, .add-item-container {
+    display: flex;
+    flex-direction: row;
 }
 h3 {
     color: #ffffff;
@@ -161,7 +169,8 @@ button {
     margin-left: 1vw;
 }
 .x-button {
-    margin-top: 3vh;
+    margin-top: 1vw;
+    cursor: pointer;
 }
 #add-btn-div {
     text-align: right;
