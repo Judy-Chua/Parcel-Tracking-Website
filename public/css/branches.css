@@ -118,6 +118,28 @@ body {
     #small-nav {
         display: none;
     }
+    #body {
+        display: flex;
+        justify-content: space-between;
+    }
+    .branch {
+        border-radius: 35px;
+        background-color: #100f0f;
+        margin-left: 3vw;
+        margin-bottom: 5vh;
+        padding: 3%;
+        width: 42vw;
+        justify-content: space-between;
+        box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
+    }
+    iframe {
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: 3vw;
+        border-radius: 20px;
+        border: 2px solid #000000;
+        box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
+    }
 }
 
 /* smaller screen */
@@ -181,6 +203,23 @@ body {
         background-color: #ffffff;
         height: 115px;
     }
+    #body {
+        display: block;
+    }
+    .branch {
+        border-radius: 35px;
+        background-color: #100f0f;
+        margin-left: 3vw;
+        margin-right: 3vw;
+        margin-bottom: 5vh;
+        padding: 3%;
+        width: auto;
+        justify-content: space-between;
+        box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
+    }
+    iframe {
+        display: none;
+    }
 }
 
 #search-bar {
@@ -221,10 +260,6 @@ button {
     top: -0.25vh;
     right: -2vw;
 }
-#body {
-    display: flex;
-    justify-content: space-between;
-}
 h1 {
     font-family: "Poppins";
     font-weight: bolder;
@@ -232,16 +267,6 @@ h1 {
     text-shadow: 1px 5px 2px rgba(0, 0, 0, 0.34);
     margin-left: 3vw;
     margin-top: 150px;
-}
-.branch {
-    border-radius: 35px;
-    background-color: #100f0f;
-    margin-left: 3vw;
-    margin-bottom: 5vh;
-    padding: 3%;
-    width: 42vw;
-    justify-content: space-between;
-    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
 }
 .branch-info {
     margin-left: 3%;
@@ -260,6 +285,7 @@ h2 {
     color: #ffffff;
     margin: 0;
     font-size: 16px;
+    text-wrap: nowrap;
 }
 .last-row {
     margin-top: 3vh;
@@ -267,14 +293,6 @@ h2 {
 }
 .phone-no {
     text-decoration: underline;
-}
-iframe {
-    margin-top: 200px;
-    margin-left: auto;
-    margin-right: 3vw;
-    border-radius: 20px;
-    border: 2px solid #000000;
-    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
 }
 footer {
     background-color: #58020e;

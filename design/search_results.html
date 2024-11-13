@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="search_results.css">
 </head>
 <body>
+    <!-- big header here -->
     <div id="navbar" class="flex-parent">
-        <img id="esmc-logo" src="./images/ESMC_logo.svg">
+        <a href="/">
+            <img id="esmc-logo" src="./images/ESMC_logo.svg">
+        </a>
         <div class="flex-parent" id="menu">
             <div class="topbar-menu" id="homepage">
                 <p class="topbar-links"><a id="homepage-link" href="about_us.html">HOME</a></p>
@@ -22,6 +25,26 @@
         </div>
         <a class="contact-us-link" href="contact_us.html">CONTACT US</a>
     </div>
+    <!-- until here -->
+    <!-- small header here -->
+    <div id="small-nav">
+        <div class="active">
+            <a href="about_us.html">
+                <img id="esmc-logo-small-nav" src="./images/ESMC_logo.svg">
+            </a>
+            
+            <a href="javascript:void(0);" id="hamburger" onclick="dropDownMenu()">
+                <img src="images/hamburger.svg" />
+            </a>
+        </div>
+        <div id="links">
+            <a class="small-nav-links" id="home-small" href="about_us.html">HOME</a>
+            <a class="small-nav-links" id="branches-small" href="branches.html">BRANCHES</a>
+            <a class="small-nav-links" id="search-small" href="search_parcel.html">SEARCH PARCEL</a>
+            <a class="small-nav-links" id="contact-small" href="contact_us.html">CONTACT US</a>
+        </div>
+    </div>
+    <!-- until here -->
     <h1>TRACK PARCEL</h1>
     <table>
         <tr id="header">
@@ -54,3 +77,14 @@
     </footer>
 </body>
 </html>
+
+<script>
+    function dropDownMenu() {
+        var x = document.getElementById("links");
+        if (x.style.display === "block") {
+        x.style.display = "none";
+        } else {
+        x.style.display = "block";
+        }
+    }
+  </script>

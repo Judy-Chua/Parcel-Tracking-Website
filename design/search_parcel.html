@@ -32,7 +32,7 @@
             </a>
             
             <a href="javascript:void(0);" id="hamburger" onclick="dropDownMenu()">
-            <img src="images/hamburger.svg" />
+                <img src="images/hamburger.svg" />
             </a>
         </div>
         <div id="links">
@@ -64,7 +64,10 @@
         <img id="question-mark" src="./images/question_mark.svg" />
         <h2>The tracking ID is invalid or might have expired.</h2>
         <p id="popup-msg">Having trouble tracking your parcel? Contact us.</p>
-        <a class="contact-us-link" id="contact-us-popup" href="./contact_us.html">CONTACT US</a>
+        <div class="flex-parent" id="popup-btns">
+            <a class="contact-us-link" href="/contact_us">CONTACT US</a>
+            <a id="close-btn">CLOSE</a>
+        </div>
     </div>
   </body>
 </html>

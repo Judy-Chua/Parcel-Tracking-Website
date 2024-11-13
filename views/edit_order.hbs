@@ -51,7 +51,7 @@
 				<div class="{{#if @first}}item-container{{else}}add-item-container{{/if}}">
 					<div>
 						<h3>Qty.</h3>
-						<input type="number" min="0" class="qty-input" placeholder="Qty." value="{{quantity}}"><br>
+						<input type="number" min="1" class="qty-input" placeholder="Qty." value="{{quantity}}"><br>
 					</div>
 					<div>
 						<h3>Item Description</h3>
@@ -60,7 +60,7 @@
 					</div>
 					<div>
 						<h3>Cost</h3>
-						<input type="text" class="cost-input" placeholder="Cost" value="{{price}}">
+						<input type="number" min="1" step=".01" class="cost-input" placeholder="Cost" value="{{price}}">
 						<br>
 					</div>
 					{{#unless @first}}
@@ -115,3 +115,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  function dropDownMenu() {
+      var x = document.getElementById("links");
+      if (x.style.display === "block") {
+      x.style.display = "none";
+      } else {
+      x.style.display = "block";
+      }
+  }
+</script>

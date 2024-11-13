@@ -26,6 +26,12 @@ body {
     vertical-align: middle;
     z-index: 1;
 }
+#dropdown {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 35px;
+}
 .flex-parent {
     display: flex;
 }
@@ -38,11 +44,40 @@ body {
     margin-top: 5px;
 }
 #profile-icon {
-    width: 50px;
+    position: absolute;
+    top: 20px;
+    right: 50px;
 }
-#profile-dropdown {
-    margin-left: 5px;
-    width: 20px;
+#links {
+    display: none;
+    position: absolute;
+    top: 89px;
+    z-index: 2;
+    width: 100%;
+}
+.nav-links {
+    font-family: "Poppins";
+    color: #000000;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    padding-left: 20px;
+    text-decoration: none;
+    display: block;
+}
+#drop-view {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #cdcdcd;
+}
+#drop-create {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #acacac;
+}
+#drop-logout {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #ffffff;
 }
 h1 {
     font-family: "Big Shoulders Display";

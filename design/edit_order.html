@@ -9,8 +9,15 @@
         <img id="esmc-logo" src="./images/ESMC_logo.svg" />
         <div id="profile" class="flex-parent">
             <img id="profile-icon" src="./images/profile_icon.svg" />
-            <img id="profile-dropdown" src="./images/profile_dropdown.svg" />
+            <a href="javascript:void(0);" id="dropdown" onclick="dropDownMenu()">
+              <img id="profile-dropdown" src="./images/profile_dropdown.svg" />
+            </a>
         </div>
+        <div id="links">
+          <a class="nav-links" id="drop-view" href="view_database.html">VIEW ITEMS</a>
+          <a class="nav-links" id="drop-create" href="order_form.html">ADD ITEMS</a>
+          <a class="nav-links" id="drop-logout" href="login.html">LOG OUT</a>
+      </div>
     </div>
     <h1>EDIT FORM</h1>
     <div id="main-body">
@@ -42,9 +49,12 @@
             <div class="flex-parent" id="items-div">
               <div>
                 <h3>Qty.</h3>
-                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0"><br>
-                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0"><br>
-                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0"><br>
+                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0">
+                <br>
+                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0">
+                <br>
+                <input type="number" min="0" class="qty-input" placeholder="Qty." value="0.0">
+                <br>
               </div>
               <div>
                 <h3>Item Description</h3>
@@ -57,11 +67,11 @@
               </div>
               <div>
                 <h3>Cost</h3>
-                <input type="text" class="cost-input" placeholder="Cost" value="VALUE">
+                <input type="number" min="0" step=".01" class="cost-input" placeholder="Cost" value="0.0">
                 <br>
-                <input type="text" class="cost-input" placeholder="Cost" value="VALUE">
+                <input type="number" min="0" step=".01" class="cost-input" placeholder="Cost" value="0.0">
                 <br>
-                <input type="text" class="cost-input" placeholder="Cost" value="VALUE">
+                <input type="number" min="0" step=".01" class="cost-input" placeholder="Cost" value="0.0">
                 <br>
               </div>
               <div id="x-button-div">
@@ -116,3 +126,14 @@
     </footer>
   </body>
 </html>
+
+<script>
+  function dropDownMenu() {
+      var x = document.getElementById("links");
+      if (x.style.display === "block") {
+      x.style.display = "none";
+      } else {
+      x.style.display = "block";
+      }
+  }
+</script>

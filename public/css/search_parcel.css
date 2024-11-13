@@ -284,8 +284,35 @@ h2 {
     font-family: 'Arial';
     color: #0d0d0d;
 }
-#contact-us-popup {
-    margin-top: 8vh;
-    margin-left: auto;
-    margin-right: 3vw;
+#popup-btns {
+    position: absolute;
+    right: 3vw;
+    bottom: 3vh;
+    justify-content: right;
+}
+#close-btn {
+    display: grid;
+    border: solid;
+    border-width: 1px;
+    border-color: #0d0d0d;
+    background-color: #fc0404;
+    height: 50px;
+    width: 81px;
+    border-radius: 5px;
+    margin-top: 32.5px;
+    margin-left: 15px;
+    padding-inline: 1vw;
+    text-align: center;
+    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    color: #ffffff;
+    font-family: "Poppins";
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    text-wrap: nowrap;
+    place-content: center;
+}
+#close-btn:visited {
+    text-decoration: none;
+    color: #000000;
 }

@@ -1,6 +1,11 @@
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
     background-color: #fc0404;
-    margin-top: -16px;
+    margin-top: 0px;
     margin-inline: 0%;
     margin-bottom: 0%;
     max-width: 100%;
@@ -14,6 +19,12 @@ body {
     vertical-align: middle;
     z-index: 1;
 }
+#dropdown {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 35px;
+}
 .flex-parent {
     display: flex;
 }
@@ -26,11 +37,40 @@ body {
     margin-top: 5px;
 }
 #profile-icon {
-    width: 50px;
+    position: absolute;
+    top: 20px;
+    right: 50px;
 }
-#profile-dropdown {
-    margin-left: 5px;
-    width: 20px;
+#links {
+    display: none;
+    position: absolute;
+    top: 89px;
+    z-index: 2;
+    width: 100%;
+}
+.nav-links {
+    font-family: "Poppins";
+    color: #000000;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    padding-left: 20px;
+    text-decoration: none;
+    display: block;
+}
+#drop-view {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #acacac;
+}
+#drop-create {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #cdcdcd;
+}
+#drop-logout {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #ffffff;
 }
 #popup {
     position: fixed;
@@ -53,6 +93,7 @@ body {
     border-radius: 20px;
     text-align: center;
     margin: auto;
+    margin-top: 5vh;
 }
 h1 {
     font-family: 'Arial Narrow';
@@ -85,6 +126,10 @@ h1 {
 }
 .popup-td {
     padding: 1vh;
+}
+.radio-btn {
+    margin-left: 7.5vw;
+    width: 50px;
 }
 .view-tr {
     border-top: 2px solid black;
@@ -127,13 +172,15 @@ p {
     font-size: 16px;
     text-shadow: 0.025px 0.025px 0.005px;
 }
-#edit-btn {
+.edit-btn {
     display: grid;
     background-color: #fffaeb;
     border-radius: 5px;
     border: 1px solid #0d0d0d;
-    width: 123px;
+    width: fit-content;
     height: 48px;
+    padding-left: 1vw;
+    padding-right: 1vw;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-wrap: nowrap;
     font-family: 'Arial';
@@ -170,6 +217,8 @@ p {
     text-shadow: 0.025px 0.025px 0.005px;
 }
 footer {
+    position: absolute;
+    bottom: 0;
     background-color: #58020e;
     text-align: center;
     width: 100%;
