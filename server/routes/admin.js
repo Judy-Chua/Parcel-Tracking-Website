@@ -9,7 +9,7 @@ const Sessions = require('../models/Sessions.js');
 
 //const User = require('../models/User.js');
 const Order = require('../models/Order.js');
-//const Update = require('../models/Update.js');
+const Update = require('../models/Update.js');
 
 checkAuthenticated = (req,res, next) => {
     if(req.isAuthenticated()){
@@ -61,11 +61,24 @@ router.get('/view-orders', checkAuthenticated , checkAuthenticated, async (req, 
     }
 })
 
-router.post('/view-order/more-details', checkAuthenticated, async (req, res) => {
+router.post('/view-orders/more-details', checkAuthenticated, async (req, res) => {
     try {
         const { id } = req.body
         const orderDetails = await Order.findOne({ orderId: id });
-        res.json({ orderDetails: orderDetails });
+
+        var updateDate = "";
+        if (orderDetails.updates && orderDetails.updates.length > 0) {
+            const lastItem = orderDetails.updates[orderDetails.updates.length - 1]; //latest update
+            const findUpdate = await Update.findOne({ updateId: lastItem });
+            updateDate = findUpdate.updateDate;
+        }
+        
+        res.json({
+            orderDetails: { 
+                ...orderDetails.toObject(),
+                date: updateDate  // Add the date part to orderDetails
+            }
+        });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -331,7 +344,7 @@ router.post('/add-order', checkAuthenticated,    async (req, res) =>{
 
             status : status,
             arrivalDate : arrivalDate,
-            updatedBy : "---",         //wait for session
+            updatedBy : "No updates yet",
             updates : updates  
         });
 
@@ -477,20 +490,44 @@ router.post('/edit-order', async (req, res) =>{
 /* UPDATE ORDERS */
 router.post('/update-order', checkAuthenticated, checkAuthenticated, async (req, res) => {
     try {
-        const { id } = req.body;
-        const { newStatusEdit } = req.body;
-        const { newEDAEdit } = req.body;
-        const { newOriginEdit } = req.body;
-        const newDoc = await Order.findOneAndUpdate(
-            { orderId: id },
-            {
-                status: newStatusEdit,
-                arrivalDate: newEDAEdit,
-                originBranch: newOriginEdit
+        var { id, newStatus, newEDA, newDate, newTime, statusDesc } = req.body;
+        
+        //add update info first
+        var newUpdateId = 0;
+        try {   //obtain last updateID entry
+            const lastID = await Update.findOne().sort({ updateId: -1 }).exec();
+            newUpdateId = lastID ? lastID.updateId + 1 : 30001;
+        } catch (err) {
+            console.error("Error fetching last numberId:", err);
+        }
+
+        var addUpdate = new Update({
+            updateId : newUpdateId,
+            status: newStatus,
+            statusDesc : statusDesc,
+            updateDate : newDate,
+            updateTime : newTime,
+        });
+
+        await addUpdate.save(); //add this to database
+
+        //save these information to order database
+        var changes = {
+            $set: {
+                status: newStatus,
+                arrivalDate: newEDA,
+                updatedBy: req.user.hubName
             },
-            { new: true }
-        );
-        console.log(newDoc)
+            $push: { updates: newUpdateId }
+        };
+
+        console.log(changes);
+        const updatedOrder = await Order.findOneAndUpdate({ orderId: id }, changes, {new: true});
+        if (!updatedOrder) {
+            return res.status(404).send("Order not found");
+        }
+
+        res.json({ success: true });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);

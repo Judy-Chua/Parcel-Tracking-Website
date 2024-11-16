@@ -93,6 +93,7 @@
 
 <div id="popup" style="display: none;" name="detailsPopup" class="detailsPopup">
     <h1 id="orderIdDetails">TRANSACTION #test</h1>
+    <input type="hidden" id="hidden-orderid">
     <table class="popup-table">
         <tr class="popup-tr">
             <th class="popup-th">Sender:</th>
@@ -114,18 +115,17 @@
             <th class="popup-th">Status:</th>
             <td class="popup-td" id="statusDetails">
                 <select name="status" id="edit-select">
-                    <option value="select">&#40Select Status&#41</option>
                     <option value="PROCESSING">PROCESSING</option>
                     <option value="IN TRANSIT">IN TRANSIT</option>
-                    <option value="PROCESSING">READY FOR PICKUP</option>
-                    <option value="IN TRANSIT">DELIVERED</option>
+                    <option value="READY FOR PICKUP">READY FOR PICKUP</option>
+                    <option value="DELIVERED">DELIVERED</option>
                 </select>
             </td>
         </tr>
         <tr class="popup-tr">
             <th class="popup-th">EDA:</th>
             <td class="popup-td" id="edaDetails">
-                <input type="date" name="eda" value="2001-01-01"/>
+                <input type="date" name="eda" id="dateInput"/>
             </td>
         </tr>
         <tr class="popup-tr">
@@ -136,12 +136,12 @@
     <div class="flex-parent">
         <div id="updated-by">
             <i>Updated By:</i>
-            <p>Manila Branch</p>
-            <p>Dec. 22, 2024</p>
+            <p id="updateByName">Manila Branch</p>
+            <p id="updateByDate">Dec. 22, 2024</p>
         </div>
         <div class="popup-btns flex-parent"> 
             <button class="close-btn" onclick="closeDetails()">CLOSE</button>
-            <a class="edit-btn">SAVE DETAILS</a>
+            <button id="update-btn">SAVE DETAILS</button>
         </div>
     </div>
 </div>
@@ -188,15 +188,45 @@
         }
 
         $.post('/admin/view-orders/more-details', idData, function (message, status) {
-            console.log(typeof (message.orderDetails.orderId));
+            //console.log(typeof (message.orderDetails.orderId));
             document.getElementById('orderIdDetails').innerHTML = "TRANSACTION #" + message.orderDetails.orderId;
+            document.getElementById('hidden-orderid').value = message.orderDetails.orderId;
             document.getElementById('itemDetails').innerHTML = message.orderDetails.itemDesc;
             document.getElementById('receiverDetails').innerHTML = message.orderDetails.receiverName;
             document.getElementById('senderDetails').innerHTML = message.orderDetails.senderName;
             document.getElementById('chargeDetails').innerHTML = message.orderDetails.total;
-            document.getElementById('statusDetails').innerHTML = message.orderDetails.status;
-            document.getElementById('edaDetails').innerHTML = message.orderDetails.arrivalDate;
             document.getElementById('originDetails').innerHTML = message.orderDetails.originBranch;
+
+            //pre-selected option already, no more default "select option"
+            const currentStatus = message.orderDetails.status;
+            const htmlOptions = document.getElementById("edit-select");
+            for (var option of htmlOptions.options) {
+                if (option.value === currentStatus) {
+                    option.selected = true;
+                    break;
+                }
+            }
+
+            //provide pre-filled information for date
+            const edaOrder = message.orderDetails.arrivalDate;
+            const htmlDate = document.getElementById("dateInput");
+            var format = "";
+            if (edaOrder === "---") { //if none, get current date + 1 day
+                const currentDate = new Date(); 
+                currentDate.setDate(currentDate.getDate() + 1);
+                format = currentDate.toISOString().split('T')[0];
+                
+            } else {
+                const [month, day, year] = edaOrder.split("-"); //mm-dd-yyyy
+                if (month && day && year) { //just making sure they are existing (not null)
+                    format = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+                }
+            }
+            dateInput.value = format;
+
+            //update part
+            document.getElementById('updateByName').innerHTML = message.orderDetails.updatedBy + "Branch";
+            document.getElementById('updateByDate').innerHTML = message.orderDetails.date;
         });
     }
 
