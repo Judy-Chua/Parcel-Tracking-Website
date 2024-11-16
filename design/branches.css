@@ -218,12 +218,14 @@ h1 {
     margin-top: 50px;
 }
 input[type='text'] {
-    padding-left: 2vw;
-    font-size: 1px;
+    padding-left: 1.5vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    font-size: 15px;
 }
 #placeholder::placeholder {
     font-family: "Jost";
-    font-size: 16px;
+    font-size: 20px;
 }
 button {
     border: none;
@@ -231,15 +233,15 @@ button {
     background-color: #870505;
     color: #ffffff;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
-    height: 45px;
+    height: 47px;
     width: 20%;
     min-width: 50px;
     font-family: "Jost";
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
     text-wrap: nowrap;
     position: absolute;
-    top: -0.25vh;
+    top: -0.5vh;
     right: -2vw;
 }
 .flex-justify {
