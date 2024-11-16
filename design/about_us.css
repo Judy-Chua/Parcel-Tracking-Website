@@ -20,7 +20,8 @@ body {
     overflow-x: hidden;
 }
 
-@media only screen and (min-width: 1061px) {
+/* bigger screen */
+@media only screen and (min-width: 1043px) {
     #navbar {
         position: sticky;
         top: 0;
@@ -41,7 +42,7 @@ body {
         height: 40px;
         border-radius: 5px;
         margin-top: 37.5px;
-        margin-left: 150px;
+        margin-left: 14vw;
     }
     p {
         margin-left: 1px;
@@ -99,7 +100,7 @@ body {
         width: fit-content;
         border-radius: 5px;
         margin-top: 32.5px;
-        margin-left: 150px;
+        margin-left: 14vw;
         padding-inline: 10px;
         text-align: center;
         box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
@@ -120,7 +121,8 @@ body {
     }
 }
 
-@media only screen and (max-width: 1061px) {
+/* smaller screen */
+@media only screen and (max-width: 1043px) {
     #navbar {
         display: none;
     }
