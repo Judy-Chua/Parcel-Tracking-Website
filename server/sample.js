@@ -2,22 +2,27 @@ const sampleUsers = [
     /* 1 */
     { employeeId: 10001,
       password: "hello",
-      hubName: "Hub 1" },
+      hubName: "Manila" },
 
     /* 2 */
     { employeeId: 10002,
         password: "sample",
-        hubName: "Hub 2" },
+        hubName: "Romblon" },
 
     /* 3 */
     { employeeId: 10003,
         password: "pass",
-        hubName: "Hub 3" },
+        hubName: "Magdiwang" },
 
     /* 4 */
     { employeeId: 10004,
         password: "four",
-        hubName: "Hub 4" },
+        hubName: "Cajidiocan" },
+
+    /* 5 */
+    { employeeId: 10005,
+        password: "last",
+        hubName: "San Fernando" },
 ];
 
 const sampleOrders = [
@@ -102,7 +107,7 @@ const sampleUpdates = [
     /* 1 */
     {   updateId : 30001,
         status : "PROCESSING",
-        statusDesc : "Waiting for further instructions",
+        statusDesc : "The order has been received and is being prepared for shipment",
         updateDate : "10-17-2024",
         updateTime : "09:30:00 PM" },
 
@@ -110,14 +115,14 @@ const sampleUpdates = [
     /* 2 */
     {   updateId : 30002,
         status : "PROCESSING",
-        statusDesc : "Waiting for further instructions",
+        statusDesc : "The order has been received and is being prepared for shipment",
         updateDate : "10-18-2024",
         updateTime : "07:18:39 AM" },    
 
     /* 3 */
     {   updateId : 30003,
         status : "IN TRANSIT",
-        statusDesc : "The items are currently viewed and checked",
+        statusDesc : "The package is on its way to the destination",
         updateDate : "10-18-2024",
         updateTime : "12:18:39 PM" },
 ];

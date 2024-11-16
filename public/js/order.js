@@ -94,6 +94,12 @@ $(document).ready(function() {
             clear();
         }
     });
+
+    //updates the order status
+    $('#update-btn').click(function(e) {
+        e.preventDefault(); 
+        updateStatus(); //no need to validate since there are pre-filled information
+    });
 });
 
 /*  validates all the required inputs by the user
@@ -434,6 +440,64 @@ function updateDatabase() {
             setTimeout(function() {
                 window.location.href = "/admin/view-orders";
             }, 1500);
+        } else {
+            console.log("not success");
+        }
+    });
+}
+
+function updateStatus() {
+    // for updating date
+    const current = new Date(); 
+    var month = String(current.getMonth() + 1).padStart(2, '0'); 
+    var day = String(current.getDate()).padStart(2, '0');
+    var year = current.getFullYear();
+    const currentDate = `${month}-${day}-${year}`;
+    
+    // for updating time
+    var hours = current.getHours(); //format time
+    const minutes = String(current.getMinutes()).padStart(2, '0');
+    const seconds = String(current.getSeconds()).padStart(2, '0');
+    const check = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12; // since it is in military time, change to 12-hour format
+    const currentTime = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${check}`;
+
+    const orderId = $('#hidden-orderid').val();
+    const date = $('#dateInput').val();
+    const status = $('#edit-select').val();
+
+    //reformat eda to mm-dd-yyyy for consistency
+    [year, month, day] = date.split("-"); //date is yyyy-mm-dd
+    var newDate = "" + month + "-" + day + "-" + year + "";
+
+    var description = "";
+    if (status === "PROCESSING") {
+        description = "The order has been received and is being prepared for shipment";
+    } else if (status === "IN TRANSIT") {
+        description = "The package is on its way to the destination";
+    } else if (status === "READY FOR PICKUP") {
+        description = "The package is available at a local facility for the recipient to pick up";
+    } else if (status === "DELIVERED") {
+        description = "The package has been successfully delivered or claimed to the recipient";
+    } else {
+        description = "Unknown status";
+    }
+
+    var updateData = {
+        id : orderId,
+        newStatus : status,
+        newEDA : newDate,
+        newDate : currentDate,
+        newTime : currentTime,
+        statusDesc : description
+    };
+
+    $.post('/admin/update-order', updateData, function(message, status) {
+        console.log("response data: ", message, status);
+        if (message.success) {
+            setTimeout(function() {
+                window.location.href = "/admin/view-orders";
+            }, 300);
         } else {
             console.log("not success");
         }

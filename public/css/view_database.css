@@ -172,7 +172,7 @@ p {
     font-size: 16px;
     text-shadow: 0.025px 0.025px 0.005px;
 }
-.edit-btn {
+.edit-btn, #update-btn {
     display: grid;
     background-color: #fffaeb;
     border-radius: 5px;
