@@ -2,8 +2,6 @@
 //$('.className');
 
 $(document).ready(function() {
-    setDateLimit(); //sets the limit of possible date to input
-
     //add button for item description in case more than one item
     $('#add-btn').click( async function(e) {
         e.preventDefault();
@@ -72,12 +70,22 @@ $(document).ready(function() {
     //validates the order form when submit button is clicked
     $('#submit-btn').click(async function(e) {
         e.preventDefault(); 
-        if (validateInput(1)) {
+        if (validateInput()) {
             //remove all inputs, save to database, confirm that
             await addToDatabase();
             clear();
+        } else {
+            $('#order-popup').show();
         }
     });
+
+    $('#close-error-btn').click(function() { 
+        setTimeout(function() {
+            $('.popup-table').empty();
+        }, 1500);
+        $('#order-popup').fadeOut(1000);
+    });
+    
 
     //clears all input then go back to view order
     $('#cancel-btn').click(function() { 
@@ -88,10 +96,12 @@ $(document).ready(function() {
     //validates the order form when submit button is clicked
     $('#save-btn').click(function(e) {
         e.preventDefault(); 
-        if (validateInput(2)) {
+        if (validateInput()) {
             //remove all inputs, save to database, confirm that
             updateDatabase();
             clear();
+        } else {
+            $('#order-popup').show();
         }
     });
 
@@ -105,7 +115,7 @@ $(document).ready(function() {
 /*  validates all the required inputs by the user
     returns true if ALL is VALID; otherwise, false
 */
-function validateInput(type) { //discount is optional
+function validateInput() { //discount is optional
     const sender = $('#inputSender').val();
     const senderNum = $('#inputSenderNum').val();
     const receiver = $('#inputReceiver').val();
@@ -115,81 +125,110 @@ function validateInput(type) { //discount is optional
     const destBranch = $('#inputDestBranch').val();
 
     var noError = true;
+    $('.popup-table').empty(); //just in case
 
-    if (checkEmpty(sender) || checkEmpty(senderNum) ||      //sender and sender num
-        checkEmpty(receiver) || checkEmpty(receiverNum) ||  //receiver and receiver number
-        checkEmpty(date) ||                                   //estimated date of transport
-        checkEmpty(branch) || checkEmpty(destBranch)) {      //current branch and destination branch
+    if (checkEmpty(sender)) {
         noError = false;
+        addError("SENDER NAME is empty!");
     }
 
-    if (type == 1 && checkDate()) {
+    if (checkEmpty(senderNum)) {
         noError = false;
+        addError("SENDER NUMBER is empty!");
+    } else if (checkNumber(senderNum)) {
+        noError = false;
+        addError("SENDER NUMBER is in incorrect format!\n Follow 9XX XXX XXXX where X is any digit.");
+    }
+    
+    if (checkEmpty(receiver)) {
+        noError = false;
+        addError("RECEIVER NAME is empty!");
     }
 
+    if (checkEmpty(receiverNum)) {
+        noError = false;
+        addError("RECEIVER NUMBER is empty!");
+    } else if (checkNumber(receiverNum)) {
+        noError = false;
+        addError("RECEIVER NUMBER is in incorrect format!\n Follow 9XX XXX XXXX where X is any digit.");
+    }
+
+    if (checkEmpty(date)) {
+        noError = false;
+        addError("Estimated TRANSPORT DATE is empty!");
+    }
+
+    if (checkEmpty(branch)) {
+        noError = false;
+        addError("Kindly pick one option in ORIGIN BRANCH.");
+    }
+
+    if (checkEmpty(destBranch)) {
+        noError = false;
+        addError("Kindly pick one option in DESTINATION BRANCH.");
+    }
+
+    var input = 0;
     $('.qty-input').each(function() {  //each quantity
         var qty = $(this).val();
         if (!qty) { //check if input is empty or not 
             noError = false;
+            input++;
         }
     });
 
+    if (input > 0) {
+        addError("One of the QUANTITY INPUTS is empty!");
+    }
+
+    input = 0;
     $('.desc-input').each(function() {  //each description
         var desc = $(this).val();
         if (!desc) { //check if input is empty or not 
             noError = false;
+            input++;
         }
     });
 
+    if (input > 0) {
+        addError("One of the DESCRIPTION INPUTS is empty!");
+    }
+
+    input = 0;
     $('.cost-input').each(function() {  //each cost
         var cost = $(this).val();
         if (!cost) { //check if input is empty or not 
             noError = false;
+            input++;
         }
     });
 
-    console.log(noError);
+    if (input > 0) {
+        addError("One of the COST INPUTS is empty!");
+    }
 
     return noError;
-}
-
-/*  starter pack of the website
-    sets the date option limited to today onwards only
-*/
-function setDateLimit() {
-    const today = new Date();
-    today.setDate(today.getDate());
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-    const minDate = `${yyyy}-${mm}-${dd}`;
-    
-    $('#inputDate').attr('min', minDate);
-}
-
-/*  validates the date the user inputs manually
-    returns true and clears input if INVALID date; otherwise, false
-*/
-function checkDate() {
-    const inputDate = new Date($('#inputDate').val());
-    const today = new Date();
-    today.setDate(today.getDate()); //today.setDate(today.getDate() + 2); if 2 days from now
-    
-    if (inputDate < today) {
-        $('#errorDate').val('');
-        return true;
-    }
-    return false;
 }
 
 /*  checks if user input is empty or not
     returns true if EMPTY; otherwise, false
 */
 function checkEmpty(value) {
-    console.log(value);
     if (value === "" || value === null) 
         return true;
     return false;
+}
+
+function checkNumber(value) {
+    const regex = /^9\d{2} \d{3} \d{4}$/;
+    if (typeof value === 'string' && regex.test(value)) {
+        return false;   //this means that there is no error
+    }
+    return true;
+}
+
+function addError(errorMsg) {
+    $('.popup-table').append("<tr class='popup-tr'><td>"+ errorMsg + "</td></tr>");
 }
 
 function clear() {
@@ -332,7 +371,7 @@ async function addToDatabase() {
             if (message.success) {
                 setTimeout(function() {
                     window.location.href = "/admin/view-orders";
-                }, 1000);
+                }, 500);
             } else {
                 console.log("not success");
             }
@@ -439,7 +478,7 @@ function updateDatabase() {
         if (message.success) {
             setTimeout(function() {
                 window.location.href = "/admin/view-orders";
-            }, 1500);
+            }, 500);
         } else {
             console.log("not success");
         }

@@ -9,7 +9,7 @@
             <td class="popup-td">
                 <div id="controlIdSearch">
                     <form action="/admin/view-orders/control-id">
-                        <input type="text" id="controlId" name="controlId" placeholder="Input a control ID eg. A1A2">
+                        <input type="text" id="controlId" name="controlId" placeholder="Input a control ID eg. MON12345">
                         <button class="add-order-btn"><i class="material-icons">search</i></button>
                     </form>
                 </div>
@@ -35,19 +35,19 @@
                 </div>
                 <div id="dailySearch" style="display: none;">
                     <form action="/admin/view-orders/daily-net">
-                        <input type="text" id="daySearch" name="daySearch" placeholder="date eg. 1-1-2000">
+                        <input type="text" id="daySearch" name="daySearch" placeholder="Date eg. mm-dd-yyyy (01-01-2000)">
                         <button class="add-order-btn"><i class="material-icons">search</i></button>
                     </form>
                 </div>
                 <div id="monthlySearch" style="display: none;">
                     <form action="/admin/view-orders/monthly-net">
-                        <input type="text" id="monthSearch" name="monthSearch" placeholder="month eg. 1-2000">
+                        <input type="text" id="monthSearch" name="monthSearch" placeholder="Month eg. mm-yyyy (01-2000)">
                         <button class="add-order-btn"><i class="material-icons">search</i></button>
                     </form>
                 </div>
                 <div id="annualSearch" style="display: none;">
                     <form action="/admin/view-orders/annual-net">
-                        <input type="text" id="yearSearch" name="yearSearch" placeholder="year eg. 2000">
+                        <input type="text" id="yearSearch" name="yearSearch" placeholder="Year eg. 2000">
                         <button class="add-order-btn"><i class="material-icons">search</i></button>
                     </form>
                 </div>
@@ -56,8 +56,12 @@
                 <button class="add-order-btn" onclick="window.location.href = '/admin/view-orders';">VIEW ALL</button>
             </td>
             <td class="popup-td">
-                {{#if net}}
-                    <p>Net: {{net}}</p>
+                {{#if netIndicator}}
+                    {{#if net}}
+                        <p>Net: {{net}}</p>
+                    {{else}}
+                        <p>No order exists!</p>
+                    {{/if}}
                 {{/if}}
             </td>
             <td class="popup-td"></td>
@@ -132,6 +136,10 @@
             <th class="popup-th">Origin Branch:</th>
             <td class="popup-td" id="originDetails"></td>
         </tr>
+        <tr class="popup-tr">
+            <th class="popup-th">Destination Branch:</th>
+            <td class="popup-td" id="destDetails"></td>
+        </tr>
     </table>
     <div class="flex-parent">
         <div id="updated-by">
@@ -196,6 +204,7 @@
             document.getElementById('senderDetails').innerHTML = message.orderDetails.senderName;
             document.getElementById('chargeDetails').innerHTML = message.orderDetails.total;
             document.getElementById('originDetails').innerHTML = message.orderDetails.originBranch;
+            document.getElementById('destDetails').innerHTML = message.orderDetails.destBranch;
 
             //pre-selected option already, no more default "select option"
             const currentStatus = message.orderDetails.status;
@@ -225,8 +234,18 @@
             dateInput.value = format;
 
             //update part
-            document.getElementById('updateByName').innerHTML = message.orderDetails.updatedBy + "Branch";
-            document.getElementById('updateByDate').innerHTML = message.orderDetails.date;
+            var branchName;
+            if (message.orderDetails.updatedBy === "---") {
+                branchName = "No updates yet";
+            } else {
+                branchName = message.orderDetails.updatedBy + " Branch";
+            }
+            
+            var [month, day, year] = message.orderDetails.date.split('-');
+            var dateStr = toMonthStr(parseInt(month)) + day + ", " + year;
+
+            document.getElementById('updateByName').innerHTML = branchName;
+            document.getElementById('updateByDate').innerHTML = dateStr;
         });
     }
 
@@ -290,6 +309,7 @@
             monthlySearch.style.display = "none";
             annualSearch.style.display = "block";
         }
+        closeFilter();
     }
 
     function closeFilter() {
@@ -305,6 +325,37 @@
         x.style.display = "none";
         } else {
         x.style.display = "block";
+        }
+    }
+
+    function toMonthStr(number) {
+        switch (number) {
+            case 1:
+                return "January ";
+            case 2:
+                return "February ";
+            case 3:
+                return "March ";
+            case 4:
+                return "April ";
+            case 5:
+                return "May ";
+            case 6:
+                return "June ";
+            case 7:
+                return "July ";
+            case 8:
+                return "August ";
+            case 9:
+                return "September ";
+            case 10:
+                return "October ";
+            case 11:
+                return "November ";
+            case 12:
+                return "December ";
+            default:
+                return "Error "; //unlikely but will still put
         }
     }
 </script>
