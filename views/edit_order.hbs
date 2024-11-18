@@ -25,28 +25,28 @@
 		<input type="hidden" id="orderId" value="{{orderDetails.orderId}}"> 
 		<label for="sender-name">Sender's Name*</label>
 		<br>
-		<input type="text" name="sender-name" class="input-normal" id="inputSender" placeholder="Sender's Name" value="{{orderDetails.senderName}}" required>
+		<input type="text" name="sender-name" class="input-normal" id="inputSender" placeholder="Sender's Name" value="{{orderDetails.senderName}}" >
 		<br>
 		<label for="sender-number">Sender's Mobile Number*</label>
 		<br>
 		<div class="flex-parent test">
 			<p class="number-code">+63</p>
-			<input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" id="inputSenderNum"
-			       class="phone-number" value="{{orderDetails.senderNum}}" placeholder="9XX XXX XXXX" required>
+			<input type="tel" name="sender-number" id="inputSenderNum"
+			       class="phone-number" value="{{orderDetails.senderNum}}" placeholder="9XX XXX XXXX" >
 				   <br>
 		</div>
 		</div>
 		<div class="flex-child">
 		<label for="sender-name">Receiver's Name*</label>
 		<br>
-		<input type="text" name="sender-name" class="input-normal" id="inputReceiver" placeholder="Receiver's Name" value="{{orderDetails.receiverName}}" required>
+		<input type="text" name="sender-name" class="input-normal" id="inputReceiver" placeholder="Receiver's Name" value="{{orderDetails.receiverName}}" >
 		<br>
 		<label for="sender-number">Receiver's Mobile Number*</label>
 		<br>
 		<div class="flex-parent test">
 			<p class="number-code">+63</p>
 			<input type="tel" name="sender-number" pattern="[9][0-9]{2} [0-9]{3} [0-9]{4}" id="inputReceiverNum"
-			       class="phone-number" placeholder="9XX XXX XXXX" value="{{orderDetails.receiverNum}}" required>
+			       class="phone-number" placeholder="9XX XXX XXXX" value="{{orderDetails.receiverNum}}" >
 				   <br>
 		</div>
 		</div>
@@ -106,7 +106,7 @@
 		<br>
 		<label for="origin-branch">Origin Branch*</label>
 		<br>
-        <select name="origin-branch" id="inputBranch" required>
+        <select name="origin-branch" id="inputBranch" >
 			<option value="">&#40Select Branch&#41</option>
 			<option value="Manila" {{#if orderDetails.originBranch.Manila}}selected{{/if}}>Manila</option>
 			<option value="Romblon" {{#if orderDetails.originBranch.Romblon}}selected{{/if}}>Romblon</option>
@@ -117,7 +117,7 @@
 		<br>
         <label for="dest-branch">Destination Branch*</label>
 		<br>
-        <select name="dest-branch" id="inputDestBranch" required>
+        <select name="dest-branch" id="inputDestBranch" >
 			<option value="">&#40Select Branch&#41</option>
 			<option value="Manila" {{#if orderDetails.destBranch.Manila}}selected{{/if}}>Manila</option>
 			<option value="Romblon" {{#if orderDetails.destBranch.Romblon}}selected{{/if}}>Romblon</option>
@@ -131,6 +131,19 @@
 		</div>
 		</div>
 	</div>
+
+	<div id="order-popup" style="display: none;" name="detailsPopup" class="detailsPopup">
+    <h1 id="errorTitle">INVALID / MISSING INPUTS</h1>
+    <input type="hidden" id="hidden-orderid">
+    <table class="popup-table">
+        <!--<tr class="popup-tr"></tr>-->
+    </table>
+    <div class="flex-parent">
+        <div class="popup-btns flex-parent"> 
+            <button id="close-error-btn">OKAY</button>
+        </div>
+    </div>
+  </div>
 </div>
 
 <script>
