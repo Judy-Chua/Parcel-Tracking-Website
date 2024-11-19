@@ -120,6 +120,7 @@ router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
         const orders = await Order.find({
             "transDate": { $regex: daySearch }
         });
+
         const dailyNet = await Order.aggregate([
             {
                 $match: {
@@ -133,7 +134,10 @@ router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: dailyNet[0].totalSum });
+        
+        const net = dailyNet.length > 0 ? dailyNet[0].totalSum : 0; //in case date is not existing
+
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, netIndicator: true, net: net });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -160,7 +164,10 @@ router.get('/view-orders/monthly-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: monthlyNet[0].totalSum });
+
+        const net = monthlyNet.length > 0 ? monthlyNet[0].totalSum : 0; //in case date is not existing
+
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, netIndicator: true, net: net });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);
@@ -187,116 +194,10 @@ router.get('/view-orders/annual-net', checkAuthenticated, async (req, res) => {
                 }
             }
         ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: annualNet[0].totalSum });
-    }
-    catch (error) {
-        console.error("Error retrieving orders:", error);
-        res.status(500).send("Server Error");
-    }
-});
 
-router.get('/view-orders/control-id', checkAuthenticated, async (req, res) => {
-    try {
-        const controlId = req.query.controlId;
-        const orders = await Order.find({ "orderId": {$regex : controlId} });
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
-    }
-    catch (error) {
-        console.error("Error retrieving orders:", error);
-        res.status(500).send("Server Error");
-    }
-});
+        const net = annualNet.length > 0 ? annualNet[0].totalSum : 0; //in case date is not existing
 
-router.get('/view-orders/hub-to-hub', checkAuthenticated, async (req, res) => {
-    try {
-        const originSearch = req.query.originSearch;
-        const destSearch = req.query.destSearch;
-        const orders = await Order.find({
-            "originBranch": { $regex: originSearch },
-            "destBranch": { $regex: destSearch }
-        });
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
-    }
-    catch (error) {
-        console.error("Error retrieving orders:", error);
-        res.status(500).send("Server Error");
-    }
-});
-
-router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
-    try {
-        const daySearch = req.query.daySearch;
-        const orders = await Order.find({
-            "transDate": { $regex: daySearch }
-        });
-        const dailyNet = await Order.aggregate([
-            {
-                $match: {
-                    transDate: { $regex: daySearch }
-                }
-            },
-            {
-                $group: {
-                    _id: null,
-                    totalSum: { $sum: '$total' }
-                }
-            }
-        ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: dailyNet[0].totalSum });
-    }
-    catch (error) {
-        console.error("Error retrieving orders:", error);
-        res.status(500).send("Server Error");
-    }
-});
-
-router.get('/view-orders/monthly-net', checkAuthenticated, async (req, res) => {
-    try {
-        const monthSearch = req.query.monthSearch;
-        const orders = await Order.find({
-            "transDate": { $regex: monthSearch }
-        });
-        const monthlyNet = await Order.aggregate([
-            {
-                $match: {
-                    transDate: { $regex: monthSearch }
-                }
-            },
-            {
-                $group: {
-                    _id: null,
-                    totalSum: { $sum: '$total' }
-                }
-            }
-        ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: monthlyNet[0].totalSum });
-    }
-    catch (error) {
-        console.error("Error retrieving orders:", error);
-        res.status(500).send("Server Error");
-    }
-});
-
-router.get('/view-orders/annual-net', checkAuthenticated, async (req, res) => {
-    try {
-        const yearSearch = req.query.yearSearch;
-        const orders = await Order.find({
-            "transDate": { $regex: yearSearch }
-        });
-        const annualNet = await Order.aggregate([
-            {
-                $match: {
-                    transDate: { $regex: yearSearch }
-                }
-            },
-            {
-                $group: {
-                    _id: null,
-                    totalSum: { $sum: '$total' }
-                }
-            }
-        ]);
-        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, net: annualNet[0].totalSum });
+        res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, netIndicator: true, net: net });
     }
     catch (error) {
         console.error("Error retrieving orders:", error);

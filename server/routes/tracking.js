@@ -55,11 +55,12 @@ router.get('/track=:id/more-details', async (req, res) =>{
         var allUpdates = [];
         for (var i = order.updates.length - 1; i >= 0; i--) {
             const update = await Update.findOne({ updateId : order.updates[i]});
-            var updateTitle = getUpdateTitle(update.status);
+            var [month, day, year] = update.updateDate.split('-');
+            var dateStr = toMonthStr(parseInt(month)) + day + ", " + year;
 
             const addUpdate = {
-                title: updateTitle,
-                date: update.updateDate,
+                title: update.status,
+                date: dateStr,
                 time: update.updateTime,
                 description: update.statusDesc
             };
@@ -78,18 +79,34 @@ router.get('/track=:id/more-details', async (req, res) =>{
 module.exports = router;
 
 //Helper functions
-function getUpdateTitle(status) {
-    switch (status) {
-        case "PROCESSING":
-            return "The order has been received and is being prepared for shipment";
-        case "IN TRANSIT":
-            return "The package is on its way to the destination";
-        case "READY FOR PICKUP":
-            return "The package is available at a local facility for the recipient to pick up";
-        case "DELIVERED":
-            return "The package has been successfully delivered or claimed to the recipient.";
+function toMonthStr(number) {
+    switch (number) {
+        case 1:
+            return "January ";
+        case 2:
+            return "February ";
+        case 3:
+            return "March ";
+        case 4:
+            return "April ";
+        case 5:
+            return "May ";
+        case 6:
+            return "June ";
+        case 7:
+            return "July ";
+        case 8:
+            return "August ";
+        case 9:
+            return "September ";
+        case 10:
+            return "October ";
+        case 11:
+            return "November ";
+        case 12:
+            return "December ";
         default:
-            return "Status unknown"; //unlikely but will still put
+            return "Error "; //unlikely but will still put
     }
 }
     

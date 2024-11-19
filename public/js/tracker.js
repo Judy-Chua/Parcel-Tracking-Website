@@ -18,14 +18,15 @@ $(document).ready(function() {
 */
 function checkTrackerID() {
     const id = $('#trackingNumber').val().trim();
+    var capitalize = id.slice(0, 3).toUpperCase() + id.slice(3);
     var idData = {
-        id: id
+        id: capitalize
     }
 
     $.post('/search_parcel', idData, function(message, status) {
         if (message.exists) {
             $('#trackingNumber').val("");
-            window.location.href = "/search_parcel/track=" + id;
+            window.location.href = "/search_parcel/track=" + capitalize;
         } else {    
             $('#popup').show();    
             
