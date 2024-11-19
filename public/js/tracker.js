@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     $('#close-btn').click(function(e) {
         e.preventDefault();
-        $('#popup').fadeOut(2000);
+        $('#popup').fadeOut(300);
     })
 });
 
@@ -32,7 +32,7 @@ function checkTrackerID() {
             
             setTimeout(function() {
                 if ($('#popup').is(':visible')) {
-                    $('#popup').fadeOut(2000);
+                    $('#popup').hide();
                 }
             }, 10000);
         }

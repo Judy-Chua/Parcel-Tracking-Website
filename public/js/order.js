@@ -82,8 +82,8 @@ $(document).ready(function() {
     $('#close-error-btn').click(function() { 
         setTimeout(function() {
             $('.popup-table').empty();
-        }, 1500);
-        $('#order-popup').fadeOut(1000);
+        }, 500);
+        $('#order-popup').fadeOut(300);
     });
     
 
@@ -137,7 +137,7 @@ function validateInput() { //discount is optional
         addError("SENDER NUMBER is empty!");
     } else if (checkNumber(senderNum)) {
         noError = false;
-        addError("SENDER NUMBER is in incorrect format!\n Follow 9XX XXX XXXX where X is any digit.");
+        addError("SENDER NUMBER is in incorrect format! [Follow 9XX XXX XXXX where X is any digit.]");
     }
     
     if (checkEmpty(receiver)) {
@@ -150,7 +150,7 @@ function validateInput() { //discount is optional
         addError("RECEIVER NUMBER is empty!");
     } else if (checkNumber(receiverNum)) {
         noError = false;
-        addError("RECEIVER NUMBER is in incorrect format!\n Follow 9XX XXX XXXX where X is any digit.");
+        addError("RECEIVER NUMBER is in incorrect format! [Follow 9XX XXX XXXX where X is any digit.]");
     }
 
     if (checkEmpty(date)) {
@@ -178,7 +178,7 @@ function validateInput() { //discount is optional
     });
 
     if (input > 0) {
-        addError("One of the QUANTITY INPUTS is empty!");
+        addError("One of the QUANTITY inputs is empty!");
     }
 
     input = 0;
@@ -191,7 +191,7 @@ function validateInput() { //discount is optional
     });
 
     if (input > 0) {
-        addError("One of the DESCRIPTION INPUTS is empty!");
+        addError("One of the DESCRIPTION inputs is empty!");
     }
 
     input = 0;
@@ -204,7 +204,7 @@ function validateInput() { //discount is optional
     });
 
     if (input > 0) {
-        addError("One of the COST INPUTS is empty!");
+        addError("One of the COST inputs is empty!");
     }
 
     return noError;
