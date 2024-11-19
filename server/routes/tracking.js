@@ -33,7 +33,7 @@ router.get('/track=:id', async (req, res) =>{
         if (!order) {
             return res.status(404).render('error', { message: 'Order not found' });
         }
-        res.render('search_results', {title: "Order Now | ESMC", 
+        res.render('search_results', {title: "Search Results | ESMC", 
                                       css:"search_results", 
                                       trackerId: order.orderId, 
                                       status: order.status, 

@@ -27,14 +27,12 @@ body {
         top: 0;
         background-color: #ffffff;
         height: 115px;
+        width: 100%;
         vertical-align: middle;
         z-index: 1;
     }
     .flex-parent {
         display: flex;
-    }
-    .flex-justified {
-        justify-content: space-around;
     }
     #esmc-logo {
         margin-left: 20px;
@@ -121,6 +119,9 @@ body {
     #small-nav {
         display: none;
     }
+    #flex-contact {
+        justify-content: space-around;
+    }
 }
 
 /* smaller screen */
@@ -184,6 +185,12 @@ body {
     .active {
         background-color: #ffffff;
         height: 115px;
+        width: 100%;
+    }
+    #flex-contact {
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
     }
 }
 
@@ -207,6 +214,7 @@ h2 {
     border-radius: 35px;
     border-width: 5px;
     border-color: #fffaeb;
+    margin: 1vh 1vw 1vh 1vw;
     padding-top: 20px;
     padding-bottom: 20px;
     width: 300px;

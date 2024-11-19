@@ -1,20 +1,22 @@
 <h1>TRACK PARCEL</h1>
-<table>
-    <tr id="header">
-    <th>Tracking Number</th>
-    <th>Parcel Status</th>
-    <th>Estimated Date of Arrival</th>
-    <th>Origin Branch</th>
-    <th></th>
-    </tr>
-    <tr>
-        <td >{{trackerId}}</td>
-        <td>{{status}}</td>
-        <td>{{estDate}}</td>
-        <td>{{branch}}</td>
-        <td><a class="details" href="track={{trackerId}}/more-details">View Details</a></td>
-    </tr>
-</table>
+<div id="table-container">
+    <table>
+        <tr id="header">
+            <th>Tracking Number</th>
+            <th>Parcel Status</th>
+            <th>Estimated Date of Arrival</th>
+            <th>Origin Branch</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>{{trackerId}}</td>
+            <td>{{status}}</td>
+            <td>{{estDate}}</td>
+            <td>{{branch}}</td>
+            <td><a class="details" href="track={{trackerId}}/more-details">View Details</a></td>
+        </tr>
+    </table>
+</div>
 <a id="button-link" href="/search_parcel">
         <p id="button-text">Back to Search</p>
 </a>

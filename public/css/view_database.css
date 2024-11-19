@@ -16,6 +16,7 @@ body {
     top: 0;
     background-color: #ffffff;
     height: 89px;
+    width: 100%;
     vertical-align: middle;
     z-index: 1;
 }
