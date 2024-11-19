@@ -1,7 +1,11 @@
-/* Inter */
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Big Shoulders Display */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Jost */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
     background-color: #fc0404;
@@ -74,16 +78,17 @@ body {
     background-color: #ffffff;
 }
 #popup {
-    position: fixed;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -60%);
     background-color: #fffaeb;
-    height: 50vh;
     width: 500px;
     border-radius: 20px;
     text-align: center;
     padding-bottom: 20vh;
+}
+#filter-table {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 #order-popup {
     position: fixed;
@@ -97,21 +102,40 @@ body {
     margin-top: 5vh;
 }
 h1 {
-    font-family: 'Arial Narrow';
-    font-weight: bold;
+    font-family: "Big Shoulders Display";
+    font-weight: bolder;
     font-size: 40px;
     color: #fc0404;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+}
+.filterPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+}
+.detailsPopup {
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    height: 375px;
 }
 .popup-table {
-    font-family: 'Arial';
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    font-family: "Jost";
     font-size: 16px;
     width: 80%;
     text-align: left;
     text-wrap: nowrap;
-    margin-left: 5vw;
 }
 .view-table {
-    font-family: 'Arial';
+    font-family: "Jost";
     font-size: 16px;
     width: 80%;
     text-align: left;
@@ -145,11 +169,11 @@ i {
     font-size: 16px;
     font-weight: bold;
     font-style: normal;
-    font-family: 'Arial';
+    font-family: "Jost";
 }
 p {
     font-size: 16px;
-    font-family: 'Arial';
+    font-family: "Jost";
     margin-top: 1vh;
     margin-bottom: 0px;
 }
@@ -168,7 +192,7 @@ p {
     height: 50px;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
     text-wrap: nowrap;
-    font-family: 'Arial';
+    font-family: Poppins;
     color: #ffffff;
     font-size: 16px;
     text-shadow: 0.025px 0.025px 0.005px;
@@ -184,7 +208,7 @@ p {
     padding-right: 1vw;
     box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
     text-wrap: nowrap;
-    font-family: 'Arial';
+    font-family: "Poppins";
     color: #000000;
     font-size: 16px;
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
@@ -201,7 +225,7 @@ p {
     border-bottom: 1px solid #000000;
     background-color: #fffaeb;
     width: 15vw;
-    font-family: 'Arial';
+    font-family: "Jost";
     font-size: 16px;
 }
 #save-btn {
@@ -212,7 +236,7 @@ p {
     height: 50px;
     box-shadow: 1px 1px 5px;
     text-wrap: nowrap;
-    font-family: 'Arial';
+    font-family: "Poppins";
     color: #000000;
     font-size: 16px;
     text-shadow: 0.025px 0.025px 0.005px;
@@ -242,10 +266,13 @@ footer {
     padding-right: 15px;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
     text-wrap: nowrap;
-    font-family: 'Arial';
+    font-family: "Jost";
     color: #ffffff;
     font-size: 16px;
     text-shadow: 0.025px 0.025px 0.005px;
+}
+#net {
+    font-weight: bolder;
 }
 .action-btn {
     background-color: transparent;
@@ -263,7 +290,7 @@ footer {
     height: 50px;
     box-shadow: 1px 1px 5px;
     text-wrap: nowrap;
-    font-family: 'Arial';
+    font-family: "Poppins";
     color: #000000;
     font-size: 16px;
     text-shadow: 0.025px 0.025px 0.005px;

@@ -55,7 +55,7 @@
             <td class="popup-td">
                 <button class="add-order-btn" onclick="window.location.href = '/admin/view-orders';">VIEW ALL</button>
             </td>
-            <td class="popup-td">
+            <td class="popup-td" id="net">
                 {{#if netIndicator}}
                     {{#if net}}
                         <p>Net: {{net}}</p>
@@ -156,7 +156,7 @@
 
 <div id="popup" style="display: none;" name="filterPopup" class="filterPopup">
     <h1 id="orderIdDetails">FILTER OPTIONS</h1>
-    <table class="popup-table">
+    <table class="popup-table" id="filter-table">
         <tr class="popup-tr">
             <th class="popup-th"><input type="radio" class="radio-btn" name="filterOptions" value="controlId" checked />By Control ID</th>
         </tr>

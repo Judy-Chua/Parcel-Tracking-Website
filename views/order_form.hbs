@@ -99,19 +99,16 @@
       </div>
     </div>
   </div>
-
-  <div id="order-popup" style="display: none;" name="detailsPopup" class="detailsPopup">
-    <h1 id="errorTitle">INVALID / MISSING INPUTS</h1>
+  {{!-- error popup --}}
+  <div id="order-popup" style="display: none;">
+    <h1 id="error-title">INVALID / MISSING INPUTS</h1>
     <input type="hidden" id="hidden-orderid">
     <table class="popup-table">
         <!--<tr class="popup-tr"></tr>-->
     </table>
-    <div class="flex-parent">
-        <div class="popup-btns flex-parent"> 
-            <button id="close-error-btn">OKAY</button>
-        </div>
-    </div>
+    <button id="close-error-btn">OKAY</button>
   </div>
+  {{!-- until here --}}
 </div>
 
 <script>
