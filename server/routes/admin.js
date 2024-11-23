@@ -5,14 +5,14 @@ const User = require('../models/User.js');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const Sessions = require('../models/Sessions.js');
-
+require('../config/passport.js')
 
 //const User = require('../models/User.js');
 const Order = require('../models/Order.js');
 const Update = require('../models/Update.js');
 
 checkAuthenticated = (req,res, next) => {
-    if(req.isAuthenticated()){
+    if(req.user){
         return next();
     }
     res.redirect('/admin/login');
@@ -20,14 +20,14 @@ checkAuthenticated = (req,res, next) => {
 
 /* LOGIN */
 router.get('/', async (req, res) =>{
-    if(req.isAuthenticated()){
+    if(req.user){
         res.redirect('/admin/view-orders')
     }
     res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login"});
 })
 
 router.get('/login', async (req, res) =>{
-    if(req.isAuthenticated()){
+    if(req.user){
         res.redirect('/admin/view-orders')
     }
     res.render('login', {layout: "login.hbs", title: "Login | ESMC", css:"login"});
@@ -35,21 +35,14 @@ router.get('/login', async (req, res) =>{
 
 
 router.post('/login', passport.authenticate('local', { successRedirect : '/admin/view-orders', failureRedirect : '/admin/login' }), function(req, res, next){
-    console.log("ENTERED!");
-    res.redirect('/admin/view-orders');
 });
 
-
-router.post('/login', passport.authenticate('local', { successRedirect : '/admin/view-orders', failureRedirect : '/admin/login' }), function(req, res, next){
-    console.log("ENTERED!");
-    res.redirect('/admin/view-orders');
-});
 
 /* === */
 
 
 /* SUMMARY OF ORDERS */
-router.get('/view-orders', checkAuthenticated , checkAuthenticated, async (req, res) =>{
+router.get('/view-orders', checkAuthenticated, async (req, res) =>{
     try {
         const orders = await Order.find();
         res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
@@ -436,5 +429,12 @@ router.post('/update-order', checkAuthenticated, checkAuthenticated, async (req,
     }
 })
 /* === */
+
+router.get('/logout', (req, res, next) => {
+    req.logout((err)=> {
+        if (err) {return next(err)};
+        res.redirect('/admin');
+    });
+})
 
 module.exports = router;

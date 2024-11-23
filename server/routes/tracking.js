@@ -66,9 +66,23 @@ router.get('/track=:id/more-details', async (req, res) =>{
             };
             allUpdates.push(addUpdate);
         }
+
+        var orderStatus = allUpdates[0].title
+        var progressClass = ""
+        if(orderStatus === "PROCESSING"){
+            progressClass = "progress1"
+        } else if(orderStatus === "IN TRANSIT"){
+            progressClass = "progress2"
+        } else if(orderStatus === "U3"){
+            progressClass = "progress3"
+        } else if(orderStatus === "U4"){
+            progressClass = "progress4"
+        }
+
         res.render('details', {title: "Parcel Details",
                                css:"details", 
-                               id: order.orderId, 
+                               id: order.orderId,
+                               progress: progressClass, 
                                estDate: order.arrivalDate, 
                                update: allUpdates});
     } catch (error) {

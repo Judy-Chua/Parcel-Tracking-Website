@@ -32,7 +32,12 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((employeeId, done) => {
     User.findById(employeeId)
         .then((user) => {
+            console.log("found!")
+            console.log(employeeId)
+            console.log(user)
             done(null, user);
         })
-        .catch(err => done(err))
+        .catch((err)=> {
+            done(err);
+        })
 })

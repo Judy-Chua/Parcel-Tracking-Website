@@ -79,7 +79,7 @@ li:not(:last-child):before {
     content: '';
     top: 50px;
     bottom: 0px;
-    left: 2.45%;
+    left: 11px;
     padding:0;
     margin:0;
 }
@@ -94,13 +94,46 @@ li:not(:last-child):before {
     flex-direction: column;
     justify-content: center;
     width: 70%;
-    height: 100px;
+    height: 150px;
     margin-bottom: 2%;
 }
 
 .empty-progress {
     background-image: url("/img/details_bar.svg");
-    background-size: contain;
+    background-size: contain,cover;
+    background-repeat: no-repeat;
+    height: 70%;
+    width: 100%;
+}
+
+.progress1 {
+    background-image: url("/img/progress1.svg");
+    background-size: contain,cover;
+    background-repeat: no-repeat;
+    height: 70%;
+    width: 100%;
+}
+
+.progress2 {
+    background-image: url("/img/progress2.svg");
+    background-size: contain,cover;
+    background-repeat: no-repeat;
+    height: 70%;
+    width: 100%;
+}
+
+.progress3 {
+    background-image: url("/img/progress3.svg");
+    background-size: contain,cover;
+    background-repeat: no-repeat;
+    height: 70%;
+    width: 100%;
+}
+
+.progress4 {
+    background-image: url("/img/progress4.svg");
+    background-size: contain,cover;
+    background-repeat: no-repeat;
     height: 70%;
     width: 100%;
 }
@@ -131,7 +164,7 @@ li:not(:last-child):before {
 .sub-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     margin: 0 2% 0 2%;
 }
