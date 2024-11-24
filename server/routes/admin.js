@@ -145,14 +145,18 @@ router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
 
 router.get('/view-orders/monthly-net', checkAuthenticated, async (req, res) => {
     try {
-        const monthSearch = req.query.monthSearch;
+        var monthSearch = req.query.monthSearch;
+        const month = monthSearch.substr(5, 7) + '-';
+        const year = '-' + monthSearch.substr(0, 4);
+        const monthRegex = new RegExp(month + "[0-9]*" + year);
+        console.log(monthRegex);
         const orders = await Order.find({
-            "transDate": { $regex: monthSearch }
+            "transDate": { $regex: monthRegex }
         });
         const monthlyNet = await Order.aggregate([
             {
                 $match: {
-                    transDate: { $regex: monthSearch }
+                    transDate: { $regex: monthRegex }
                 }
             },
             {
