@@ -240,10 +240,13 @@
             } else {
                 branchName = message.orderDetails.updatedBy + " Branch";
             }
-            
-            var [month, day, year] = message.orderDetails.date.split('-');
-            var dateStr = toMonthStr(parseInt(month)) + day + ", " + year;
 
+            var dateStr = "";
+            if (message.orderDetails.date !== "") {
+                var [month, day, year] = message.orderDetails.date.split('-');
+                dateStr = toMonthStr(parseInt(month)) + day + ", " + year;
+            }
+            
             document.getElementById('updateByName').innerHTML = branchName;
             document.getElementById('updateByDate').innerHTML = dateStr;
         });

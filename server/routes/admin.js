@@ -238,7 +238,7 @@ router.post('/add-order', checkAuthenticated,    async (req, res) =>{
 
             status : status,
             arrivalDate : arrivalDate,
-            updatedBy : "No updates yet",
+            updatedBy : "---",
             updates : updates  
         });
 
@@ -252,30 +252,21 @@ router.post('/add-order', checkAuthenticated,    async (req, res) =>{
     
 })
 
-router.post('/validate', async (req, res) =>{
+router.post('/validate', async (req, res) => {
     try {
-        var { number } = req.body;
-        var num = parseInt(number);
-        var notExisting = true;
-        const allOrders = await Order.find({}, { orderId: 1, _id: 0 });
-        
-        for (var i = 0; i < allOrders.length; i++) {
-            var current = allOrders[i].orderId;
-            var extract = current.substring(3);   //extract the number part
-            var compare = parseInt(extract);
+        const { prefix } = req.body; // first three characters
+        console.log("PREFIX", prefix);
+        const matchingOrders = await Order.find(
+            { orderId: { $regex: `^${prefix}` } }, 
+            { orderId: 1, _id: 0 }
+        );
 
-            if(compare == num) {
-                notExisting = false;
-                break;
-            }
-        }
-
-        res.json({ success: notExisting });
+        console.log("FOUND THE FOLLOWING:", matchingOrders);
+                                        // Return the matching order IDs
+        res.json({ success: true, orders: matchingOrders.map(order => order.orderId) });
     } catch (error) {
         res.status(500).json({ error: 'An internal server error occurred' });
-        //res.json({ success: false });
     }
-    
 })
 
 /* === */

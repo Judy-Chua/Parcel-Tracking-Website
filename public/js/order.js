@@ -371,7 +371,7 @@ async function addToDatabase() {
             if (message.success) {
                 setTimeout(function() {
                     window.location.href = "/admin/view-orders";
-                }, 500);
+                }, 200);
             } else {
                 console.log("not success");
             }
@@ -391,29 +391,37 @@ function generateTrackerID() {
 
         const randomize = '0123456789';
 
-        // Function to generate a random tracking ID and validate it
-        function tryGenerate() {
-            let trackID = dayStr;
-            let number = '';
-            for (let i = 0; i < 5; i++) {
-                const randomNum = randomize[Math.floor(Math.random() * 10)];
-                trackID += randomNum;
-                number += randomNum;
+        // Get all existing order IDs based on given dayStr
+        $.post('/admin/validate', { prefix: dayStr }, function(response) {
+            if (!response.success) {
+                reject('Failed to fetch existing IDs');
+                return;
             }
 
-            // Validate the generated number
-            $.post('/admin/validate', { number: number }, function(message, status) {
-                if (message.success) {
-                    resolve(trackID); // Resolve with the valid trackID
-                } else {
-                    tryGenerate(); // loop part
-                }
-            }).fail(function() {
-                reject('Failed to validate'); // Reject 
-            });
-        }
+            const existingNumbers = response.orders.map(orderId => orderId.substring(3));
 
-        tryGenerate(); //call the function
+            function generateUniqueID() { // Generating a unique tracker ID
+                var number;
+                var trackID;
+
+                do {
+                    number = '';
+                    trackID = dayStr;
+                    
+                    for (var i = 0; i < 5; i++) {   //randomize number
+                        const randomNum = randomize[Math.floor(Math.random() * 10)];
+                        trackID += randomNum;
+                        number += randomNum;
+                    }
+                } while (existingNumbers.includes(number));  //make sure this random number is not existing
+                return trackID;
+            }
+
+            const uniqueID = generateUniqueID();
+            resolve(uniqueID);
+        }).fail(function() {
+            reject('Failed to fetch order IDs');
+        });
     });
 }
 
