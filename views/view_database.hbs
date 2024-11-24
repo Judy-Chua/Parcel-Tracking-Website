@@ -97,7 +97,8 @@
 
 <div id="popup" style="display: none;" name="detailsPopup" class="detailsPopup">
     <h1 id="orderIdDetails">TRANSACTION #test</h1>
-    <input type="hidden" id="hidden-orderid">
+    <input type="hidden" id="hidden-orderid" value="random">
+    <input type="hidden" id="hidden-edt" value="random">
     <table class="popup-table">
         <tr class="popup-tr">
             <th class="popup-th">Sender:</th>
@@ -198,13 +199,17 @@
         $.post('/admin/view-orders/more-details', idData, function (message, status) {
             //console.log(typeof (message.orderDetails.orderId));
             document.getElementById('orderIdDetails').innerHTML = "TRANSACTION #" + message.orderDetails.orderId;
-            document.getElementById('hidden-orderid').value = message.orderDetails.orderId;
             document.getElementById('itemDetails').innerHTML = message.orderDetails.itemDesc;
             document.getElementById('receiverDetails').innerHTML = message.orderDetails.receiverName;
             document.getElementById('senderDetails').innerHTML = message.orderDetails.senderName;
             document.getElementById('chargeDetails').innerHTML = message.orderDetails.total;
             document.getElementById('originDetails').innerHTML = message.orderDetails.originBranch;
             document.getElementById('destDetails').innerHTML = message.orderDetails.destBranch;
+
+            //hidden stuff so I dont have to call database anymore
+            document.getElementById('hidden-orderid').value = message.orderDetails.orderId;
+            document.getElementById('hidden-edt').value = message.orderDetails.transDate;
+            setDateLimit();
 
             //pre-selected option already, no more default "select option"
             const currentStatus = message.orderDetails.status;

@@ -105,10 +105,21 @@ $(document).ready(function() {
         }
     });
 
+    $('#dateInput').on('input', function() {
+        if (checkDate()) { 
+            $(this).css('background-color', '');
+        } else {
+            $(this).css('background-color', 'red');
+        }
+    });
+
     //updates the order status
     $('#update-btn').click(function(e) {
         e.preventDefault(); 
-        updateStatus(); //no need to validate since there are pre-filled information
+        if(checkDate()) {
+            updateStatus();
+        }
+        
     });
 });
 
@@ -208,6 +219,41 @@ function validateInput() { //discount is optional
     }
 
     return noError;
+}
+
+/*  starter pack of the website
+    sets the date option limited to EDT onwards only
+*/
+function setDateLimit() {
+    const givenEDT = $("#hidden-edt").val();
+    console.log(givenEDT);
+    const [mm, dd, yyyy] = givenEDT.split('-').map(Number); //split them into numbers
+    const month = String(mm).padStart(2, '0');
+    const day = String(dd).padStart(2, '0');
+    const minDate = `${yyyy}-${month}-${day}`;  //format
+
+    $('#dateInput').attr('min', minDate);
+}
+
+/*  validates the date the user inputs manually
+    returns true and clears input if INVALID date; otherwise, false
+*/
+function checkDate() {
+    const inputDate = new Date($('#dateInput').val());
+
+    const givenEDT = $("#hidden-edt").val();
+    console.log("INPUT", inputDate);
+    const [mm, dd, yyyy] = givenEDT.split('-').map(Number); //split them into numbers
+    const month = String(mm).padStart(2, '0');
+    const day = String(dd).padStart(2, '0');
+    const edtDate = new Date(`${yyyy}-${month}-${day}`); 
+    console.log("EDT2", edtDate);
+    console.log(inputDate < edtDate);
+
+    if (inputDate < edtDate) {
+        return false;
+    }
+    return true;
 }
 
 /*  checks if user input is empty or not
