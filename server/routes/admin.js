@@ -109,7 +109,12 @@ router.get('/view-orders/hub-to-hub', checkAuthenticated, async (req, res) => {
 
 router.get('/view-orders/daily-net', checkAuthenticated, async (req, res) => {
     try {
-        const daySearch = req.query.daySearch;
+        var tempDaySearch = req.query.daySearch;
+        var year = '-' + tempDaySearch.substr(0, 4);
+        tempDaySearch = tempDaySearch.replace(tempDaySearch.substr(0, 5), '') + year;
+        const daySearch = tempDaySearch;
+        //console.log(daySearch);
+
         const orders = await Order.find({
             "transDate": { $regex: daySearch }
         });
@@ -159,6 +164,9 @@ router.get('/view-orders/monthly-net', checkAuthenticated, async (req, res) => {
         ]);
 
         const net = monthlyNet.length > 0 ? monthlyNet[0].totalSum : 0; //in case date is not existing
+
+        if(monthSearch.indexOf('-') === -1)
+            console.log("test");
 
         res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders, netIndicator: true, net: net });
     }
