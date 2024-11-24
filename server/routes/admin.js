@@ -81,7 +81,7 @@ router.post('/view-orders/more-details', checkAuthenticated, async (req, res) =>
 
 router.get('/view-orders/control-id', checkAuthenticated, async (req, res) => {
     try {
-        const controlId = req.query.controlId;
+        const controlId = (req.query.controlId).toUpperCase();
         const orders = await Order.find({ "orderId": {$regex : controlId} });
         res.render('view_database', { layout: "admin.hbs", title: "View Orders | ESMC", css: "view_database", orders: orders });
     }

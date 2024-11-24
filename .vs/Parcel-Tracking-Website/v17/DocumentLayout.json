@@ -58,51 +58,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "view_database_big.css",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\design\\view_database_big.css",
-              "RelativeDocumentMoniker": "design\\view_database_big.css",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\design\\view_database_big.css",
-              "RelativeToolTip": "design\\view_database_big.css",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-23T13:57:20.359Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "tracker.js",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\public\\js\\tracker.js",
-              "RelativeDocumentMoniker": "public\\js\\tracker.js",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\public\\js\\tracker.js",
-              "RelativeToolTip": "public\\js\\tracker.js",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAuwBQAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-23T13:35:18.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "search_parcel.hbs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\search_parcel.hbs",
-              "RelativeDocumentMoniker": "views\\search_parcel.hbs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\search_parcel.hbs",
-              "RelativeToolTip": "views\\search_parcel.hbs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-23T13:30:07.813Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 10,
@@ -113,8 +70,7 @@
               "RelativeToolTip": "views\\layouts\\login.hbs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-23T13:28:58.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T13:28:58.681Z"
             },
             {
               "$type": "Document",
@@ -126,8 +82,7 @@
               "RelativeToolTip": "views\\layouts\\admin.hbs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-23T13:28:52.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T13:28:52.352Z"
             },
             {
               "$type": "Document",
@@ -139,8 +94,7 @@
               "RelativeToolTip": "server\\routes\\tracking.js",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-20T23:09:32.537Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T23:09:32.537Z"
             },
             {
               "$type": "Document",
@@ -152,8 +106,7 @@
               "RelativeToolTip": "server\\models\\Order.js",
               "ViewState": "AgIAAAoAAAAAAAAAAAAkwBcAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-20T23:00:15.437Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T23:00:15.437Z"
             },
             {
               "$type": "Document",
@@ -165,8 +118,7 @@
               "RelativeToolTip": "views\\edit_order.hbs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-20T22:57:55.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T22:57:55.154Z"
             },
             {
               "$type": "Document",
@@ -183,6 +135,42 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "search_parcel.hbs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\search_parcel.hbs",
+              "RelativeDocumentMoniker": "views\\search_parcel.hbs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\views\\search_parcel.hbs",
+              "RelativeToolTip": "views\\search_parcel.hbs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-23T13:30:07.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "tracker.js",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\public\\js\\tracker.js",
+              "RelativeDocumentMoniker": "public\\js\\tracker.js",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\public\\js\\tracker.js",
+              "RelativeToolTip": "public\\js\\tracker.js",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwBQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-23T13:35:18.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "view_database_big.css",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\design\\view_database_big.css",
+              "RelativeDocumentMoniker": "design\\view_database_big.css",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\design\\view_database_big.css",
+              "RelativeToolTip": "design\\view_database_big.css",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-23T13:57:20.359Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "admin.js",
               "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Parcel-Tracking-Website\\server\\routes\\admin.js",
@@ -191,8 +179,7 @@
               "RelativeToolTip": "server\\routes\\admin.js",
               "ViewState": "AgIAABsAAAAAAAAAAAAAACAAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-20T22:51:55.732Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T22:51:55.732Z"
             },
             {
               "$type": "Document",
@@ -204,8 +191,7 @@
               "RelativeToolTip": "views\\view_details.hbs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-20T22:48:40.109Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T22:48:40.109Z"
             },
             {
               "$type": "Document",
