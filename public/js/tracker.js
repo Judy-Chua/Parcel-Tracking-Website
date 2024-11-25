@@ -11,6 +11,18 @@ $(document).ready(function() {
         e.preventDefault();
         $('#popup').fadeOut(300);
     })
+
+    $('#searchBranch').on('input', function() {
+        var branchName = $(this).val().toLowerCase();
+        $('.branch').each(function() {
+            var branchH3 = $(this).find('h3').text().toLowerCase();
+            if (branchH3.includes(branchName)) {
+                $(this).show(); // Show the matching branch
+            } else {
+                $(this).hide(); // Hide non-matching branches
+            }
+        });
+    });
 });
 
 /*  validates the tracker ID inputted by the user
@@ -37,4 +49,8 @@ function checkTrackerID() {
             }, 10000);
         }
     });
+}
+
+function showBranch() {
+    
 }
