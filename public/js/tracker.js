@@ -50,7 +50,3 @@ function checkTrackerID() {
         }
     });
 }
-
-function showBranch() {
-    
-}
