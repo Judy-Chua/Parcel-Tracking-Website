@@ -239,8 +239,33 @@ h2 {
 
 .carousel-placeholder {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: 20px 0;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 50%;
+    margin-bottom: 5%;
+}
+
+.next, .prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+    border-width: 2px;
+    border-radius: 50%;
+    margin: 2px;
 }
 
 .carousel-container {
@@ -254,10 +279,10 @@ h2 {
 }
 
 .carousel-item {
+    
     border: #fc0404 2px solid;
     width: 200px;
     height: 300px;
-    background-color: #ccc;
     border-radius: 10px;
     text-align: center;
     line-height: 300px;
@@ -265,6 +290,38 @@ h2 {
     font-size: 18px;
     font-family: 'Arial';
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background-size: cover;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 2s;
+}
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
+.next-item, .prev-item {
+     opacity: 0.5;
+}
+
+.prev-item {
+    background-image: url("/img/slides/slide1.jpg");
+    background-size: cover;
+}
+
+.curr-item {
+    background-image: url("/img/slides/slide2.jpg");
+    background-size: cover;
+}
+
+.next-item {
+    background-image: url("/img/slides/slide3.jpg");
+    background-size: cover;
 }
 
 #description {

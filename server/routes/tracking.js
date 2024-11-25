@@ -67,15 +67,15 @@ router.get('/track=:id/more-details', async (req, res) =>{
             allUpdates.push(addUpdate);
         }
 
-        var orderStatus = allUpdates[0].title
+        var orderStatus = order.status
         var progressClass = ""
         if(orderStatus === "PROCESSING"){
             progressClass = "progress1"
         } else if(orderStatus === "IN TRANSIT"){
             progressClass = "progress2"
-        } else if(orderStatus === "U3"){
+        } else if(orderStatus === "READY FOR PICKUP"){
             progressClass = "progress3"
-        } else if(orderStatus === "U4"){
+        } else if(orderStatus === "DELIVERED"){
             progressClass = "progress4"
         }
 

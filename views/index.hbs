@@ -9,10 +9,16 @@
     </div>
     <div class="carousel-placeholder">
         <!-- Placeholder for carousel -->
+        <div class="buttons-container">
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        
         <div class="carousel-container">
-            <div class="carousel-item">Image 1</div>
-            <div class="carousel-item">Image 2</div>
-            <div class="carousel-item">Image 3</div>
+            
+            <div class="carousel-item prev-item"></div>
+            <div class="carousel-item curr-item"></div>
+            <div class="carousel-item next-item"></div>
         </div>
     </div>
     <div id="description">
@@ -31,6 +37,7 @@
 </section>
 
 <script>
+    let activeSlide = 2;
     function dropDownMenu() {
         var x = document.getElementById("links");
         if (x.style.display === "block") {
@@ -39,4 +46,45 @@
         x.style.display = "block";
         }
     }
+
+    function showSlides(index) {
+        var prevSlide = index-1
+        var currSlide = index
+        var nextSlide = index+1
+        
+        if(prevSlide < 1){
+            prevSlide += 27
+        } else if(prevSlide > 27) {
+            prevSlide -= 27
+        }
+
+        if(currSlide < 1){
+            currSlide += 27
+        } else if(currSlide > 27) {
+            currSlide -= 27
+        }
+
+        activeSlide = currSlide
+
+        if(nextSlide < 1){
+            nextSlide += 27
+        } else if(nextSlide > 27) {
+            nextSlide -= 27
+        }
+
+        var prevSrc = "url(img/slides/slide" + prevSlide + ".jpg)";
+        var currSrc = "url(img/slides/slide" + currSlide + ".jpg)";
+        var nextSrc = "url(img/slides/slide" + nextSlide + ".jpg)";
+        console.log(prevSlide, currSlide, nextSlide)
+        $(".prev-item").css("background-image", prevSrc);
+        $(".curr-item").css("background-image", currSrc);
+        $(".next-item").css("background-image", nextSrc);
+    }
+
+    function plusSlides(n){
+        activeSlide += n;
+        showSlides(activeSlide);
+    }
+
+
 </script>
