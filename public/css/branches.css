@@ -226,26 +226,9 @@ input[type='text'] {
     padding-bottom: 0.5vw;
     font-size: 15px;
 }
-#placeholder::placeholder {
+#searchBranch::placeholder {
     font-family: "Jost";
     font-size: 20px;
-}
-button {
-    border: none;
-    border-radius: 20px;
-    background-color: #870505;
-    color: #ffffff;
-    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.5);
-    height: 47px;
-    width: 20%;
-    min-width: 50px;
-    font-family: "Jost";
-    font-weight: bold;
-    font-size: 20px;
-    text-wrap: nowrap;
-    position: absolute;
-    top: -0.5vh;
-    right: -2vw;
 }
 .flex-justify {
     justify-content: space-around;
