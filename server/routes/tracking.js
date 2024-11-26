@@ -67,6 +67,16 @@ router.get('/track=:id/more-details', async (req, res) =>{
             allUpdates.push(addUpdate);
         }
 
+        if (allUpdates.length === 0) {
+            const addUpdate = {
+                title: "ORDER SUBMITTED!",
+                date: " ",
+                time: " ",
+                description: "Kindly wait for updates..."
+            };
+            allUpdates.push(addUpdate);
+        }
+
         var orderStatus = order.status
         var progressClass = ""
         
