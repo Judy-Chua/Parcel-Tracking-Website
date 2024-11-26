@@ -201,7 +201,7 @@
         var format = "";
         const [month, day, year] = date.split("-"); //mm-dd-yyyy
         if (month && day && year) { //just making sure they are existing (not null)
-            format = `${month.padStart(2, '0')}/${day.padStart(2, '0')}/${year}`;
+            format = `${toMonthStr(parseInt(month))}${day}, ${year}`;
         }
 
         return format;
