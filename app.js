@@ -4,7 +4,7 @@ const { engine } = require('express-handlebars');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
-const connectDB = require('./server/config/db');
+//const connectDB = require('./server/config/db');
 
 const mongoose = require('mongoose');
 const { employeeUsers } = require('./server/user');
@@ -23,7 +23,6 @@ const PORT = 3000;
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://galaxymate77:rDRMxRMUzKNzX7NM@parcel-track.ajsas.mongodb.net/?retryWrites=true&w=majority&appName=Parcel-Track";
 
-
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -32,6 +31,7 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
@@ -44,6 +44,7 @@ async function run() {
     await client.close();
   }
 }
+
 run().catch(console.dir);
 
 async function createSample() {
