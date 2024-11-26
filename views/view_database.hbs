@@ -86,9 +86,8 @@
             <td class="popup-td">{{this.status}}</td>
             <td class="popup-td">
                 <button class="action-btn" onclick="viewDetails('{{this.orderId}}')"><i class="material-icons">remove_red_eye</i></button>
-                <a href="/admin/edit-order/{{this.orderId}}">
-                    <button class="action-btn"><i class="material-icons">create</i></button>
-                </a>
+                <a href="/admin/edit-order/{{this.orderId}}"><i class="material-icons">create</i></a>
+                <button class="action-btn" onclick="confirmDel()"><i class="material-icons">delete</i></button>
             </td>
         </tr>
         {{/each}}
@@ -178,6 +177,20 @@
         <button class="close-btn" onclick="closeFilter()">CLOSE</button>
         <button class="edit-btn" onclick="selectFilter()">SELECT</button>
     </div>
+</div>
+
+<div id="popup" style="display: none;" name="confirmDelPopup" class="confirmDelPopup">
+    <h2 id="confirm-msg">Are you sure you want to</h2>
+    <h2>delete this order?</h2>
+    <div class="popup-btns flex-parent">
+        <button class="close-btn" onclick="deleteOrder()">DELETE</button>
+        <button class="edit-btn" onclick="closeConfirm()">CANCEL</button>
+    </div>
+</div>
+
+<div id="popup" style="display: none;" name="deletedPopup" class="deletedPopup">
+    <h2 id="deleted-msg">The order has been deleted.</h2>
+    <button class="edit-btn" id="confirm-close-btn" onclick="closeDeleted()">CLOSE</button>
 </div>
 
 <script>
@@ -365,5 +378,35 @@
             default:
                 return "Error "; //unlikely but will still put
         }
+    }
+
+    function confirmDel() {
+        var popup = document.getElementsByClassName("confirmDelPopup");
+        if (popup)
+            popup[0].style.display = "block";
+    }
+
+    function deleteOrder(orderId) {
+        // delete here
+
+        // close confirmation popup
+        closeConfirm();
+
+        // show that order has been deleted
+        var popup = document.getElementsByClassName("deletedPopup");
+        if (popup)
+            popup[0].style.display = "block";
+    }
+
+    function closeConfirm() {
+        var popup = document.getElementsByClassName("confirmDelPopup");
+        if (popup)
+            popup[0].style.display = "none";
+    }
+
+    function closeDeleted() {
+        var popup = document.getElementsByClassName("deletedPopup");
+        if (popup)
+            popup[0].style.display = "none";
     }
 </script>

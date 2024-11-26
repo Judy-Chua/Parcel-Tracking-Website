@@ -282,6 +282,9 @@ footer {
     overflow: hidden;
     outline: none;
 }
+a:visited {
+    color: #000000;
+}
 #save-btn {
     background-color: #fffaeb;
     border-radius: 5px;
@@ -294,4 +297,34 @@ footer {
     color: #000000;
     font-size: 16px;
     text-shadow: 0.025px 0.025px 0.005px;
+}
+.confirmDelPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 20vh;
+}
+#confirm-msg {
+    margin-top: 10vh;
+}
+h2 {
+    font-family: "Jost";
+    margin: 0;
+}
+.deletedPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 10vh;
+}
+#deleted-msg {
+    margin-top: 7vh;
+}
+#confirm-close-btn {
+    position: fixed;
+    top: 83%;
+    left: 50%;
+    transform: translate(-50%, -83%);
 }
