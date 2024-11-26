@@ -7,8 +7,7 @@ const bodyParser = require('body-parser');
 const connectDB = require('./server/config/db');
 
 const mongoose = require('mongoose');
-const { sampleUsers, sampleOrders, sampleUpdates } = require('./server/sample'); //delete
-//const { employeeUsers } = require('./server/user');       //for deployment
+const { employeeUsers } = require('./server/user');
 const User = require('./server/models/User');
 const Order = require('./server/models/Order');
 const Update = require('./server/models/Update');
@@ -20,25 +19,39 @@ const passport = require('passport');
 
 const PORT = 3000;
 
-connectDB();
+//connectDB();
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://galaxymate77:rDRMxRMUzKNzX7NM@parcel-track.ajsas.mongodb.net/?retryWrites=true&w=majority&appName=Parcel-Track";
+
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 async function createSample() {
-    //delete
-    await User.deleteMany(); // Clear existing
-    await Order.deleteMany();
-    await Update.deleteMany();
-
-    await User.insertMany(sampleUsers);
-    await Order.insertMany(sampleOrders);
-    await Update.insertMany(sampleUpdates);
-
-    /*          //for deployment
     const existingUsers = await User.countDocuments();
 
     if (existingUsers === 0) {
         await User.insertMany(employeeUsers);
     }
-    */
 }
 
 app.use(session({
