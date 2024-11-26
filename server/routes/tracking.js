@@ -69,6 +69,7 @@ router.get('/track=:id/more-details', async (req, res) =>{
 
         var orderStatus = order.status
         var progressClass = ""
+        
         if(orderStatus === "PROCESSING"){
             progressClass = "progress1"
         } else if(orderStatus === "IN TRANSIT"){
