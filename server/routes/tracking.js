@@ -31,7 +31,7 @@ router.get('/track=:id', async (req, res) =>{
     try {
         const order = await Order.findOne({ orderId: id });
         if (!order) {
-            return res.status(404).render('error', { message: 'Order not found' });
+            return res.redirect('/search_parcel');
         }
         res.render('search_results', {title: "Search Results | ESMC", 
                                       css:"search_results", 
@@ -49,7 +49,7 @@ router.get('/track=:id/more-details', async (req, res) =>{
     try {
         const order = await Order.findOne({ orderId: id });
         if (!order) {
-            return res.status(404).render('error', { message: 'Order not found' });
+            return res.redirect('/search_parcel');
         }
 
         var allUpdates = [];
@@ -63,6 +63,16 @@ router.get('/track=:id/more-details', async (req, res) =>{
                 date: dateStr,
                 time: update.updateTime,
                 description: update.statusDesc
+            };
+            allUpdates.push(addUpdate);
+        }
+
+        if (allUpdates.length === 0) {
+            const addUpdate = {
+                title: "ORDER SUBMITTED!",
+                date: " ",
+                time: " ",
+                description: "Kindly wait for updates..."
             };
             allUpdates.push(addUpdate);
         }

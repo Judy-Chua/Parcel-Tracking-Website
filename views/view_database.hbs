@@ -188,7 +188,7 @@
     <h2>delete this order?</h2>
     <input type="hidden" id="delete-orderid" value="random">
     <div class="popup-btns flex-parent">
-        <button class="close-btn" id="deleting-order" onclick="deleteOrder()">DELETE</button>
+        <button class="close-btn" id="deleting-order">DELETE</button>
         <button class="edit-btn" onclick="closeConfirm()">CANCEL</button>
     </div>
 </div>
@@ -397,7 +397,6 @@
     }
 
     function confirmDel(orderId) {
-        console.log("clicked confirm");
         var popup = document.getElementsByClassName("confirmDelPopup");
         var hidden = document.getElementById("delete-orderid");
 
@@ -406,16 +405,6 @@
             hidden.value = orderId;
         }
             
-    }
-
-    function deleteOrder() {
-        // close confirmation popup
-        closeConfirm();
-
-        // show that order has been deleted
-        var popup = document.getElementsByClassName("deletedPopup");
-        if (popup)
-            popup[0].style.display = "block";
     }
 
     function closeConfirm() {

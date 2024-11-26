@@ -124,12 +124,10 @@ $(document).ready(function() {
 
     //delete order based on order
     $('#deleting-order').click(function() {
-        console.log("clicked delete");
         var orderId = $("#delete-orderid").val();
         var deleteData = {
             id : orderId,
         };
-        console.log(deleteData);
 
         $.post('/admin/delete-order', deleteData, function(message, status) {
             console.log("response data: ", message, status);
