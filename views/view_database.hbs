@@ -127,6 +127,10 @@
             </td>
         </tr>
         <tr class="popup-tr">
+            <th class="popup-th">EDT:</th>
+            <td class="popup-td" id="edtDetails"></td>
+        </tr>
+        <tr class="popup-tr">
             <th class="popup-th">EDA:</th>
             <td class="popup-td" id="edaDetails">
                 <input type="date" name="eda" id="dateInput"/>
@@ -198,6 +202,16 @@
     var currentId;
     var filterSelected = "controlId";
 
+    function convertDate(date) {
+        var format = "";
+        const [month, day, year] = date.split("-"); //mm-dd-yyyy
+        if (month && day && year) { //just making sure they are existing (not null)
+            format = `${month.padStart(2, '0')}/${day.padStart(2, '0')}/${year}`;
+        }
+
+        return format;
+    }
+
     function viewDetails(id)
     {
         currentId = id;
@@ -217,6 +231,7 @@
             document.getElementById('receiverDetails').innerHTML = message.orderDetails.receiverName;
             document.getElementById('senderDetails').innerHTML = message.orderDetails.senderName;
             document.getElementById('chargeDetails').innerHTML = message.orderDetails.total;
+            document.getElementById('edtDetails').innerHTML = convertDate(message.orderDetails.transDate);
             document.getElementById('originDetails').innerHTML = message.orderDetails.originBranch;
             document.getElementById('destDetails').innerHTML = message.orderDetails.destBranch;
 
@@ -235,7 +250,7 @@
                 }
             }
 
-            //provide pre-filled information for date
+            //provide pre-filled information for eda
             const edaOrder = message.orderDetails.arrivalDate;
             const htmlDate = document.getElementById("dateInput");
             var format = "";
@@ -394,8 +409,6 @@
     }
 
     function deleteOrder() {
-        // delete here
-
         // close confirmation popup
         closeConfirm();
 
