@@ -20,7 +20,7 @@
                     </div>
                     <button type="submit">LOGIN</button>
                 </form>
-                <h6>Forgot Password?</h6>
+                <h6 id="forgot-password" onclick="showPop()">Forgot Password?</h6>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
 <div id="popup" style="visibility:hidden;">
     <img id="question-mark" src="/img/question_mark.svg" />
     <h2>Please contact your hub manager for proper credentials</h2>
-    <p id="popup-msg"><a id="login-link" href="./login.html">Back to Login</a></p>
+    <p id="popup-msg"><a id="login-link" href="/admin/login">Back to Login</a></p>
 </div>
 
 <script>
@@ -46,4 +46,8 @@
         eyeSymbol.classList.add("fa-eye-slash");
     }
     });
+
+    function showPop(){
+        document.getElementById("popup").style.visibility = "visible";
+    }
 </script>
