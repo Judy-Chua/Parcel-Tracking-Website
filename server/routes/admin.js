@@ -436,6 +436,10 @@ router.post('/update-order', checkAuthenticated, checkAuthenticated, async (req,
 router.post('/delete-order', checkAuthenticated, checkAuthenticated, async (req, res) => {
     try {
         var { id } = req.body;
+        const order = await Order.findOne({ orderId: id });
+        if (order && order.updates && order.updates.length > 0) {
+            await Update.deleteMany({ updateId: { $in: order.updates } });
+        }
         await Order.deleteOne({ orderId: id });
 
         res.json({ success: true });
