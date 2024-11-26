@@ -315,19 +315,3 @@ h2 {
     font-family: "Jost";
     margin: 0;
 }
-.deletedPopup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 10vh;
-}
-#deleted-msg {
-    margin-top: 7vh;
-}
-#confirm-close-btn {
-    position: fixed;
-    top: 83%;
-    left: 50%;
-    transform: translate(-50%, -83%);
-}
