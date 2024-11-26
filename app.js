@@ -15,32 +15,15 @@ const passport = require('passport');
 const PORT = 3000;
 
 //connectDB();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+
 const uri = "mongodb+srv://galaxymate77:rDRMxRMUzKNzX7NM@parcel-track.ajsas.mongodb.net/?retryWrites=true&w=majority&appName=Parcel-Track";
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-
-run().catch(console.dir);
+mongoose.connect(uri)
+  .then(() => {
+    console.log('MongoDB connected');
+  })
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+  });
 
 const User = require('./server/models/User');
 const Order = require('./server/models/Order');
@@ -53,6 +36,8 @@ async function createSample() {
     if (existingUsers === 0) {
         await User.insertMany(employeeUsers);
     }
+
+
 }
 
 app.use(session({
