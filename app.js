@@ -7,11 +7,6 @@ const bodyParser = require('body-parser');
 //const connectDB = require('./server/config/db');
 
 const mongoose = require('mongoose');
-const { employeeUsers } = require('./server/user');
-const User = require('./server/models/User');
-const Order = require('./server/models/Order');
-const Update = require('./server/models/Update');
-
 const Sessions =  require('./server/models/Sessions.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -46,6 +41,11 @@ async function run() {
 }
 
 run().catch(console.dir);
+
+const User = require('./server/models/User');
+const Order = require('./server/models/Order');
+const Update = require('./server/models/Update');
+const { employeeUsers } = require('./server/users');
 
 async function createSample() {
     const existingUsers = await User.countDocuments();
