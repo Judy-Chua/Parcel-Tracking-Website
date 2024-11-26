@@ -409,10 +409,26 @@ async function addToDatabase() {
         var [year, month, day] = date.split("-"); //date is yyyy-mm-dd
         var newDate = "" + month + "-" + day + "-" + year + "";
 
+        var list = sender.split(" ");
+        for (var i = 0; i < list.length; i++) {
+            if (list[i]) { 
+                list[i] = list[i][0].toUpperCase() + list[i].slice(1);
+            }
+        }
+        const fixedSender = list.join(" ");
+
+        list = receiver.split(" ");
+        for (var i = 0; i < list.length; i++) {
+            if (list[i]) { 
+                list[i] = list[i][0].toUpperCase() + list[i].slice(1);
+            }
+        }
+        const fixedReceiver = list.join(" ");
+
         var orderData = {
             orderId : ID,
-            senderName : sender,
-            receiverName : receiver,
+            senderName : fixedSender,
+            receiverName : fixedReceiver,
             senderNum : senderNum,
             receiverNum : receiverNum,
 
