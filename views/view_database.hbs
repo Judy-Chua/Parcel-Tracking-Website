@@ -87,7 +87,7 @@
             <td class="popup-td">
                 <button class="action-btn" onclick="viewDetails('{{this.orderId}}')"><i class="material-icons">remove_red_eye</i></button>
                 <a href="/admin/edit-order/{{this.orderId}}"><i class="material-icons">create</i></a>
-                <button class="action-btn" onclick="confirmDel()"><i class="material-icons">delete</i></button>
+                <button class="action-btn" onclick="confirmDel('{{this.orderId}}')"><i class="material-icons">delete</i></button>
             </td>
         </tr>
         {{/each}}
@@ -182,8 +182,9 @@
 <div id="popup" style="display: none;" name="confirmDelPopup" class="confirmDelPopup">
     <h2 id="confirm-msg">Are you sure you want to</h2>
     <h2>delete this order?</h2>
+    <input type="hidden" id="delete-orderid" value="random">
     <div class="popup-btns flex-parent">
-        <button class="close-btn" onclick="deleteOrder()">DELETE</button>
+        <button class="close-btn" id="deleting-order" onclick="deleteOrder()">DELETE</button>
         <button class="edit-btn" onclick="closeConfirm()">CANCEL</button>
     </div>
 </div>
@@ -380,13 +381,19 @@
         }
     }
 
-    function confirmDel() {
+    function confirmDel(orderId) {
+        console.log("clicked confirm");
         var popup = document.getElementsByClassName("confirmDelPopup");
-        if (popup)
+        var hidden = document.getElementById("delete-orderid");
+
+        if (popup) {
             popup[0].style.display = "block";
+            hidden.value = orderId;
+        }
+            
     }
 
-    function deleteOrder(orderId) {
+    function deleteOrder() {
         // delete here
 
         // close confirmation popup

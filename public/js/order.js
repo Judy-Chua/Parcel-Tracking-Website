@@ -121,6 +121,27 @@ $(document).ready(function() {
         }
         
     });
+
+    //delete order based on order
+    $('#deleting-order').click(function() {
+        console.log("clicked delete");
+        var orderId = $("#delete-orderid").val();
+        var deleteData = {
+            id : orderId,
+        };
+        console.log(deleteData);
+
+        $.post('/admin/delete-order', deleteData, function(message, status) {
+            console.log("response data: ", message, status);
+            if (message.success) {
+                setTimeout(function() {
+                    window.location.href = "/admin/view-orders";
+                }, 300);
+            } else {
+                console.log("not success");
+            }
+        });
+    });
 });
 
 /*  validates all the required inputs by the user

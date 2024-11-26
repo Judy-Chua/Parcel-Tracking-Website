@@ -381,7 +381,6 @@ router.post('/edit-order', async (req, res) =>{
         res.status(500).json({ error: 'An internal server error occurred' });
     }
 })
-
 /* === */
 
 /* UPDATE ORDERS */
@@ -423,6 +422,21 @@ router.post('/update-order', checkAuthenticated, checkAuthenticated, async (req,
         if (!updatedOrder) {
             return res.status(404).send("Order not found");
         }
+
+        res.json({ success: true });
+    }
+    catch (error) {
+        console.error("Error retrieving orders:", error);
+        res.status(500).send("Server Error");
+    }
+})
+/* === */
+
+/* DELETE ORDERS */
+router.post('/delete-order', checkAuthenticated, checkAuthenticated, async (req, res) => {
+    try {
+        var { id } = req.body;
+        await Order.deleteOne({ orderId: id });
 
         res.json({ success: true });
     }
