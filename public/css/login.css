@@ -121,7 +121,14 @@ h6 {
 	margin-top: 15px;
 	margin-bottom: 0;
 	cursor: pointer;
+	width:max-content;
 }
+
+.forgot-container{
+	display:flex;
+	justify-content: center;
+}
+
 #popup {
     position: fixed;
     top: 50%;
