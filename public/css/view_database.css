@@ -147,10 +147,11 @@ h1 {
     border: 3px solid #fc0404;
 }
 .popup-th {
-    padding: 1vh;
+    padding: 0.75vh;
 }
 .popup-td {
-    padding: 1vh;
+    padding: 0.75vh;
+    line-height: 1;
 }
 .radio-btn {
     margin-left: 5.5vw;
