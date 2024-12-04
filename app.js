@@ -12,7 +12,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 
 //connectDB();
