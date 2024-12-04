@@ -12,7 +12,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
 
-const PORT = 3000;
+const port = 3000;
+
 
 //connectDB();
 
@@ -98,6 +99,6 @@ app.use('/', require('./server/routes/main.js'));
 app.use('/search_parcel', require('./server/routes/tracking.js'));
 app.use('/admin', require('./server/routes/admin.js'));
 
-app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}...`);
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}...`);
 })
